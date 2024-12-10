@@ -1,0 +1,150 @@
+<div id="topSection" style="display: flex; align-items: center; padding: 1em 0em;
+font-size: 0.9em; position: relative;"
+[ngStyle]="{'color': currentTheme.endsWith('Light') ? '' : 'white'}">
+    <p (click)="scrollToBriefIntro()" (mouseenter)="onMouseEnterOfBriefIntro()" (mouseleave)="onMouseLeaveOfBriefIntro()"
+    [ngStyle]="{'cursor': 'pointer', 'font-weight': isBriefIntroBeingHovered ? 'bold' : '300',
+    'border-style': isBriefIntroBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'margin-right': '-2em',
+    'color': isBriefIntroBeingHovered && currentTheme.endsWith('Light') ? 'navy' : ''}">
+        Brief Intro
+    </p>
+
+    <p (click)="scrollToRelevantExperience()" (mouseenter)="onMouseEnterOfRelevantExperience()" (mouseleave)="onMouseLeaveOfRelevantExperience()" style="cursor: pointer; font-weight: 300;"
+    [ngStyle]="{'margin-left': '1em', 'cursor': 'pointer', 'font-weight': isRelevantExperienceBeingHovered ? 'bold' : '300',
+    'border-style': isRelevantExperienceBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'margin-right': '-2em',
+    'color': isRelevantExperienceBeingHovered && currentTheme.endsWith('Light') ? 'navy' : ''}">
+        Relevant Experience
+    </p>
+
+    <p (click)="scrollToToolsAndSkills()" (mouseenter)="onMouseEnterOfToolsAndSkills()" (mouseleave)="onMouseLeaveOfToolsAndSkills()"
+    [ngStyle]="{'margin-left': '1em', 'cursor': 'pointer', 'font-weight': isToolsAndSkillsBeingHovered ? 'bold' : '300',
+    'border-style': isToolsAndSkillsBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'margin-right': '-2em',
+    'color': isToolsAndSkillsBeingHovered && currentTheme.endsWith('Light') ? 'navy' : ''}">
+        Tools & Skills Used
+    </p>
+
+    <p (click)="scrollToGoldenStandards()" (mouseenter)="onMouseEnterOfGoldenStandards()" (mouseleave)="onMouseLeaveOfGoldenStandards()"
+    [ngStyle]="{'margin-left': '1em', 'cursor': 'pointer', 'font-weight': isGoldenStandardsBeingHovered ? 'bold' : '300',
+    'border-style': isGoldenStandardsBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'margin-right': '-2em',
+    'color': isGoldenStandardsBeingHovered ? '#ebc334' : ''}">
+        Golden-Standards Followed Strictly
+    </p>
+
+
+    <div (mouseenter)="onMouseEnterOfPersonalize()" (mouseleave)="onMouseLeaveOfPersonalize()"
+    style="display: flex; align-items: center; gap: 0.5em; margin-left: 2em; margin-right: -1em;"
+    [ngStyle]="{'cursor': 'pointer', 'font-weight': isPersonalizeBeingHovered ? 'bold' : '300',
+    'border-style': isPersonalizeBeingHovered ? 'solid' : '', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'padding-left': '1.2em', 'padding-right': '0.9em',
+    'padding-top': '0em', 'padding-bottom': '0em',
+    'background-color': isPersonalizeBeingHovered && currentTheme.endsWith('Light')? '#dcf3fc' : ''}">
+        <p>
+            Personalize
+        </p>
+        <img class="iconToBeAdjustedForDarkMode" src="downV.png" style="height: 1em; width: 1em; object-fit: contain;"
+        [ngStyle]="{'transform': isPersonalizeBeingHovered ? 'scaleY(-1)' : ''}">
+    </div>
+
+
+    <div (mouseenter)="onMouseEnterOfLinks()" (mouseleave)="onMouseLeaveOfLinks()"
+    style="display: flex; align-items: center; gap: 0.5em; margin-left: 2em; margin-right: -1em;"
+    [ngStyle]="{'cursor': 'pointer', 'font-weight': isLinksBeingHovered ? 'bold' : '300',
+    'border-style': isLinksBeingHovered ? 'solid' : '', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'padding-left': '1.2em', 'padding-right': '0.9em',
+    'padding-top': '0em', 'padding-bottom': '0em',
+    'background-color': isLinksBeingHovered && currentTheme.endsWith('Light') ? '#dcf3fc' : ''}">
+        <p>
+            Links
+        </p>
+        <img class="iconToBeAdjustedForDarkMode" src="downV.png" style="height: 1em; width: 1em; object-fit: contain;"
+        [ngStyle]="{'transform': isLinksBeingHovered ? 'scaleY(-1)' : ''}">
+    </div>
+
+    <div (mouseenter)="onMouseEnterOfContactMe()" (mouseleave)="onMouseLeaveOfContactMe()"
+    style="display: flex; align-items: center; gap: 0.5em; margin-left: 2em; margin-right: -1em;"
+    [ngStyle]="{'cursor': 'pointer', 'font-weight': isContactMeBeingHovered ? 'bold' : '300',
+    'border-style': isContactMeBeingHovered ? 'solid' : '', 'border-color': 'lightgray',
+    'border-radius': '2em', 'border-width': '0.1em', 'padding-left': '1.2em', 'padding-right': '0.9em',
+    'padding-top': '0em', 'padding-bottom': '0em',
+    'background-color': isContactMeBeingHovered && currentTheme.endsWith('Light') ? '#dcf3fc' : ''}">
+        <p>
+            Contact Me
+        </p>
+        <img class="iconToBeAdjustedForDarkMode" src="downV.png" style="height: 1em; width: 1em; object-fit: contain;"
+        [ngStyle]="{'transform': isContactMeBeingHovered ? 'scaleY(-1)' : ''}">
+    </div>
+
+    <img src="samplePortrait1.jpg" style="position: absolute; left: 95%; height: 4em; width: 4em;
+    border-radius: 2em; pointer-events: none;">
+</div>
+
+<div *ngIf="isPersonalizeBeingHovered || isPersonalizeBigSectionBeingHovered" (mouseenter)="onMouseEnterOfPersonalizeBigSection()" (mouseleave)="onMouseLeaveOfPersonalizeBigSection()" style="width: 100%; z-index: 10; padding: 1em 3em; border-style: solid;
+border-color: lightgray; border-left: none; border-right: none; border-bottom: none; border-width:0.09em;
+display: flex; flex-direction: column; gap: 1em;"
+[ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
+    <h1>Personalize</h1>
+    <a *ngIf="readingModeOn==false" (click)="flipReadingMode()" style="cursor: pointer;"
+    [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Turn on Reading Mode</a>
+    <a *ngIf="readingModeOn==true" (click)="flipReadingMode()" style="cursor: pointer;"
+    [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Turn off Reading Mode</a>
+    <p style="margin-bottom:0em;">Change Theme</p>
+    <div (click)="changeTheme('System')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; margin-bottom:-1em; cursor: pointer;">
+        <img src="systemSettings.png" style="pointer-events: none; height: 1.2em; width: 1.2em;">
+        <p>System</p>
+        <p *ngIf="currentTheme.startsWith('System:')" style="color: gray; margin-left: 2em;">Selected ({{currentTheme.split(" ")[1]}})</p>
+    </div>
+    <div (click)="changeTheme('Light')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; margin-bottom:-1em; cursor: pointer;">
+        <img src="sun.png" style="pointer-events: none; height: 1.5em; width: 1.5em;">
+        <p>Light</p>
+        <p *ngIf="currentTheme==='Light'" style="color: gray; margin-left: 2em;">Selected</p>
+    </div>
+    <div (click)="changeTheme('Dark')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; cursor: pointer;">
+        <img src="moon.png" style="pointer-events: none; height: 1.5em; width: 1.5em;"
+        [ngStyle]="{'filter': currentTheme.endsWith('Light') ? '' : 'brightness(5) contrast(0)'}">
+        <p>Dark</p>
+        <p *ngIf="currentTheme==='Dark'" style="color: gray; margin-left: 2em;">Selected</p>
+    </div>
+</div>
+
+
+<div *ngIf="isLinksBeingHovered || isLinksBigSectionBeingHovered" (mouseenter)="onMouseEnterOfLinksBigSection()" (mouseleave)="onMouseLeaveOfLinksBigSection()" style="width: 100%; background-color: white; z-index: 10; padding: 1em 3em; border-style: solid;
+border-color: lightgray; border-left: none; border-right: none; border-bottom: none; border-width:0.09em;
+display: flex; flex-direction: column; gap: 1em;"
+[ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
+    <h1>Links</h1>
+    <a href="https://github.com/MegaGramProject"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Megagram Github Organization(under account 'rishavry')</a>
+
+    <h3>Instagram-Pages of Megagram</h3>
+    <a href="http://localhost:3100"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Megagram-Instagram Home-Page</a>
+    <a href="http://localhost:8000/login" [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Login-Register</a>
+    <a href="http://localhost:3001"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Resetting Password</a>
+    <a href="http://localhost:8007"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">AI Chat</a>
+    <a href="http://localhost:8011"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Messaging</a>
+    <a href="http://localhost:8019"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Profile-Page</a>
+
+    <h3>Amazon-Pages of Megagram</h3>
+    <a href="http://localhost:8024"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Main page</a>
+    <a href="http://localhost:8033"  [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Checkout page</a>
+</div>
+
+
+<div *ngIf="isContactMeBeingHovered || isContactMeBigSectionBeingHovered" (mouseenter)="onMouseEnterOfContactMeBigSection()" (mouseleave)="onMouseLeaveOfContactMeBigSection()" style="width: 100%; background-color: white; z-index: 10; padding: 0.5em 3em; border-style: solid;
+border-color: lightgray; border-left: none; border-right: none; border-bottom: none; border-width:0.09em;"
+[ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
+    <div style="display: flex; gap: 1.5em; align-items: center;">
+        <h1>Contact Me</h1>
+    </div>
+    <div style="display: flex; gap: 1em; align-items: center;">
+        <p>Email-Address: <span (click)="copyEmailAddressToClipboard()" style="text-decoration: underline; cursor: pointer;"
+        [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">rishavray4&#64;gmail.com</span></p>
+        <p *ngIf="emailAddressWasCopied" style="color: green;">Copied!</p>
+    </div>
+    <div style="display: flex; gap: 1em; align-items: center;">
+        <p>Text: <span (click)="copyPhoneNumberToClipboard()" style="text-decoration: underline; cursor: pointer;"
+        [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">608-443-7805</span></p>
+        <p *ngIf="phoneNumberWasCopied" style="color: green;">Copied!</p>
+    </div>
+</div>

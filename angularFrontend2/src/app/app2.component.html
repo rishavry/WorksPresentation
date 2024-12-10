@@ -1,0 +1,18 @@
+<TopSection (updateDarkScreen)="updateDarkScreen($event)" [currentTheme]="currentTheme"
+[readingModeOn]="readingModeOn" (updateTheme)="updateTheme($event)" (toggleReadingMode)="toggleReadingMode()"></TopSection>
+<BriefIntro [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"></BriefIntro>
+
+<div *ngIf="userIsAtTheTop" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+align-items: center; font-size: 0.85em;">
+    <p>Swim to</p>
+    <img src="waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
+    <p>the Bottom</p>
+</div>
+
+
+<div *ngIf="!userIsAtTheTop" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+align-items: center; font-size: 0.85em;">
+    <p>Climb to</p>
+    <img src="mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">
+    <p>the Top</p>
+</div>

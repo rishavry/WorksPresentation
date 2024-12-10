@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Helvetica;
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.not-found h1 {
+    font-size: 5em;
+    color: #ff0000;
+}
+
+.not-found p {
+    font-size: 1.5em;
+}
+
+.not-found a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.not-found a:hover {
+    text-decoration: underline;
+}
+
+/*# sourceMappingURL=styles.css.map */
+
+a:hover {
+    color: darkgreen !important;
+}
