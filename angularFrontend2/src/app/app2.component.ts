@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { BriefIntro } from '../components/briefIntro.component';
+import { RelevantExperience } from '../components/relevantExperience.component';
 import { TopSection } from '../components/topSection.component';
 
 @Component({
     selector: 'app2',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro],
+    imports: [CommonModule, TopSection, BriefIntro, RelevantExperience],
     templateUrl: './app2.component.html',
     styleUrl: '../styles.css'
 })

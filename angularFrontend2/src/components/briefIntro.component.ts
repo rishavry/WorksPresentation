@@ -35,8 +35,8 @@ export class BriefIntro {
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
-        return;
         if (isPlatformBrowser(this.platformId)) {
+            return;
             this.helloText = document.getElementById('helloText')!;
             this.intervalIdForHelloText = setInterval(() => {
                 this.animateTheHelloText();
