@@ -1,13 +1,12 @@
 <TopSection (updateDarkScreen)="updateDarkScreen($event)" [currentTheme]="currentTheme"
 [readingModeOn]="readingModeOn" (updateTheme)="updateTheme($event)" (toggleReadingMode)="toggleReadingMode()"
 />
+
 <BriefIntro [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"/>
 
-<RelevantExperience [currentTheme]="currentTheme"></RelevantExperience>
+<RelevantExperience [currentTheme]="currentTheme"/>
 
-<div style="height: 15em; width: 100%">
-
-</div>
+<ToolsAndSkills [currentTheme]="currentTheme"/>
 
 
 <div *ngIf="userIsAtTheTop" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;

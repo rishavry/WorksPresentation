@@ -1,3 +1,10 @@
+@font-face {
+    font-family: Roboto;
+    src: url("../public/Roboto-Black.ttf");
+    font-weight: 100;
+    font-style: normal;
+}
+
 body {
     font-family: Helvetica;
 }
@@ -29,4 +36,10 @@ body {
 
 a:hover {
     color: darkgreen !important;
+}
+
+@keyframes colorWave {
+    0% { color: black; }
+    50% { color: goldenrod; }
+    100% { color: black; }
 }
