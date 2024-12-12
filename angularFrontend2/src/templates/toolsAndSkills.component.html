@@ -1,4 +1,4 @@
-<div id="toolsAndSkills" style="padding-top: 4em; padding-bottom: 1.5em;">
+<div id="toolsAndSkills" style="padding-top: 4em; padding-bottom: 1.5em; position: relative;">
     <div style="display: flex; flex-direction: column; align-items: center; gap: 1em; width: 100%;">
         <p style="font-family: Calibri; font-weight: bold; font-size: 2em;
         position: relative;" startJumpyWaveWhenUserReachesThisPoint>
@@ -16,7 +16,8 @@
         <div *ngIf="showDescription==true && fullStackToolsAndSkillsUsed.length>0" style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 30em;" moveFrontendSectionUpCloser>
             <SingleToolOrSkill *ngFor="let toolOrSkill of fullStackToolsAndSkillsUsed; let index = index; trackBy: trackByName"
                 [index]="index" [name]="toolOrSkill['name']" [image]="toolOrSkill['image']" [backgroundColor]="toolOrSkill['backgroundColor']"
-                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']"
+                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']" (notifyParentToShowPopupForToolOrSkill)="tellParentToShowPopupForToolOrSkill($event)"
+                [type]="'Full-Stack'"
             />
         </div>
         
@@ -27,13 +28,15 @@
             <div *ngIf="showFrontendElements==true && frontendToolsAndSkillsUsed.length>0" style="display: flex; align-items: center; gap: 0.5em;">
                 <SingleToolOrSkill *ngFor="let toolOrSkill of frontendToolsAndSkillsUsed.slice(0,4); let index = index; trackBy: trackByName"
                     [index]="index" [name]="toolOrSkill['name']" [image]="toolOrSkill['image']" [backgroundColor]="toolOrSkill['backgroundColor']"
-                    [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']"
+                    [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']" (notifyParentToShowPopupForToolOrSkill)="tellParentToShowPopupForToolOrSkill($event)"
+                    [type]="'Frontend'"
                 />
             </div>
             <div *ngIf="showFrontendElements==true && frontendToolsAndSkillsUsed.length>0" style="display: flex; align-items: center; gap: 0.5em;">
                 <SingleToolOrSkill *ngFor="let toolOrSkill of frontendToolsAndSkillsUsed.slice(4,8); let index = index; trackBy: trackByName"
                     [index]="index+4" [name]="toolOrSkill['name']" [image]="toolOrSkill['image']" [backgroundColor]="toolOrSkill['backgroundColor']"
-                    [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']"
+                    [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']" (notifyParentToShowPopupForToolOrSkill)="tellParentToShowPopupForToolOrSkill($event)"
+                    [type]="'Frontend'"
                 />
             </div>
         </div>
@@ -45,13 +48,15 @@
             <div *ngIf="showBackendElements==true && backendToolsAndSkillsUsed.length>0" style="display: flex; align-items: center; gap: 0.5em;">
             <SingleToolOrSkill *ngFor="let toolOrSkill of backendToolsAndSkillsUsed.slice(0,4); let index = index; trackBy: trackByName"
                 [index]="index" [name]="toolOrSkill['name']" [image]="toolOrSkill['image']" [backgroundColor]="toolOrSkill['backgroundColor']"
-                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']"
+                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']" (notifyParentToShowPopupForToolOrSkill)="tellParentToShowPopupForToolOrSkill($event)"
+                [type]="'Backend'"
             />
         </div>
         <div *ngIf="showBackendElements==true && backendToolsAndSkillsUsed.length>0" style="display: flex; align-items: center; gap: 0.5em;">
             <SingleToolOrSkill *ngFor="let toolOrSkill of backendToolsAndSkillsUsed.slice(4,8); let index = index; trackBy: trackByName"
                 [index]="index+4" [name]="toolOrSkill['name']" [image]="toolOrSkill['image']" [backgroundColor]="toolOrSkill['backgroundColor']"
-                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']"
+                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']" (notifyParentToShowPopupForToolOrSkill)="tellParentToShowPopupForToolOrSkill($event)"
+                [type]="'Backend'"
             />
         </div>
         </div>
@@ -62,12 +67,12 @@
         <div *ngIf="showDataAndCloudElements==true && dataAndTheCloudToolsAndSkillsUsed.length>0" style="display: flex; align-items: center; gap: 0.5em;">
             <SingleToolOrSkill *ngFor="let toolOrSkill of dataAndTheCloudToolsAndSkillsUsed; let index = index; trackBy: trackByName"
                 [index]="index" [name]="toolOrSkill['name']" [image]="toolOrSkill['image']" [backgroundColor]="toolOrSkill['backgroundColor']"
-                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']"
+                [color]="toolOrSkill['color']" [usedFor]="toolOrSkill['usedFor']" (notifyParentToShowPopupForToolOrSkill)="tellParentToShowPopupForToolOrSkill($event)"
+                [type]="'Data and the Cloud'"
             />
         </div>
-
-
     </div>
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
 </div>
 
 <style>

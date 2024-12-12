@@ -257,6 +257,8 @@ export class MoveDataAndCloudSectionUpCloser {
 })
 export class ToolsAndSkills {
     @Input() currentTheme!:string;
+    @Input() displayDarkScreen!:boolean;
+    @Output() notifyParentToShowPopupForToolOrSkill:EventEmitter<Record<string, any>> = new EventEmitter<Record<string, any>>();
     toolsAndSkillsUsed:Record<string, any>[] = [
         {
             name: 'AngularTS',
@@ -443,6 +445,7 @@ export class ToolsAndSkills {
     showFrontendElements:boolean = false;
     showBackendElements:boolean = false;
     showDataAndCloudElements:boolean = false;
+    @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
         this.toolsAndSkillsUsed = this.toolsAndSkillsUsed.sort((a, b) => a['name'].localeCompare(b['name']));
@@ -470,5 +473,26 @@ export class ToolsAndSkills {
 
     setShowDataAndCloudElementsToTrue() {
         this.showDataAndCloudElements = true;
+    }
+
+    tellParentToShowPopupForToolOrSkill(info:any) {
+        const type = info[0];
+        const index = info[1];
+        if(type==='Full-Stack') {
+            this.notifyParentToShowPopupForToolOrSkill.emit(this.fullStackToolsAndSkillsUsed[index])
+        }
+        else if(type==='Frontend') {
+            this.notifyParentToShowPopupForToolOrSkill.emit(this.frontendToolsAndSkillsUsed[index])
+        }
+        else if(type==='Backend') {
+            this.notifyParentToShowPopupForToolOrSkill.emit(this.backendToolsAndSkillsUsed[index])
+        }
+        else {
+            this.notifyParentToShowPopupForToolOrSkill.emit(this.dataAndTheCloudToolsAndSkillsUsed[index])
+        }
+    }
+
+    onClickingDarkScreen() {
+        this.notifyParentToCloseAllPopups.emit();
     }
 }

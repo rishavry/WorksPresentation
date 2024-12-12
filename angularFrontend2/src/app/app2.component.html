@@ -1,15 +1,25 @@
 <TopSection (updateDarkScreen)="updateDarkScreen($event)" [currentTheme]="currentTheme"
-[readingModeOn]="readingModeOn" (updateTheme)="updateTheme($event)" (toggleReadingMode)="toggleReadingMode()"
+    [readingModeOn]="readingModeOn" (updateTheme)="updateTheme($event)" (toggleReadingMode)="toggleReadingMode()"
 />
 
-<BriefIntro [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"/>
+<BriefIntro [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
 
-<RelevantExperience [currentTheme]="currentTheme"/>
+<RelevantExperience [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
 
-<ToolsAndSkills [currentTheme]="currentTheme"/>
+<ToolsAndSkills [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToShowPopupForToolOrSkill)="showPopupForToolOrSkill($event)"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
 
+<ToolOrSkillPopup *ngIf="displayToolOrSkillsPopup" [currentTheme]="currentTheme"
+[toolOrSkill]="toolOrSkillForPopup" (notifyParentToCloseThisPopup)="closePopupForToolOrSkill()"
+/>
 
-<div *ngIf="userIsAtTheTop" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+<div *ngIf="userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Swim to</p>
     <img src="waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
@@ -17,7 +27,7 @@ align-items: center; font-size: 0.85em;">
 </div>
 
 
-<div *ngIf="!userIsAtTheTop" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+<div *ngIf="!userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Climb to</p>
     <img src="mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">

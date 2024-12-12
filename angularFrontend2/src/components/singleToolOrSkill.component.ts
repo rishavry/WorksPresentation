@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, Input, PLATFORM_ID, Output, EventEmitter} from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
@@ -12,6 +12,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class SingleToolOrSkill {
     @Input() name!:string;
+    @Input() type!:string;
     @Input() image!:string;
     @Input() backgroundColor!:string;
     @Input() color!:string;
@@ -19,6 +20,7 @@ export class SingleToolOrSkill {
     @Input() index!:number;
     opacity:number = 0;
     intervalIdForIncreasingOpacitySmoothly:any = null;
+    @Output() notifyParentToShowPopupForToolOrSkill:EventEmitter<any[]> = new EventEmitter<any[]>();
 
     constructor(@Inject(PLATFORM_ID) private platformId: Object, private sanitizer: DomSanitizer) {}
 
@@ -45,5 +47,12 @@ export class SingleToolOrSkill {
 
     sanitize(htmlCodeAsString: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(htmlCodeAsString);
+    }
+
+    showPopupForToolOrSkill() {
+        if(this.opacity<1) {
+            return;
+        }
+        this.notifyParentToShowPopupForToolOrSkill.emit([this.type, this.index]);
     }
 }

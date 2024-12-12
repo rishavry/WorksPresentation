@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
@@ -163,4 +163,10 @@ export class MoveMacbookWithScroll {
 })
 export class RelevantExperience {
     @Input() currentTheme!:string;
+    @Input() displayDarkScreen!:boolean;
+    @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
+
+    onClickingDarkScreen() {
+        this.notifyParentToCloseAllPopups.emit();
+    }
 }

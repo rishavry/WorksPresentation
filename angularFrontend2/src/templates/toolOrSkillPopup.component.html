@@ -1,0 +1,24 @@
+<div style="position: fixed; width: 75%; height: 87%; top: 5%; left: 15%; display: flex;
+flex-direction: column; overflow-y: scroll;"
+[ngStyle]="{'background-color': toolOrSkill['backgroundColor'], 'color': toolOrSkill['color']}">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; border-style: solid;
+    border-color: lightgray; border-top: none; border-left: none; border-right: none;
+    padding: 0.5em 1.5em; border-width:0.08em;">
+        <div style="display: flex; align-items: center; gap: 1em;">
+            <img [src]="toolOrSkill['image']" style="pointer-events: none; height: 2em; width: 2em; object-fit: contain;">
+            <h2>{{ toolOrSkill['name'] }} - {{ toolOrSkill['type'] }}</h2>
+        </div>
+        <img src="thinGrayXIcon.png" (click)="closePopup()" style="cursor: pointer; height: 1.3em; width: 1.3em;">
+    </div>
+
+    <div style="padding: 0.5em 1.5em; margin-top: 1.5em;">
+        <h2>Used For:</h2>
+        <li *ngFor="let item of toolOrSkill['usedFor'];"
+            [innerHTML]="sanitize(item)"
+            style="margin-bottom: 1.7em;"
+        >
+        </li>
+    </div>
+
+</div>

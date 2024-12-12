@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output, PLATFORM_ID } from '@angular/core';
 
 @Component({
     selector: 'BriefIntro',
@@ -31,12 +31,13 @@ export class BriefIntro {
     opacityOfNextPortrait:number = 0;
     @Input() displayDarkScreen!:boolean;
     @Input() currentTheme!:string;
+    @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
     
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
+        return;
         if (isPlatformBrowser(this.platformId)) {
-            return;
             this.helloText = document.getElementById('helloText')!;
             this.intervalIdForHelloText = setInterval(() => {
                 this.animateTheHelloText();
@@ -148,6 +149,10 @@ export class BriefIntro {
             this.opacityOfCurrentPortrait-=0.05;
             this.opacityOfNextPortrait+=0.05;
         }
+    }
+
+    onClickingDarkScreen() {
+        this.notifyParentToCloseAllPopups.emit();
     }
 }
 

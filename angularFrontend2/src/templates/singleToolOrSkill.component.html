@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: column; border-style: solid; border-color: lightgray;
+<div (click)="showPopupForToolOrSkill()" style="display: flex; flex-direction: column; border-style: solid; border-color: lightgray;
 padding: 0.5em 1.5em; border-radius: 0.85em; cursor: pointer; width: 20em; height: 20em; overflow-y: scroll;"
 [ngStyle]="{'background-color': backgroundColor, 'color': color, 'opacity': opacity}">
 
@@ -10,15 +10,9 @@ padding: 0.5em 1.5em; border-radius: 0.85em; cursor: pointer; width: 20em; heigh
     <p>Places Used:</p>
     <ul>
         <li *ngFor="let item of usedFor; trackBy: trackUsedForByIndex"
-            [innerHTML]="item"
-            class="placeUsed">
+            [innerHTML]="sanitize(item)"
+        >
         </li>
     </ul>
 
 </div>
-
-<style>
-    .placeUsed {
-        color: '#5aedd7'
-    }
-</style>

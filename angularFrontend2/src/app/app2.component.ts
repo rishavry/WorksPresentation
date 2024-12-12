@@ -4,12 +4,13 @@ import { BriefIntro } from '../components/briefIntro.component';
 import { RelevantExperience } from '../components/relevantExperience.component';
 import { ToolsAndSkills } from '../components/toolsAndSkills.component';
 import { TopSection } from '../components/topSection.component';
+import { ToolOrSkillPopup } from '../components/toolOrSkillPopup.component';
 
 @Component({
     selector: 'app2',
     standalone: true,
     imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
-    ToolsAndSkills],
+    ToolsAndSkills, ToolOrSkillPopup],
     templateUrl: './app2.component.html',
     styleUrl: '../styles.css'
 })
@@ -22,6 +23,8 @@ export class App2 {
     darkModeQuery!:any;
     colorWave0PercentKeyFrameRule!:CSSKeyframeRule;
     colorWave100PercentKeyFrameRule!:CSSKeyframeRule;
+    displayToolOrSkillsPopup:boolean = false;
+    toolOrSkillForPopup!:Record<string, any>;
 
     ngOnInit(): void {
         if (typeof window !== 'undefined') {
@@ -160,6 +163,22 @@ export class App2 {
 
     toggleReadingMode() {
         this.readingModeOn = !this.readingModeOn;
+    }
+
+    showPopupForToolOrSkill(toolOrSkillForPopup:Record<string, any>) {
+        this.toolOrSkillForPopup = toolOrSkillForPopup;
+        this.displayDarkScreen = true;
+        this.displayToolOrSkillsPopup = true;
+    }
+
+    closePopupForToolOrSkill() {
+        this.displayToolOrSkillsPopup = false;
+        this.displayDarkScreen = false;
+    }
+
+    closeAllPopupsAfterClickingDarkScreen() {
+        this.displayToolOrSkillsPopup = false;
+        this.displayDarkScreen = false;
     }
 
 }
