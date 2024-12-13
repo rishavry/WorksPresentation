@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Directive, ElementRef, HostListener, Input, Renderer2, Output, EventEmitter } from '@angular/core';
-import { SingleToolOrSkill } from './singleToolOrSkill.component';
-
+import { SingleTechnologyOrSkill } from './singleTechnologyOrSkill.component';
 
 
 @Directive({
@@ -24,7 +23,7 @@ export class StartJumpyWaveWhenUserReachesThisPoint {
                 this.renderer.setProperty(
                     this.el.nativeElement,
                     'innerHTML',
-                    'Most of the Essential Tools/Skills Utilized Directly in My Project'
+                    'Most of the Essential Technologies/Skills Utilized in My Project'
                 );
                 this.renderer.setStyle(
                     this.el.nativeElement,
@@ -211,7 +210,6 @@ export class StartDataAndCloudColorfulWaveAndShowElementsWhenUserReachesThisPoin
             this.renderer.addClass(this.el.nativeElement, 'colorfulWave');
             window.removeEventListener('scroll', this.onScroll.bind(this));
             this.notifyParentToShowDataAndCloudElements.emit();
-
         }
     }
 }
@@ -246,20 +244,20 @@ export class MoveDataAndCloudSectionUpCloser {
 }
 
 @Component({
-    selector: 'ToolsAndSkills',
-    imports: [SingleToolOrSkill, CommonModule, MoveFullStackSectionUpCloser, MoveFrontendSectionUpCloser,
+    selector: 'TechnologiesAndSkills',
+    imports: [SingleTechnologyOrSkill, CommonModule, MoveFullStackSectionUpCloser, MoveFrontendSectionUpCloser,
     MoveBackendSectionUpCloser, MoveDataAndCloudSectionUpCloser, StartJumpyWaveWhenUserReachesThisPoint,
     StartFullStackColorfulWaveAndShowElementsWhenUserReachesThisPoint, StartFrontendColorfulWaveAndShowElementsWhenUserReachesThisPoint,
     StartBackendColorfulWaveAndShowElementsWhenUserReachesThisPoint, StartDataAndCloudColorfulWaveAndShowElementsWhenUserReachesThisPoint],
     standalone: true,
-    templateUrl: '../templates/toolsAndSkills.component.html',
+    templateUrl: '../templates/technologiesAndSkills.component.html',
     styleUrl: '../styles.css',
 })
-export class ToolsAndSkills {
+export class TechnologiesAndSkills {
     @Input() currentTheme!:string;
     @Input() displayDarkScreen!:boolean;
-    @Output() notifyParentToShowPopupForToolOrSkill:EventEmitter<Record<string, any>> = new EventEmitter<Record<string, any>>();
-    toolsAndSkillsUsed:Record<string, any>[] = [
+    @Output() notifyParentToShowPopupForTechnologyOrSkill:EventEmitter<Record<string, any>> = new EventEmitter<Record<string, any>>();
+    technologiesAndSkillsUsed:Record<string, any>[] = [
         {
             name: 'AngularTS',
             type: 'Frontend',
@@ -395,7 +393,7 @@ export class ToolsAndSkills {
             backgroundColor: '#3d3d3d',
             color: 'white',
             usedFor: [
-                "Used for the frontend for <a href=\"https://github.com/Megagram/Login-Register\" style:\"color: red;\">Login-Register</a>",
+                "Used for the frontend for <a href=\"https://github.com/Megagram/Login-Register\" target=\"_blank\" rel=\"noopener noreferrer\" style:\"color: red;\">Login-Register</a>",
                 "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)",
                 "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)",
                 "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)",
@@ -437,10 +435,10 @@ export class ToolsAndSkills {
             usedFor: []
         }
     ];
-    frontendToolsAndSkillsUsed:Record<string, any>[] = [];
-    backendToolsAndSkillsUsed:Record<string, any>[] = [];
-    dataAndTheCloudToolsAndSkillsUsed:Record<string, any>[] = [];
-    fullStackToolsAndSkillsUsed:Record<string, any>[] = [];
+    frontendTechnologiesAndSkillsUsed:Record<string, any>[] = [];
+    backendTechnologiesAndSkillsUsed:Record<string, any>[] = [];
+    dataAndTheCloudTechnologiesAndSkillsUsed:Record<string, any>[] = [];
+    fullStackTechnologiesAndSkillsUsed:Record<string, any>[] = [];
     showDescription:boolean = false;
     showFrontendElements:boolean = false;
     showBackendElements:boolean = false;
@@ -448,15 +446,15 @@ export class ToolsAndSkills {
     @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
-        this.toolsAndSkillsUsed = this.toolsAndSkillsUsed.sort((a, b) => a['name'].localeCompare(b['name']));
-        this.frontendToolsAndSkillsUsed = this.toolsAndSkillsUsed.filter(x=>x['type']==='Frontend');
-        this.backendToolsAndSkillsUsed = this.toolsAndSkillsUsed.filter(x=>x['type']==='Backend');
-        this.dataAndTheCloudToolsAndSkillsUsed = this.toolsAndSkillsUsed.filter(x=>x['type']==='Data and the Cloud');
-        this.fullStackToolsAndSkillsUsed = this.toolsAndSkillsUsed.filter(x=>x['type']==='Full-Stack');
+        this.technologiesAndSkillsUsed = this.technologiesAndSkillsUsed.sort((a, b) => a['name'].localeCompare(b['name']));
+        this.frontendTechnologiesAndSkillsUsed = this.technologiesAndSkillsUsed.filter(x=>x['type']==='Frontend');
+        this.backendTechnologiesAndSkillsUsed = this.technologiesAndSkillsUsed.filter(x=>x['type']==='Backend');
+        this.dataAndTheCloudTechnologiesAndSkillsUsed = this.technologiesAndSkillsUsed.filter(x=>x['type']==='Data and the Cloud');
+        this.fullStackTechnologiesAndSkillsUsed = this.technologiesAndSkillsUsed.filter(x=>x['type']==='Full-Stack');
     }
 
-    trackByName(toolOrSkill: any): string {
-        return toolOrSkill.name;
+    trackByName(technologyOrSkill: any): string {
+        return technologyOrSkill.name;
     }
 
     setShowDescriptionToTrue() {
@@ -475,20 +473,20 @@ export class ToolsAndSkills {
         this.showDataAndCloudElements = true;
     }
 
-    tellParentToShowPopupForToolOrSkill(info:any) {
+    tellParentToShowPopupForTechnologyOrSkill(info:any) {
         const type = info[0];
         const index = info[1];
         if(type==='Full-Stack') {
-            this.notifyParentToShowPopupForToolOrSkill.emit(this.fullStackToolsAndSkillsUsed[index])
+            this.notifyParentToShowPopupForTechnologyOrSkill.emit(this.fullStackTechnologiesAndSkillsUsed[index])
         }
         else if(type==='Frontend') {
-            this.notifyParentToShowPopupForToolOrSkill.emit(this.frontendToolsAndSkillsUsed[index])
+            this.notifyParentToShowPopupForTechnologyOrSkill.emit(this.frontendTechnologiesAndSkillsUsed[index])
         }
         else if(type==='Backend') {
-            this.notifyParentToShowPopupForToolOrSkill.emit(this.backendToolsAndSkillsUsed[index])
+            this.notifyParentToShowPopupForTechnologyOrSkill.emit(this.backendTechnologiesAndSkillsUsed[index])
         }
         else {
-            this.notifyParentToShowPopupForToolOrSkill.emit(this.dataAndTheCloudToolsAndSkillsUsed[index])
+            this.notifyParentToShowPopupForTechnologyOrSkill.emit(this.dataAndTheCloudTechnologiesAndSkillsUsed[index])
         }
     }
 

@@ -4,13 +4,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Component({
-    selector: 'SingleToolOrSkill',
+    selector: 'SingleTechnologyOrSkill',
     imports: [CommonModule],
     standalone: true,
-    templateUrl: '../templates/singleToolOrSkill.component.html',
+    templateUrl: '../templates/singleTechnologyOrSkill.component.html',
     styleUrl: '../styles.css',
 })
-export class SingleToolOrSkill {
+export class SingleTechnologyOrSkill {
     @Input() name!:string;
     @Input() type!:string;
     @Input() image!:string;
@@ -20,7 +20,7 @@ export class SingleToolOrSkill {
     @Input() index!:number;
     opacity:number = 0;
     intervalIdForIncreasingOpacitySmoothly:any = null;
-    @Output() notifyParentToShowPopupForToolOrSkill:EventEmitter<any[]> = new EventEmitter<any[]>();
+    @Output() notifyParentToShowPopupForTechnologyOrSkill:EventEmitter<any[]> = new EventEmitter<any[]>();
 
     constructor(@Inject(PLATFORM_ID) private platformId: Object, private sanitizer: DomSanitizer) {}
 
@@ -49,10 +49,10 @@ export class SingleToolOrSkill {
         return this.sanitizer.bypassSecurityTrustHtml(htmlCodeAsString);
     }
 
-    showPopupForToolOrSkill() {
+    showPopupForTechnologyOrSkill() {
         if(this.opacity<1) {
             return;
         }
-        this.notifyParentToShowPopupForToolOrSkill.emit([this.type, this.index]);
+        this.notifyParentToShowPopupForTechnologyOrSkill.emit([this.type, this.index]);
     }
 }

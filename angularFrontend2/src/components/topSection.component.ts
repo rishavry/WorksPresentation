@@ -11,7 +11,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class TopSection {
     isBriefIntroBeingHovered:boolean = false;
     isRelevantExperienceBeingHovered:boolean = false;
-    isToolsAndSkillsBeingHovered:boolean = false;
+    isTechnologiesAndSkillsBeingHovered:boolean = false;
     isGoldenStandardsBeingHovered:boolean = false;
     isPersonalizeBeingHovered:boolean = false;
     isLinksBeingHovered:boolean = false;
@@ -43,12 +43,12 @@ export class TopSection {
         this.isRelevantExperienceBeingHovered = false;
     }
 
-    onMouseEnterOfToolsAndSkills() {
-        this.isToolsAndSkillsBeingHovered = true;
+    onMouseEnterOfTechnologiesAndSkills() {
+        this.isTechnologiesAndSkillsBeingHovered = true;
     }
 
-    onMouseLeaveOfToolsAndSkills() {
-        this.isToolsAndSkillsBeingHovered = false;
+    onMouseLeaveOfTechnologiesAndSkills() {
+        this.isTechnologiesAndSkillsBeingHovered = false;
     }
 
     onMouseEnterOfGoldenStandards() {
@@ -118,8 +118,8 @@ export class TopSection {
         });
     }
 
-    scrollToToolsAndSkills() {
-        document.getElementById("toolsAndSkills")?.scrollIntoView({
+    scrollToTechnologiesAndSkills() {
+        document.getElementById("technologiesAndSkills")?.scrollIntoView({
             behavior: 'smooth'
         });
     }

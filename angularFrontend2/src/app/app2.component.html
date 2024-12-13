@@ -10,13 +10,17 @@
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<ToolsAndSkills [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToShowPopupForToolOrSkill)="showPopupForToolOrSkill($event)"
+<TechnologiesAndSkills [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToShowPopupForTechnologyOrSkill)="showPopupForTechnologyOrSkill($event)"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<ToolOrSkillPopup *ngIf="displayToolOrSkillsPopup" [currentTheme]="currentTheme"
-[toolOrSkill]="toolOrSkillForPopup" (notifyParentToCloseThisPopup)="closePopupForToolOrSkill()"
+<TechnologyOrSkillPopup *ngIf="displayTechnologyOrSkillsPopup" [currentTheme]="currentTheme"
+    [technologyOrSkill]="technologyOrSkillForPopup" (notifyParentToCloseThisPopup)="closePopupForTechnologyOrSkill()"
+/>
+
+<GoldenStandards [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
 <div *ngIf="userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;

@@ -1,0 +1,39 @@
+<div class="threeDimensionalDiv" (click)="showPopupForTechnologyOrSkill()" style="display: flex; flex-direction: column; border-style: solid; border-color: lightgray;
+padding: 0.5em 1.5em; border-radius: 0.85em; cursor: pointer; width: 20em; height: 20em; position: relative;"
+[ngStyle]="{'background-color': backgroundColor, 'color': color, 'opacity': opacity}">
+
+    <div style="display: flex; align-items: center; gap: 1em;">
+        <img [src]="image" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+        <h2>{{ name }}</h2>
+    </div>
+
+    <p>Places Used:</p>
+    <ul style="height: 100%; overflow-y: scroll; font-family: Red Hat Display;">
+        <li *ngFor="let item of usedFor; trackBy: trackUsedForByIndex"
+            [innerHTML]="sanitize(item)"
+            style="margin-bottom: 1em;"
+        >
+        </li>
+    </ul>
+
+    <img *ngIf="['SCSS', 'VueJS', 'WebSockets'].includes(name)" src="3dGoldenStar.png" style="position: absolute; top: -2.5em; left: -1.5em; height: 3.3em; width: 2.4em; object-fit: contain;
+    pointer-events: none;">
+</div>
+
+
+<style>
+    .threeDimensionalDiv {
+        --bottom-color: #999;
+        --right-color: #ddd;
+
+        box-shadow:
+            1px 0 0 var(--right-color),
+            1px 1px 0 var(--bottom-color),
+            2px 1px 0 var(--right-color),
+            2px 2px 0 var(--bottom-color),
+            3px 2px 0 var(--right-color),
+            3px 3px 0 var(--bottom-color),
+            4px 3px 0 var(--right-color),
+            4px 4px 0 var(--bottom-color);
+    }
+</style>

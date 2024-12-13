@@ -1,10 +1,3 @@
-@font-face {
-    font-family: Roboto;
-    src: url("../public/Roboto-Black.ttf");
-    font-weight: 100;
-    font-style: normal;
-}
-
 body {
     font-family: Helvetica;
 }
@@ -42,4 +35,12 @@ a:hover {
     0% { color: black; }
     50% { color: goldenrod; }
     100% { color: black; }
+}
+
+@keyframes smoothColorChangingForGoldenStandardsSection {
+    0% { background: linear-gradient(to right, #33ccff 50%, #ff6666 50%) }
+    25% { background: linear-gradient(to right, #33ccff 37.5%, #ff6666 62.5%) }
+    50% { background: linear-gradient(to right, #33ccff 25%, #ff6666 75%) }
+    75% { background: linear-gradient(to right, #33ccff 12.5%, #ff6666 87.5%) }
+    100% { background: linear-gradient(to bottom right, #33ccff 0%, #ff6666 100%) }
 }

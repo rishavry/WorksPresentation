@@ -1,16 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BriefIntro } from '../components/briefIntro.component';
 import { RelevantExperience } from '../components/relevantExperience.component';
-import { ToolsAndSkills } from '../components/toolsAndSkills.component';
+import { TechnologiesAndSkills } from '../components/technologiesAndSkills.component';
+import { TechnologyOrSkillPopup } from '../components/technologyOrSkillPopup.component';
 import { TopSection } from '../components/topSection.component';
-import { ToolOrSkillPopup } from '../components/toolOrSkillPopup.component';
+import { GoldenStandards } from '../components/goldenStandards.component';
+
 
 @Component({
     selector: 'app2',
     standalone: true,
     imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
-    ToolsAndSkills, ToolOrSkillPopup],
+    TechnologiesAndSkills, TechnologyOrSkillPopup, GoldenStandards],
     templateUrl: './app2.component.html',
     styleUrl: '../styles.css'
 })
@@ -18,54 +21,106 @@ import { ToolOrSkillPopup } from '../components/toolOrSkillPopup.component';
 export class App2 {
     userIsAtTheTop:boolean = true;
     displayDarkScreen:boolean = false;
-    currentTheme:string = 'System: Light';
+    currentTheme:string = "System: Light";
     readingModeOn:boolean = false;
     darkModeQuery!:any;
     colorWave0PercentKeyFrameRule!:CSSKeyframeRule;
     colorWave100PercentKeyFrameRule!:CSSKeyframeRule;
-    displayToolOrSkillsPopup:boolean = false;
-    toolOrSkillForPopup!:Record<string, any>;
+    displayTechnologyOrSkillsPopup:boolean = false;
+    technologyOrSkillForPopup!:Record<string, any>;
+    keyFrameRulesForSmoothColorChangingForGoldenStandardsSection:Record<number, any> = {
+        0: null,
+        25: null,
+        50: null,
+        75: null,
+        100: null
+    };
+
+    constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
         if (typeof window !== 'undefined') {
             window.addEventListener('scroll', this.onScroll);
-
             const sheets = Array.from(document.styleSheets);
-            let rulesWereFound = false;
+            let rules1WereFound = false;
+            let rules2WereFound = false;
             for (let sheet of sheets) {
                 const rules = Array.from(sheet.cssRules);
                 for (let rule of rules) {
                     if (rule instanceof CSSKeyframesRule && rule.name === 'colorWave') {
                         this.colorWave0PercentKeyFrameRule = (rule.cssRules[0] as CSSKeyframeRule);
                         this.colorWave100PercentKeyFrameRule = (rule.cssRules[2] as CSSKeyframeRule);
-                        rulesWereFound = true;
+                        rules1WereFound = true;
+                    }
+                    else if (rule instanceof CSSKeyframesRule && rule.name === 'smoothColorChangingForGoldenStandardsSection') {
+                        this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection = {
+                            0: (rule.cssRules[0] as CSSKeyframeRule),
+                            25: (rule.cssRules[1] as CSSKeyframeRule),
+                            50: (rule.cssRules[2] as CSSKeyframeRule),
+                            75: (rule.cssRules[3] as CSSKeyframeRule),
+                            100: (rule.cssRules[4] as CSSKeyframeRule)
+                        };
+                        rules2WereFound = true;
+                    }
+                    if(rules1WereFound && rules2WereFound) {
                         break;
                     }
                 }
-                if(rulesWereFound) {
+                if(rules1WereFound && rules2WereFound) {
                     break;
                 }
             }
 
-            this.darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            if (this.darkModeQuery.matches) {
-                this.currentTheme = 'System: Dark';
-                document.body.style.setProperty('background-color', '#282929', 'important');
-                document.body.style.setProperty('color', 'white', 'important');
-                const icons = document.querySelectorAll('.iconToBeAdjustedForDarkMode');
-                icons.forEach(icon => {
-                    if (icon instanceof HTMLElement) {
-                        icon.style.setProperty('filter', 'brightness(5) contrast(0)', 'important');
-                    }
-                });
-                this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
-                this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
+            const theme = this.route.snapshot.queryParamMap.get('theme');
+            const readingMode = this.route.snapshot.queryParamMap.get('readingMode');
+
+            if(readingMode!==null) {
+                this.readingModeOn = readingMode==='True' || readingMode==='true' ? true : false;
+            }
+            if(theme==null || theme==='System') {
+                this.darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                if (this.darkModeQuery.matches) {
+                    this.currentTheme = 'System: Dark';
+                    document.body.style.setProperty('background-color', '#282929', 'important');
+                    document.body.style.setProperty('color', 'white', 'important');
+                    const icons = document.querySelectorAll('.iconToBeAdjustedForDarkMode');
+                    icons.forEach(icon => {
+                        if (icon instanceof HTMLElement) {
+                            icon.style.setProperty('filter', 'brightness(5) contrast(0)', 'important');
+                        }
+                    });
+                    this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
+                    this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
+                }
+                else {
+                    this.currentTheme = 'System: Light';
+                    
+                }
             }
             else {
-                this.currentTheme = 'System: Light';
-                this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'black');
-                this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'black');
-                
+                this.currentTheme = theme;
+                if(this.currentTheme==='Dark') {
+                    document.body.style.setProperty('background-color', '#282929', 'important');
+                    document.body.style.setProperty('color', 'white', 'important');
+                    const icons = document.querySelectorAll('.iconToBeAdjustedForDarkMode');
+                    icons.forEach(icon => {
+                        if (icon instanceof HTMLElement) {
+                            icon.style.setProperty('filter', 'brightness(5) contrast(0)', 'important');
+                        }
+                    });
+                    this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
+                    this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
+                }
             }
             this.darkModeQuery.addEventListener('change', (event: any) => {
                 if(this.currentTheme.startsWith('System:')==false) {
@@ -83,6 +138,11 @@ export class App2 {
                     });
                     this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
                     this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
                 }
                 else {
                     this.currentTheme = 'System: Light';
@@ -96,7 +156,13 @@ export class App2 {
                     });
                     this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'black');
                     this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'black');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #33ccff 50%, #ff6666 50%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #33ccff 37.5%, #ff6666 62.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #33ccff 25%, #ff6666 75%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #33ccff 12.5%, #ff6666 87.5%)');
+                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #33ccff 0%, #ff6666 100%)');
                 }
+                this.updateURLOfPageAfterUserPersonalization();
             });
         }
     }
@@ -146,6 +212,11 @@ export class App2 {
             });
             this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
             this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
         }
         else {
             document.body.style.removeProperty('background-color');
@@ -158,27 +229,53 @@ export class App2 {
             });
             this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'black');
             this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'black');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #33ccff 50%, #ff6666 50%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #33ccff 37.5%, #ff6666 62.5%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #33ccff 25%, #ff6666 75%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #33ccff 12.5%, #ff6666 87.5%)');
+            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #33ccff 0%, #ff6666 100%)');
+
         }
+        this.updateURLOfPageAfterUserPersonalization();
     }
 
     toggleReadingMode() {
         this.readingModeOn = !this.readingModeOn;
+        this.updateURLOfPageAfterUserPersonalization();
     }
 
-    showPopupForToolOrSkill(toolOrSkillForPopup:Record<string, any>) {
-        this.toolOrSkillForPopup = toolOrSkillForPopup;
+    showPopupForTechnologyOrSkill(technologyOrSkillForPopup:Record<string, any>) {
+        this.technologyOrSkillForPopup = technologyOrSkillForPopup;
         this.displayDarkScreen = true;
-        this.displayToolOrSkillsPopup = true;
+        this.displayTechnologyOrSkillsPopup = true;
     }
 
-    closePopupForToolOrSkill() {
-        this.displayToolOrSkillsPopup = false;
+    closePopupForTechnologyOrSkill() {
+        this.displayTechnologyOrSkillsPopup = false;
         this.displayDarkScreen = false;
     }
 
     closeAllPopupsAfterClickingDarkScreen() {
-        this.displayToolOrSkillsPopup = false;
+        this.displayTechnologyOrSkillsPopup = false;
         this.displayDarkScreen = false;
+    }
+
+    updateURLOfPageAfterUserPersonalization() {
+        let newURL = "http://localhost:8037";
+        if(this.readingModeOn==true || !this.currentTheme.startsWith('System:')) {
+            newURL+="?";
+            if(this.readingModeOn) {
+                newURL+="readingMode=True";
+                if(!this.currentTheme.startsWith('System:')) {
+                    newURL+=`&theme=${this.currentTheme}`;
+                }
+            }
+            else if(!this.currentTheme.startsWith('System:')) {
+                newURL+=`theme=${this.currentTheme}`;
+            }
+        }
+
+        history.pushState(null, 'About my Work', newURL);
     }
 
 }
