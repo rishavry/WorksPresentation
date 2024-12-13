@@ -131,20 +131,28 @@ display: flex; flex-direction: column; gap: 1em;"
 </div>
 
 
-<div *ngIf="isContactMeBeingHovered || isContactMeBigSectionBeingHovered" (mouseenter)="onMouseEnterOfContactMeBigSection()" (mouseleave)="onMouseLeaveOfContactMeBigSection()" style="width: 100%; background-color: white; z-index: 10; padding: 0.5em 3em; border-style: solid;
+<div *ngIf="isContactMeBeingHovered || isContactMeBigSectionBeingHovered" (mouseenter)="onMouseEnterOfContactMeBigSection()" (mouseleave)="onMouseLeaveOfContactMeBigSection()" style="width: 100%; background-color: white; z-index: 10; padding: 1em 3em; border-style: solid;
 border-color: lightgray; border-left: none; border-right: none; border-bottom: none; border-width:0.09em;"
 [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
-    <div style="display: flex; gap: 1.5em; align-items: center;">
-        <h1>Contact Me</h1>
+    <div style="display: flex; align-items: center;">
+        <h1 style="font-family: Pacifico;">Contact Me</h1>
     </div>
     <div style="display: flex; gap: 1em; align-items: center;">
         <p>Email-Address: <span (click)="copyEmailAddressToClipboard()" style="text-decoration: underline; cursor: pointer;"
-        [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">rishavray4&#64;gmail.com</span></p>
+        [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">rishavray422&#64;gmail.com</span></p>
         <p *ngIf="emailAddressWasCopied" style="color: green;">Copied!</p>
     </div>
-    <div style="display: flex; gap: 1em; align-items: center;">
+    <div style="display: flex; gap: 1em; align-items: center; margin-bottom: 1em;">
         <p>Text: <span (click)="copyPhoneNumberToClipboard()" style="text-decoration: underline; cursor: pointer;"
         [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">608-443-7805</span></p>
         <p *ngIf="phoneNumberWasCopied" style="color: green;">Copied!</p>
     </div>
+    <div style="display: flex; align-items: center; gap: 1em;">
+        <img class="linkedinIcon" src="linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit: contain;">
+        <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
+        [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">
+            Click here to get redirected to my LinkedIn
+        </a>
+    </div>
 </div>
+

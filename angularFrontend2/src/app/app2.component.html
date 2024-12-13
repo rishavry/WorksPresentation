@@ -23,13 +23,21 @@
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
+<PenultimateSection [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
+<LastSection [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
+
 <div *ngIf="userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Swim to</p>
     <img src="waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Bottom</p>
 </div>
-
 
 <div *ngIf="!userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">

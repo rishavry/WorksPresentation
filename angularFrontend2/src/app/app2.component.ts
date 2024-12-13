@@ -2,18 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BriefIntro } from '../components/briefIntro.component';
+import { GoldenStandards } from '../components/goldenStandards.component';
 import { RelevantExperience } from '../components/relevantExperience.component';
 import { TechnologiesAndSkills } from '../components/technologiesAndSkills.component';
 import { TechnologyOrSkillPopup } from '../components/technologyOrSkillPopup.component';
 import { TopSection } from '../components/topSection.component';
-import { GoldenStandards } from '../components/goldenStandards.component';
-
+import { PenultimateSection} from '../components/penultimateSection.component';
+import { LastSection } from '../components/lastSection.component';
 
 @Component({
     selector: 'app2',
     standalone: true,
     imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
-    TechnologiesAndSkills, TechnologyOrSkillPopup, GoldenStandards],
+    TechnologiesAndSkills, TechnologyOrSkillPopup, GoldenStandards, PenultimateSection,
+    LastSection],
     templateUrl: './app2.component.html',
     styleUrl: '../styles.css'
 })
@@ -45,7 +47,13 @@ export class App2 {
             let rules1WereFound = false;
             let rules2WereFound = false;
             for (let sheet of sheets) {
-                const rules = Array.from(sheet.cssRules);
+                let rules;
+                try {
+                    rules = Array.from(sheet.cssRules);
+                }
+                catch (error) {
+                    continue;
+                }
                 for (let rule of rules) {
                     if (rule instanceof CSSKeyframesRule && rule.name === 'colorWave') {
                         this.colorWave0PercentKeyFrameRule = (rule.cssRules[0] as CSSKeyframeRule);
