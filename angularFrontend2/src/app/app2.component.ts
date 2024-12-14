@@ -1,21 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BriefIntro } from '../components/briefIntro.component';
 import { GoldenStandards } from '../components/goldenStandards.component';
+import { LastSection } from '../components/lastSection.component';
+import { PenultimateSection } from '../components/penultimateSection.component';
 import { RelevantExperience } from '../components/relevantExperience.component';
 import { TechnologiesAndSkills } from '../components/technologiesAndSkills.component';
 import { TechnologyOrSkillPopup } from '../components/technologyOrSkillPopup.component';
 import { TopSection } from '../components/topSection.component';
-import { PenultimateSection} from '../components/penultimateSection.component';
-import { LastSection } from '../components/lastSection.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @Component({
     selector: 'app2',
     standalone: true,
     imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
     TechnologiesAndSkills, TechnologyOrSkillPopup, GoldenStandards, PenultimateSection,
-    LastSection],
+    LastSection, FormsModule, ColorPickerModule],
     templateUrl: './app2.component.html',
     styleUrl: '../styles.css'
 })
@@ -37,6 +39,15 @@ export class App2 {
         75: null,
         100: null
     };
+    readingModeFont:string = "Default (mix of all the options)";
+    readingModeTextSize:number = 1;
+    readingModeTextColor:string = '';
+    readingModeBackgroundColor:string = '';
+    miniReadingModeSettingsAreVisible:boolean = true;
+    displayMiniFontSettings:boolean = false;
+    displayMiniTextSizeSettings:boolean = false;
+    displayMiniTextColorSettings:boolean = false;
+    displayMiniBackgroundColorSettings:boolean = false;
 
     constructor(private route: ActivatedRoute) { }
 
@@ -81,9 +92,25 @@ export class App2 {
 
             const theme = this.route.snapshot.queryParamMap.get('theme');
             const readingMode = this.route.snapshot.queryParamMap.get('readingMode');
+            const font = this.route.snapshot.queryParamMap.get('font');
+            const textSize = this.route.snapshot.queryParamMap.get('textSize');
+            const textColor = this.route.snapshot.queryParamMap.get('textColor');
+            const backgroundColor = this.route.snapshot.queryParamMap.get('backgroundColor');
 
             if(readingMode!==null) {
                 this.readingModeOn = readingMode==='True' || readingMode==='true' ? true : false;
+                if(font!==null) {
+                    this.readingModeFont = font;
+                }
+                if(textSize!==null) {
+                    this.readingModeTextSize = parseFloat(textSize);
+                }
+                if(textColor!==null) {
+                    this.readingModeTextColor = "#"+textColor;
+                }
+                if(backgroundColor!==null) {
+                    this.readingModeBackgroundColor = "#"+backgroundColor;
+                }
             }
             if(theme==null || theme==='System') {
                 this.darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -247,6 +274,26 @@ export class App2 {
         this.updateURLOfPageAfterUserPersonalization();
     }
 
+    updateReadingModeFont(newFont: string) {
+        this.readingModeFont = newFont;
+        this.updateURLOfPageAfterUserPersonalization();
+    }
+
+    updateReadingModeTextSize(newTextSize: number) {
+        this.readingModeTextSize = newTextSize;
+        this.updateURLOfPageAfterUserPersonalization();
+    }
+
+    updateReadingModeTextColor(newTextColor: string) {
+        this.readingModeTextColor = newTextColor;
+        this.updateURLOfPageAfterUserPersonalization();
+    }
+
+    updateReadingModeBackgroundColor(newBackgroundColor: string) {
+        this.readingModeBackgroundColor = newBackgroundColor;
+        this.updateURLOfPageAfterUserPersonalization();
+    }
+
     toggleReadingMode() {
         this.readingModeOn = !this.readingModeOn;
         this.updateURLOfPageAfterUserPersonalization();
@@ -274,6 +321,18 @@ export class App2 {
             newURL+="?";
             if(this.readingModeOn) {
                 newURL+="readingMode=True";
+                if(this.readingModeFont!=='Default (mix of all the options)') {
+                    newURL+=`&font=${this.readingModeFont}`;
+                }
+                if(this.readingModeTextSize!==1) {
+                    newURL+=`&textSize=${this.readingModeTextSize}`;
+                }
+                if(this.readingModeTextColor.length>0) {
+                    newURL+=`&textColor=${this.readingModeTextColor.substring(1)}`;
+                }
+                if(this.readingModeBackgroundColor.length>0) {
+                    newURL+=`&backgroundColor=${this.readingModeBackgroundColor.substring(1)}`;
+                }
                 if(!this.currentTheme.startsWith('System:')) {
                     newURL+=`&theme=${this.currentTheme}`;
                 }
@@ -284,6 +343,46 @@ export class App2 {
         }
 
         history.pushState(null, 'About my Work', newURL);
+    }
+
+    toggleMiniReadingModeSettingsVisibility() {
+        this.miniReadingModeSettingsAreVisible = !this.miniReadingModeSettingsAreVisible;
+    }
+
+    toggleMiniFontSettings() {
+        this.displayMiniFontSettings = !this.displayMiniFontSettings;
+        if(this.displayMiniFontSettings==true) {
+            this.displayMiniTextSizeSettings = false;
+            this.displayMiniTextColorSettings = false;
+            this.displayMiniBackgroundColorSettings = false;
+        }
+    }
+
+    toggleMiniTextSizeSettings() {
+        this.displayMiniTextSizeSettings = !this.displayMiniTextSizeSettings;
+        if(this.displayMiniTextSizeSettings==true) {
+            this.displayMiniFontSettings = false;
+            this.displayMiniTextColorSettings = false;
+            this.displayMiniBackgroundColorSettings = false;
+        }
+    }
+
+    toggleMiniTextColorSettings() {
+        this.displayMiniTextColorSettings = !this.displayMiniTextColorSettings;
+        if(this.displayMiniTextColorSettings==true) {
+            this.displayMiniFontSettings = false;
+            this.displayMiniTextSizeSettings = false;
+            this.displayMiniBackgroundColorSettings = false;
+        }
+    }
+
+    toggleBackgroundTextColorSettings() {
+        this.displayMiniBackgroundColorSettings = !this.displayMiniBackgroundColorSettings;
+        if(this.displayMiniBackgroundColorSettings==true) {
+            this.displayMiniFontSettings = false;
+            this.displayMiniTextSizeSettings = false;
+            this.displayMiniTextColorSettings = false;
+        }
     }
 
 }

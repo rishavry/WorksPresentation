@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @Component({
     selector: 'TopSection',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, FormsModule, ColorPickerModule],
     templateUrl: '../templates/topSection.component.html',
     styleUrl: '../styles.css',
 })
@@ -18,14 +20,30 @@ export class TopSection {
     isContactMeBeingHovered:boolean = false;
     emailAddressWasCopied:boolean = false;
     phoneNumberWasCopied:boolean = false;
-    @Output() updateDarkScreen: EventEmitter<boolean> = new EventEmitter();
+    @Output() updateDarkScreen: EventEmitter<boolean> = new EventEmitter<boolean>();
     isContactMeBigSectionBeingHovered:boolean = false;
     isLinksBigSectionBeingHovered:boolean = false;
     isPersonalizeBigSectionBeingHovered:boolean = false;
-    @Output() updateTheme: EventEmitter<string> = new EventEmitter();
-    @Output() toggleReadingMode: EventEmitter<any> = new EventEmitter();
+    @Output() updateTheme: EventEmitter<string> = new EventEmitter<string>();
+    @Output() toggleReadingMode: EventEmitter<any> = new EventEmitter<any>();
     @Input() currentTheme!:string;
     @Input() readingModeOn!:boolean;
+    @Input() readingModeFont!:string;
+    displayFontOptions:boolean = false;
+    @Output() updateReadingModeFont:EventEmitter<string> = new EventEmitter<string>();
+    @Input() readingModeTextSize!:number;
+    textSizeSliderValue:number = 1;
+    displayTextSizeSlider:boolean = false
+    @Output() updateReadingModeTextSize:EventEmitter<number> = new EventEmitter<number>();
+    textColorPickerValue:string = "";
+    @Input() readingModeTextColor!:string;
+    displayTextColorPicker:boolean = false;
+    @Output() updateReadingModeTextColor:EventEmitter<string> = new EventEmitter<string>();
+    backgroundColorPickerValue:string = "";
+    @Input() readingModeBackgroundColor!:string;
+    displayBackgroundColorPicker:boolean = false;
+    @Output() updateReadingModeBackgroundColor:EventEmitter<string> = new EventEmitter<string>();
+
 
     onMouseEnterOfBriefIntro() {
         this.isBriefIntroBeingHovered = true;
@@ -205,5 +223,51 @@ export class TopSection {
 
     flipReadingMode() {
         this.toggleReadingMode.emit();
+    }
+
+    toggleFontOptions() {
+        this.displayFontOptions = !this.displayFontOptions;
+    }
+
+    changeReadingModeFont(newFont: string) {
+        this.updateReadingModeFont.emit(newFont);
+        this.displayFontOptions = false;
+    }
+
+    toggleTextSizeSlider() {
+        this.displayTextSizeSlider = !this.displayTextSizeSlider;
+    }
+
+    setTextSize() {
+        this.updateReadingModeTextSize.emit(this.textSizeSliderValue);
+        this.displayTextSizeSlider = false;
+    }
+
+    toggleTextColorPicker() {
+        this.displayTextColorPicker = !this.displayTextColorPicker;
+    }
+
+    setTextColor() {
+        this.updateReadingModeTextColor.emit(this.textColorPickerValue);
+        this.displayTextColorPicker = false;
+    }
+
+    setTextColorToDefault() {
+        this.updateReadingModeTextColor.emit("");
+        this.displayTextColorPicker = false;
+    }
+
+    toggleBackgroundColorPicker() {
+        this.displayBackgroundColorPicker = !this.displayBackgroundColorPicker;
+    }
+
+    setBackgroundColor() {
+        this.updateReadingModeBackgroundColor.emit(this.backgroundColorPickerValue);
+        this.displayBackgroundColorPicker = false;
+    }
+
+    setBackgroundColorToDefault() {
+        this.updateReadingModeBackgroundColor.emit("");
+        this.displayBackgroundColorPicker = false;
     }
 }

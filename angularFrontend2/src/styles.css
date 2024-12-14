@@ -79,4 +79,8 @@ a:hover {
   100% {
     rotate: 0deg;
   }
+}
+.readingModeFontOption:hover {
+  background-color: #f5f5f5;
+  color: black !important;
 }/*# sourceMappingURL=styles.css.map */

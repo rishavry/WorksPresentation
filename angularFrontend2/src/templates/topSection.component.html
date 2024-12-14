@@ -88,15 +88,90 @@ display: flex; flex-direction: column; gap: 1em;"
     <h1>Personalize</h1>
     <a *ngIf="readingModeOn==false" (click)="flipReadingMode()" style="cursor: pointer;"
     [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Turn on Reading Mode</a>
-    <a *ngIf="readingModeOn==true" (click)="flipReadingMode()" style="cursor: pointer;"
+    <a *ngIf="readingModeOn==true" (click)="flipReadingMode()" style="cursor: pointer; margin-bottom: -1em;"
     [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Turn off Reading Mode</a>
-    <p style="margin-bottom:0em;">Change Theme</p>
-    <div (click)="changeTheme('System')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; margin-bottom:-1em; cursor: pointer;">
+    <p *ngIf="readingModeOn==true" style="color: gray; font-size: 0.88em; max-width: 40%; margin-bottom: -1em;">You can also customize the text-color/background-color and see the changes being
+    displayed in realtime by using the panel near the bottom-right side of the page!
+    </p>
+
+    <div *ngIf="readingModeOn==true" style="display: flex; margin-left: 1.5em; gap: 1em; align-items: center; margin-bottom: -1.5em;
+    position: relative;">
+        <p>Choose Font</p>
+        <p style="text-decoration: underline; text-decoration-color: blue;"
+        [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? '' : readingModeFont}">
+            {{ readingModeFont }}
+        </p>
+        <p *ngIf="!displayFontOptions" (click)="toggleFontOptions()" style="color:#286eb8; cursor: pointer;">Change</p>
+        <p *ngIf="displayFontOptions" (click)="toggleFontOptions()" style="color:#286eb8; cursor: pointer;">Hide</p>
+        
+        <div *ngIf="displayFontOptions" style="display: flex; flex-direction: column; border-radius: 0.7em; border-style: solid; border-width: 0.06em;
+        border-color: lightgray; position: absolute; left: 24%; top: 20%; background-color: white; z-index: 10;"
+        [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='Arial'" (click)="changeReadingModeFont('Arial')" style="cursor: pointer; font-family: Arial; padding: 0.5em 1em; margin-bottom: -1em;">
+                Arial
+            </p>
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='Default (mix of all the options)'" (click)="changeReadingModeFont('Default (mix of all the options)')" style="cursor: pointer; font-family: Arial; padding: 0.5em 1em; margin-bottom: -1em;">
+                Default (mix of all the options)
+            </p>
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='IBM Plex Sans'" (click)="changeReadingModeFont('IBM Plex Sans')" style="cursor: pointer; font-family: IBM Plex Sans; padding: 0.5em 1em; margin-bottom: -1em;">
+                IBM Plex Sans
+            </p>
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='Pacifico'" (click)="changeReadingModeFont('Pacifico')" style="cursor: pointer; font-family: Pacifico; padding: 0.5em 1em; margin-bottom: -1em;">
+                Pacifico
+            </p>
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='Plus Jakarta Sans'" (click)="changeReadingModeFont('Plus Jakarta Sans')" style="cursor: pointer; font-family: Plus Jakarta Sans; padding: 0.5em 1em; margin-bottom: -1em;">
+                Plus Jakarta Sans
+            </p>
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='Red Hat Display'" (click)="changeReadingModeFont('Red Hat Display')" style="cursor: pointer; font-family: Red Hat Display; padding: 0.5em 1em; margin-bottom: -1em;">
+                Red Hat Display
+            </p>
+            <p class="readingModeFontOption" *ngIf="readingModeFont!=='Roboto'" (click)="changeReadingModeFont('Roboto')" style="cursor: pointer; font-family: Roboto; padding: 0.5em 1em;">
+                Roboto
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="readingModeOn==true" style="display: flex; margin-left: 1.5em; gap: 1em; align-items: center; margin-bottom: -1.5em;">
+        <p>Choose Text-Size</p>
+        <p style="text-decoration: underline; text-decoration-color: blue;">{{ readingModeTextSize+"X" }}</p>
+        <p *ngIf="!displayTextSizeSlider" (click)="toggleTextSizeSlider()" style="color:#286eb8; cursor: pointer;">Change</p>
+        <p *ngIf="displayTextSizeSlider" (click)="toggleTextSizeSlider()" style="color:#286eb8; cursor: pointer;">Hide</p>
+        <input *ngIf="displayTextSizeSlider" [(ngModel)]="textSizeSliderValue" type="range" id="slider" min="0.5" max="2" step="0.01" [value]="readingModeTextSize">
+        <p *ngIf="displayTextSizeSlider">{{textSizeSliderValue+"X"}}</p>
+        <p (click)="setTextSize()" *ngIf="displayTextSizeSlider && textSizeSliderValue!==readingModeTextSize" style="cursor: pointer; color: green">Set size</p>
+    </div>
+
+    <div *ngIf="readingModeOn==true" style="display: flex; margin-left: 1.5em; gap: 1em; align-items: start; margin-bottom: -1.5em;">
+        <p>Choose Text Color</p>
+        <div *ngIf="readingModeTextColor.length>0" style="height: 1em; width: 1em; border-radius: 2em; margin-top: 1em;
+        border-style: solid;" [ngStyle]="{'background-color': readingModeTextColor}"></div>
+        <p style="text-decoration: underline; text-decoration-color: blue;">{{readingModeTextColor.length==0 ? 'Default' : readingModeTextColor}}</p>
+        <p *ngIf="!displayTextColorPicker" (click)="toggleTextColorPicker()" style="color:#286eb8; cursor: pointer;">Change</p>
+        <p *ngIf="displayTextColorPicker" (click)="toggleTextColorPicker()" style="color:#286eb8; cursor: pointer;">Hide</p>
+        <input *ngIf="displayTextColorPicker" [(colorPicker)]="textColorPickerValue" [style.background]="textColorPickerValue" style="margin-top:1em;"/>
+        <p (click)="setTextColor()" *ngIf="displayTextColorPicker" style="cursor: pointer; color: green">Set color</p>
+        <p (click)="setTextColorToDefault()" *ngIf="displayTextColorPicker" style="cursor: pointer; color: gray">Stick to Default</p>
+    </div>
+
+    <div *ngIf="readingModeOn==true" style="display: flex; margin-left: 1.5em; gap: 1em; align-items: center; margin-bottom: -0.5em;">
+        <p>Choose Background Color</p>
+        <div *ngIf="readingModeBackgroundColor.length>0" style="height: 1em; width: 1em; border-radius: 2em;
+        border-style: solid;" [ngStyle]="{'background-color': readingModeBackgroundColor}"></div>
+        <p style="text-decoration: underline; text-decoration-color: blue;">{{readingModeBackgroundColor.length==0 ? 'Default' : readingModeBackgroundColor}}</p>
+        <p *ngIf="!displayBackgroundColorPicker" (click)="toggleBackgroundColorPicker()" style="color:#286eb8; cursor: pointer;">Change</p>
+        <p *ngIf="displayBackgroundColorPicker" (click)="toggleBackgroundColorPicker()" style="color:#286eb8; cursor: pointer;">Hide</p>
+        <input *ngIf="displayBackgroundColorPicker" [(colorPicker)]="backgroundColorPickerValue" [style.background]="backgroundColorPickerValue" style="margin-top:1em;"/>
+        <p (click)="setBackgroundColor()" *ngIf="displayBackgroundColorPicker" style="cursor: pointer; color: green">Set color</p>
+        <p (click)="setBackgroundColorToDefault()" *ngIf="displayBackgroundColorPicker" style="cursor: pointer; color: gray">Stick to Default</p>
+    </div>
+
+    <p style="margin-bottom:-1em;">Change Theme</p>
+    <div (click)="changeTheme('System')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; margin-bottom:-2em; cursor: pointer;">
         <img src="systemSettings.png" style="pointer-events: none; height: 1.2em; width: 1.2em;">
         <p>System</p>
         <p *ngIf="currentTheme.startsWith('System:')" style="color: gray; margin-left: 2em;">Selected ({{currentTheme.split(" ")[1]}})</p>
     </div>
-    <div (click)="changeTheme('Light')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; margin-bottom:-1em; cursor: pointer;">
+    <div (click)="changeTheme('Light')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center; margin-bottom:-2em; cursor: pointer;">
         <img src="sun.png" style="pointer-events: none; height: 1.5em; width: 1.5em;">
         <p>Light</p>
         <p *ngIf="currentTheme==='Light'" style="color: gray; margin-left: 2em;">Selected</p>
@@ -135,7 +210,7 @@ display: flex; flex-direction: column; gap: 1em;"
 border-color: lightgray; border-left: none; border-right: none; border-bottom: none; border-width:0.09em;"
 [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
     <div style="display: flex; align-items: center;">
-        <h1 style="font-family: Pacifico;">Contact Me</h1>
+        <h1>Contact Me</h1>
     </div>
     <div style="display: flex; gap: 1em; align-items: center;">
         <p>Email-Address: <span (click)="copyEmailAddressToClipboard()" style="text-decoration: underline; cursor: pointer;"
@@ -151,7 +226,7 @@ border-color: lightgray; border-left: none; border-right: none; border-bottom: n
         <img class="linkedinIcon" src="linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit: contain;">
         <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
         [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">
-            Click here to get redirected to my LinkedIn
+            My Linkedin Profile
         </a>
     </div>
 </div>
