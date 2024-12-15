@@ -297,6 +297,7 @@ export class App2 {
 
     toggleReadingMode() {
         this.readingModeOn = !this.readingModeOn;
+        this.initialAnimationsAreFinished = true;
         this.updateURLOfPageAfterUserPersonalization();
     }
 

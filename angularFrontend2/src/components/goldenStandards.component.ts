@@ -112,6 +112,11 @@ export class GoldenStandards {
     @Input() currentTheme!:string;
     @Input() displayDarkScreen!:boolean;
     @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
+    @Input() readingModeOn!:boolean;
+    @Input() readingModeFont!:string;
+    @Input() readingModeTextSize!:number;
+    @Input() readingModeTextColor!:string;
+    @Input() readingModeBackgroundColor!:string;
 
     onClickingDarkScreen() {
         this.notifyParentToCloseAllPopups.emit();

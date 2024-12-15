@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Directive, ElementRef, HostListener, Input, Renderer2, Output, EventEmitter } from '@angular/core';
 import { SingleTechnologyOrSkill } from './singleTechnologyOrSkill.component';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Directive({
@@ -444,6 +445,13 @@ export class TechnologiesAndSkills {
     showBackendElements:boolean = false;
     showDataAndCloudElements:boolean = false;
     @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
+    @Input() readingModeOn!:boolean;
+    @Input() readingModeFont!:string;
+    @Input() readingModeTextSize!:number;
+    @Input() readingModeTextColor!:string;
+    @Input() readingModeBackgroundColor!:string;
+
+    constructor(private sanitizer: DomSanitizer) {}
 
     ngOnInit() {
         this.technologiesAndSkillsUsed = this.technologiesAndSkillsUsed.sort((a, b) => a['name'].localeCompare(b['name']));
@@ -492,5 +500,9 @@ export class TechnologiesAndSkills {
 
     onClickingDarkScreen() {
         this.notifyParentToCloseAllPopups.emit();
+    }
+
+    sanitize(htmlCodeAsString: string): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(htmlCodeAsString);
     }
 }

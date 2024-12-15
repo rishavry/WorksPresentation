@@ -33,11 +33,16 @@ export class BriefIntro {
     @Input() currentTheme!:string;
     @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
     @Output() notifyParentThatInitialAnimationsAreIndeedFinished:EventEmitter<any> = new EventEmitter<any>();
+    @Input() readingModeOn!:boolean;
+    @Input() readingModeFont!:string;
+    @Input() readingModeTextSize!:number;
+    @Input() readingModeTextColor!:string;
+    @Input() readingModeBackgroundColor!:string;
     
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
-        if (isPlatformBrowser(this.platformId)) {
+        if (isPlatformBrowser(this.platformId) && !this.readingModeOn) {
             this.helloText = document.getElementById('helloText')!;
             this.intervalIdForHelloText = setInterval(() => {
                 this.animateTheHelloText();
@@ -85,7 +90,6 @@ export class BriefIntro {
         if (this.handOpacity <= 0) {
             clearInterval(this.intervalIdForHand);
             clearInterval(this.intervalIdForDots);
-            this.wavingHand.remove();
             this.dots = "";
             this.notifyParentThatInitialAnimationsAreIndeedFinished.emit();
             this.intervalIdForSmoothlyDisplayingFirstPortrait = setInterval(() => {

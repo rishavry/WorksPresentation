@@ -10,27 +10,37 @@
     [initialAnimationsAreFinished]="initialAnimationsAreFinished"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
     (notifyParentThatInitialAnimationsAreIndeedFinished)="setInitialAnimationsAreFinishedToTrue()"
+    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
 />
 
-<RelevantExperience *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-(notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+<RelevantExperience *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
 />
 
-<TechnologiesAndSkills *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+<TechnologiesAndSkills *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
     (notifyParentToShowPopupForTechnologyOrSkill)="showPopupForTechnologyOrSkill($event)"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
 />
 
-<GoldenStandards *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+<GoldenStandards *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
+/>
+
+<PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<PenultimateSection *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+<LastSection *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-/>
-
-<LastSection *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
 />
 
 <TechnologyOrSkillPopup *ngIf="displayTechnologyOrSkillsPopup" [currentTheme]="currentTheme"
@@ -113,14 +123,14 @@ color: white; border-radius: 0.8em;">
     <img src="settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
 </div>
 
-<div *ngIf="initialAnimationsAreFinished && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+<div *ngIf="(initialAnimationsAreFinished || readingModeOn) && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Swim to</p>
     <img src="waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Bottom</p>
 </div>
 
-<div *ngIf="initialAnimationsAreFinished && !userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+<div *ngIf="(initialAnimationsAreFinished || readingModeOn) && !userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Climb to</p>
     <img src="mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">

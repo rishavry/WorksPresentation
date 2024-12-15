@@ -220,6 +220,11 @@ export class RelevantExperience {
     ];
     timeoutIdForSlidesProgression:any = null;
     displayMacbook:boolean = true;
+    @Input() readingModeOn!:boolean;
+    @Input() readingModeFont!:string;
+    @Input() readingModeTextSize!:number;
+    @Input() readingModeTextColor!:string;
+    @Input() readingModeBackgroundColor!:string;
 
     constructor(private sanitizer: DomSanitizer) {}
 

@@ -90,7 +90,7 @@ display: flex; flex-direction: column; gap: 1em;"
     [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Turn on Reading Mode</a>
     <a *ngIf="readingModeOn==true" (click)="flipReadingMode()" style="cursor: pointer; margin-bottom: -1em;"
     [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Turn off Reading Mode</a>
-    <p *ngIf="readingModeOn==true" style="color: gray; font-size: 0.88em; max-width: 40%; margin-bottom: -1em;">You can also customize the text-color/background-color and see the changes being
+    <p *ngIf="readingModeOn==true" style="color: gray; font-size: 0.88em; max-width: 40%; margin-bottom: -1em;">You can also customize the text-size/text-color/background-color and see the changes being
     displayed in realtime by using the panel near the bottom-right side of the page!
     </p>
 

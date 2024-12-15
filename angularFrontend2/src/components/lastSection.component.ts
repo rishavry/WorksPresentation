@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2, SimpleChanges } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -15,6 +14,11 @@ export class LastSection {
     @Input() displayDarkScreen!:boolean;
     @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
     confettiHasBeenStarted:boolean = false;
+    @Input() readingModeOn!:boolean;
+    @Input() readingModeFont!:string;
+    @Input() readingModeTextSize!:number;
+    @Input() readingModeTextColor!:string;
+    @Input() readingModeBackgroundColor!:string;
 
     onClickingDarkScreen() {
         this.notifyParentToCloseAllPopups.emit();

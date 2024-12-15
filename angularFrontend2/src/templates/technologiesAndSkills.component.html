@@ -1,4 +1,4 @@
-<div id="technologiesAndSkills" style="padding-top: 4em; padding-bottom: 4em; position: relative;">
+<div *ngIf="!readingModeOn" id="technologiesAndSkills" style="padding-top: 4em; padding-bottom: 4em; position: relative;">
     <div style="display: flex; flex-direction: column; align-items: center; gap: 1em; width: 100%;">
         <p style="font-family: Calibri; font-weight: bold; font-size: 2em;
         position: relative;" startJumpyWaveWhenUserReachesThisPoint>
@@ -74,6 +74,96 @@
     </div>
     <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
 </div>
+
+<div *ngIf="readingModeOn" id="technologiesAndSkills" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray;
+border-width: 0.06em; border-top: none; border-left: none; border-right: none; position: relative; margin-left:-0.5em; width: 98%;"
+[ngStyle]="{'font-size': (readingModeTextSize*1.05)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
+    <h1 style="font-family: Roboto;">Most of the Essential Technologies/Skills Utilized in My Project</h1>
+    
+    <br/>
+
+    <h2 style="font-family: Pacifico;">Full-Stack</h2>
+    <div *ngFor="let technologyOrSkill of fullStackTechnologiesAndSkillsUsed; let index = index; trackBy: trackByName"
+    style="display: flex; flex-direction: column; gap: 0em;"
+    [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Arial' : readingModeFont}">
+        <div style="display: flex; align-items: center; gap: 1em;">
+            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <h3>{{ technologyOrSkill['name'] }}</h3>
+        </div>
+        <p style="margin-left: 3em;">Places Used:</p>
+        <ul style="margin-left: 3.5em;">
+            <li *ngFor="let item of technologyOrSkill['usedFor'];"
+                [innerHTML]="sanitize(item)"
+                style="margin-bottom: 1em;"
+            >
+            </li>
+        </ul>
+    </div>
+
+    <br/>
+
+    <h2 style="font-family: Pacifico;">Frontend</h2>
+    <div *ngFor="let technologyOrSkill of frontendTechnologiesAndSkillsUsed; let index = index; trackBy: trackByName"
+    style="display: flex; flex-direction: column; gap: 0em;"
+    [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Red Hat Display' : readingModeFont}">
+        <div style="display: flex; align-items: center; gap: 1em;">
+            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <h3>{{ technologyOrSkill['name'] }}</h3>
+        </div>
+        <p style="margin-left: 3em;">Places Used:</p>
+        <ul style="margin-left: 3.5em;">
+            <li *ngFor="let item of technologyOrSkill['usedFor'];"
+                [innerHTML]="sanitize(item)"
+                style="margin-bottom: 1em;"
+            >
+            </li>
+        </ul>
+    </div>
+
+    <br/>
+
+    <h2 style="font-family: Pacifico;">Backend</h2>
+    <div *ngFor="let technologyOrSkill of backendTechnologiesAndSkillsUsed; let index = index; trackBy: trackByName"
+    style="display: flex; flex-direction: column; gap: 0em;"
+    [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont}">
+        <div style="display: flex; align-items: center; gap: 1em;">
+            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <h3>{{ technologyOrSkill['name'] }}</h3>
+        </div>
+        <p style="margin-left: 3em;">Places Used:</p>
+        <ul style="margin-left: 3.5em;">
+            <li *ngFor="let item of technologyOrSkill['usedFor'];"
+                [innerHTML]="sanitize(item)"
+                style="margin-bottom: 1em;"
+            >
+            </li>
+        </ul>
+    </div>
+
+    <br/>
+
+    <h2 style="font-family: Pacifico;">Data and the Cloud</h2>
+    <div *ngFor="let technologyOrSkill of dataAndTheCloudTechnologiesAndSkillsUsed; let index = index; trackBy: trackByName"
+    style="display: flex; flex-direction: column; gap: 0em;"
+    [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Plus Jakarta Sans' : readingModeFont}">
+        <div style="display: flex; align-items: center; gap: 1em;">
+            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <h3>{{ technologyOrSkill['name'] }}</h3>
+        </div>
+        <p style="margin-left: 3em;">Places Used:</p>
+        <ul style="margin-left: 3.5em;">
+            <li *ngFor="let item of technologyOrSkill['usedFor'];"
+                [innerHTML]="sanitize(item)"
+                style="margin-bottom: 1em;"
+            >
+            </li>
+        </ul>
+    </div>
+    
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+</div>
+
+
 
 <style>
     .colorfulWave span {
