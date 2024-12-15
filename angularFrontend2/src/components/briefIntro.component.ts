@@ -20,7 +20,7 @@ export class BriefIntro {
     intervalIdForUpdatingPortrait:any = null;
     intervalIdForPortraitTransition:any = null;
     intervalIdForSmoothlyDisplayingFirstPortrait:any = null;
-    initialAnimationsAreFinished:boolean = true;
+    @Input() initialAnimationsAreFinished:boolean = false;
     currentPortraitIndex:number = 0;
     portraits:Record<number, string> = {
         0: "theRock.jpg",
@@ -32,11 +32,11 @@ export class BriefIntro {
     @Input() displayDarkScreen!:boolean;
     @Input() currentTheme!:string;
     @Output() notifyParentToCloseAllPopups:EventEmitter<any> = new EventEmitter<any>();
+    @Output() notifyParentThatInitialAnimationsAreIndeedFinished:EventEmitter<any> = new EventEmitter<any>();
     
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
-        return;
         if (isPlatformBrowser(this.platformId)) {
             this.helloText = document.getElementById('helloText')!;
             this.intervalIdForHelloText = setInterval(() => {
@@ -87,7 +87,7 @@ export class BriefIntro {
             clearInterval(this.intervalIdForDots);
             this.wavingHand.remove();
             this.dots = "";
-            this.initialAnimationsAreFinished = true;
+            this.notifyParentThatInitialAnimationsAreIndeedFinished.emit();
             this.intervalIdForSmoothlyDisplayingFirstPortrait = setInterval(() => {
                 this.smoothlyDisplayFirstPortrait();
             }, 105);

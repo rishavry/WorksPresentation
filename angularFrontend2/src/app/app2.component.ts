@@ -48,6 +48,7 @@ export class App2 {
     displayMiniTextSizeSettings:boolean = false;
     displayMiniTextColorSettings:boolean = false;
     displayMiniBackgroundColorSettings:boolean = false;
+    initialAnimationsAreFinished:boolean = false;
 
     constructor(private route: ActivatedRoute) { }
 
@@ -383,6 +384,10 @@ export class App2 {
             this.displayMiniTextSizeSettings = false;
             this.displayMiniTextColorSettings = false;
         }
+    }
+
+    setInitialAnimationsAreFinishedToTrue() {
+        this.initialAnimationsAreFinished = true;
     }
 
 }

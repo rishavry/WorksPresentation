@@ -8,7 +8,7 @@ import { SingleTechnologyOrSkill } from './singleTechnologyOrSkill.component';
     standalone: true,
 })
 export class StartJumpyWaveWhenUserReachesThisPoint {
-    private scrollThreshold = 1020;
+    private scrollThreshold = 1120;
 
     constructor(private el: ElementRef, private renderer: Renderer2) {}
 

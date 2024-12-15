@@ -1,4 +1,4 @@
-<div id="relevantExperience" style="width: 100%; height: 45em; position: relative;"
+<div id="relevantExperience" style="width: 100%; height: 49em; position: relative;"
 colorAndSizeTransitionWithScroll [currentTheme]="currentTheme">
 
     <div id="relevantExperienceDescription" style="position: absolute; left: 9%; top: 26%;" moveRelevantExperienceDescriptionWithScroll>
@@ -17,7 +17,21 @@ colorAndSizeTransitionWithScroll [currentTheme]="currentTheme">
         </p>
     </div>
 
-    <img id="macbook" src="macbook.webp" style="position: absolute; left: 60%; top: 14%; height: 42em; width: 42em; object-fit: contain; cursor: pointer;" moveMacbookWithScroll>
+    <div style="position: relative; left: 60%; top: 14%; height: 40em; width: 40em;"
+    moveMacbookWithScroll (notifyParentToStartGoingThroughSlides)="startGoingThroughSlides()"
+    (notifyParentToToggleDisplayMacbook)="toggleDisplayMacbook()">
+        <img *ngIf="displayMacbook" src="macbook.webp" style="position: absolute; top: 0%; left: 0%; height: 100%; width: 100%; object-fit: contain;">
+        <video *ngIf="!displayMacbook && currentSlide > -1" autoplay [src]="currentTheme.endsWith('Light') ? slides[currentSlide]['videoSrcLight'] : slides[currentSlide]['videoSrcDark']"
+            style="position: absolute; top: 0%; left: 11%; width: 78%; height: 38em;">
+        </video>
+        <div *ngIf="!displayMacbook && currentSlide > -1" style="position: absolute; top: 85%; left: 0%; width: 100%; display: flex; align-items: center; justify-content: space-between;">
+            <img (click)="decrementCurrentSlide()" src="backArrow.svg" style="cursor: pointer; height: 1.2em; width: 1.2em;">
+            <p [innerHTML]="sanitize(slides[currentSlide]['descriptionHTML'])" style="color: rgb(122, 120, 120)"></p>
+            <img (click)="incrementCurrentSlide()" src="forwardArrow.svg" style="cursor: pointer; height: 1.2em; width: 1.2em;">
+        </div>
+    </div>
+    
+
     <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
 </div>
 

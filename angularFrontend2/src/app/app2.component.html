@@ -7,32 +7,34 @@
 />
 
 <BriefIntro [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    [initialAnimationsAreFinished]="initialAnimationsAreFinished"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    (notifyParentThatInitialAnimationsAreIndeedFinished)="setInitialAnimationsAreFinishedToTrue()"
 />
 
-<RelevantExperience [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+<RelevantExperience *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+(notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<TechnologiesAndSkills [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+<TechnologiesAndSkills *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
     (notifyParentToShowPopupForTechnologyOrSkill)="showPopupForTechnologyOrSkill($event)"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
+<GoldenStandards *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
+<PenultimateSection *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
+<LastSection *ngIf="initialAnimationsAreFinished" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
 <TechnologyOrSkillPopup *ngIf="displayTechnologyOrSkillsPopup" [currentTheme]="currentTheme"
     [technologyOrSkill]="technologyOrSkillForPopup" (notifyParentToCloseThisPopup)="closePopupForTechnologyOrSkill()"
-/>
-
-<GoldenStandards [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-/>
-
-<PenultimateSection [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-/>
-
-<LastSection [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
 <div *ngIf="miniReadingModeSettingsAreVisible && readingModeOn && !displayDarkScreen" style="cursor: pointer; position: fixed; top: 57%; left: 90.6%;
@@ -111,14 +113,14 @@ color: white; border-radius: 0.8em;">
     <img src="settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
 </div>
 
-<div *ngIf="userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+<div *ngIf="initialAnimationsAreFinished && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Swim to</p>
     <img src="waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Bottom</p>
 </div>
 
-<div *ngIf="!userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
+<div *ngIf="initialAnimationsAreFinished && !userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Climb to</p>
     <img src="mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">
