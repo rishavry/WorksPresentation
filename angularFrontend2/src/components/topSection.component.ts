@@ -14,7 +14,6 @@ export class TopSection {
     isBriefIntroBeingHovered:boolean = false;
     isRelevantExperienceBeingHovered:boolean = false;
     isTechnologiesAndSkillsBeingHovered:boolean = false;
-    isGoldenStandardsBeingHovered:boolean = false;
     isPersonalizeBeingHovered:boolean = false;
     isLinksBeingHovered:boolean = false;
     isContactMeBeingHovered:boolean = false;
@@ -67,14 +66,6 @@ export class TopSection {
 
     onMouseLeaveOfTechnologiesAndSkills() {
         this.isTechnologiesAndSkillsBeingHovered = false;
-    }
-
-    onMouseEnterOfGoldenStandards() {
-        this.isGoldenStandardsBeingHovered = true;
-    }
-
-    onMouseLeaveOfGoldenStandards() {
-        this.isGoldenStandardsBeingHovered = false;
     }
 
     onMouseEnterOfPersonalize() {
@@ -138,12 +129,6 @@ export class TopSection {
 
     scrollToTechnologiesAndSkills() {
         document.getElementById("technologiesAndSkills")?.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-
-    scrollToGoldenStandards() {
-        document.getElementById("goldenStandards")?.scrollIntoView({
             behavior: 'smooth'
         });
     }

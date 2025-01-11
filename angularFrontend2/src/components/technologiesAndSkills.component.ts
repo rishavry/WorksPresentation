@@ -281,7 +281,11 @@ export class TechnologiesAndSkills {
             image: 'cssLogo.png',
             backgroundColor: '#f0f4ff',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was created by 
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`
+            ]
         },
         {
             name: 'Github',
@@ -289,15 +293,32 @@ export class TechnologiesAndSkills {
             image: 'githubLogo.jpg',
             backgroundColor: 'white',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
+                In this repository, which is named 'Login-Register', there is a very comprehensive README.md file. The branches related to the frontend are- 'frontend', 'gcp-frontend', & 'main(default)'.`,
+                
+                `Used for the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
+                In this repository, which is named 'Login-Register', there is a very comprehensive README.md file. The branches related to the backend are- 'backend', 'gcp-backend', & 'main(default)'.`
+            ]
         },
         {
-            name: 'Google Cloud',
+            name: 'Google Cloud Platform',
             type: 'Data and the Cloud',
             image: 'googleCloudLogo.png',
             backgroundColor: 'white',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following purposes: reCaptcha(proving that login-attempts are not done by robots) and OAuth(allowing users to register and login with their Google accounts).`,
+
+                `Used for the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following purpose: encryption/decryption of sensitive columns of the 'users' table with the help of
+                Google-Cloud Key-Management-Service(and the keys are all rotated automatically every 70 days).`,
+
+                `Used for the deployment of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following purposes: Google-Kubernetes-Engine(GKE) Clusters for Kubernetes pods that run the frontend and backend production servers, as well
+                as a Managed Instance Group that is used for routing requests made to https://megagram.com to the the GKE Load-Balancers for frontend and backend respectively.`,
+            ]
         },
         {
             name: 'GraphQL',
@@ -313,7 +334,11 @@ export class TechnologiesAndSkills {
             image: 'htmlLogo.png',
             backgroundColor: '#ffeac4',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`
+            ]
         },
         {
             name: 'JavaScript',
@@ -321,7 +346,11 @@ export class TechnologiesAndSkills {
             image: 'jsLogo.png',
             backgroundColor: '#faf4cd',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page. JQuery is used extensively in the JS-files due
+                to its concise syntax and grand popularity in the world of web-frontends.`
+            ]
         },
         {
             name: 'Spring Boot (Java)',
@@ -345,7 +374,14 @@ export class TechnologiesAndSkills {
             image: 'mysqlLogo.png',
             backgroundColor: '#f5f8ff',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used for the data of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
+                rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following tables: users(This table is hosted locally and accessbile via Ngrok. Each row represents a user of Megagram and contains these fields- id,
+                username, fullName, dateOfBirth, contactInfo, accountBasedIn, hashedPassword, salt, created, isPrivate, & isVerified), & 
+                userAuthTokens(This table is hosted on Google Cloud Spanner. Each row represents info about a specific user's authentication and refresh-token and contains the following fields-
+                userId, hashedAuthToken, authTokenSalt, hashedRefreshToken, refreshTokenSalt, authTokenExpiry, & refreshTokenExpiry).`
+            ]
         },
         {
             name: 'NodeJS',
@@ -394,11 +430,11 @@ export class TechnologiesAndSkills {
             backgroundColor: '#3d3d3d',
             color: 'white',
             usedFor: [
-                "Used for the frontend for <a href=\"https://github.com/Megagram/Login-Register\" target=\"_blank\" rel=\"noopener noreferrer\" style:\"color: red;\">Login-Register</a>",
-                "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)",
-                "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)",
-                "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)",
-                "Used for the backend of productPageViewers & updatesOfCartsAndSavedItems (djangoBackend6)"
+                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
+                This frontend has 4 different endpoints: /login, /signup, /ageCheck, & /confirmCode, as well as a 404-Not-Found-Page.`,
+
+                `Used for the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
+                This backend has 14 different endpoints, most of which are related to the Megagram users table in MySQL.`
             ]
         },
         {
@@ -434,7 +470,18 @@ export class TechnologiesAndSkills {
             backgroundColor: '#f2f2f2',
             color: 'black',
             usedFor: []
-        }
+        },
+        {
+            name: 'Redis',
+            type: 'Data and the Cloud',
+            image: 'redisLogo.webp',
+            backgroundColor: '#ff8f8f',
+            color: 'black',
+            usedFor: [
+                `Used for the backend-caching of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following purposes: rate-limiting, efficient user-info-retrieval, and efficient and cost-saving language-translations.`,
+            ]
+        },
     ];
     frontendTechnologiesAndSkillsUsed:Record<string, any>[] = [];
     backendTechnologiesAndSkillsUsed:Record<string, any>[] = [];

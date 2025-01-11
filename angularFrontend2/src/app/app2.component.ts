@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BriefIntro } from '../components/briefIntro.component';
-import { GoldenStandards } from '../components/goldenStandards.component';
 import { LastSection } from '../components/lastSection.component';
 import { PenultimateSection } from '../components/penultimateSection.component';
 import { RelevantExperience } from '../components/relevantExperience.component';
@@ -16,7 +15,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     selector: 'app2',
     standalone: true,
     imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
-    TechnologiesAndSkills, TechnologyOrSkillPopup, GoldenStandards, PenultimateSection,
+    TechnologiesAndSkills, TechnologyOrSkillPopup, PenultimateSection,
     LastSection, FormsModule, ColorPickerModule],
     templateUrl: './app2.component.html',
     styleUrl: '../styles.css'
@@ -32,13 +31,6 @@ export class App2 {
     colorWave100PercentKeyFrameRule!:CSSKeyframeRule;
     displayTechnologyOrSkillsPopup:boolean = false;
     technologyOrSkillForPopup!:Record<string, any>;
-    keyFrameRulesForSmoothColorChangingForGoldenStandardsSection:Record<number, any> = {
-        0: null,
-        25: null,
-        50: null,
-        75: null,
-        100: null
-    };
     readingModeFont:string = "Default (mix of all the options)";
     readingModeTextSize:number = 1;
     readingModeTextColor:string = '';
@@ -57,7 +49,6 @@ export class App2 {
             window.addEventListener('scroll', this.onScroll);
             const sheets = Array.from(document.styleSheets);
             let rules1WereFound = false;
-            let rules2WereFound = false;
             for (let sheet of sheets) {
                 let rules;
                 try {
@@ -72,21 +63,11 @@ export class App2 {
                         this.colorWave100PercentKeyFrameRule = (rule.cssRules[2] as CSSKeyframeRule);
                         rules1WereFound = true;
                     }
-                    else if (rule instanceof CSSKeyframesRule && rule.name === 'smoothColorChangingForGoldenStandardsSection') {
-                        this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection = {
-                            0: (rule.cssRules[0] as CSSKeyframeRule),
-                            25: (rule.cssRules[1] as CSSKeyframeRule),
-                            50: (rule.cssRules[2] as CSSKeyframeRule),
-                            75: (rule.cssRules[3] as CSSKeyframeRule),
-                            100: (rule.cssRules[4] as CSSKeyframeRule)
-                        };
-                        rules2WereFound = true;
-                    }
-                    if(rules1WereFound && rules2WereFound) {
+                    if(rules1WereFound) {
                         break;
                     }
                 }
-                if(rules1WereFound && rules2WereFound) {
+                if(rules1WereFound) {
                     break;
                 }
             }
@@ -127,11 +108,6 @@ export class App2 {
                     });
                     this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
                     this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
                 }
                 else {
                     this.currentTheme = 'System: Light';
@@ -150,12 +126,7 @@ export class App2 {
                         }
                     });
                     this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
-                    this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
+                    this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');                
                 }
             }
             this.darkModeQuery.addEventListener('change', (event: any) => {
@@ -174,11 +145,6 @@ export class App2 {
                     });
                     this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
                     this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
                 }
                 else {
                     this.currentTheme = 'System: Light';
@@ -192,11 +158,6 @@ export class App2 {
                     });
                     this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'black');
                     this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'black');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #33ccff 50%, #ff6666 50%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #33ccff 37.5%, #ff6666 62.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #33ccff 25%, #ff6666 75%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #33ccff 12.5%, #ff6666 87.5%)');
-                    this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #33ccff 0%, #ff6666 100%)');
                 }
                 this.updateURLOfPageAfterUserPersonalization();
             });
@@ -248,11 +209,6 @@ export class App2 {
             });
             this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
             this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #000099 50%, #993333 50%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #000099 37.5%, #993333 62.5%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #000099 25%, #993333 75%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #000099 12.5%, #993333 87.5%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #000099 0%, #993333 100%)');
         }
         else {
             document.body.style.removeProperty('background-color');
@@ -265,12 +221,6 @@ export class App2 {
             });
             this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'black');
             this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'black');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[0].style.setProperty('background', 'linear-gradient(to right, #33ccff 50%, #ff6666 50%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[25].style.setProperty('background', 'linear-gradient(to right, #33ccff 37.5%, #ff6666 62.5%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[50].style.setProperty('background', 'linear-gradient(to right, #33ccff 25%, #ff6666 75%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[75].style.setProperty('background', 'linear-gradient(to right, #33ccff 12.5%, #ff6666 87.5%)');
-            this.keyFrameRulesForSmoothColorChangingForGoldenStandardsSection[100].style.setProperty('background', 'linear-gradient(to bottom right, #33ccff 0%, #ff6666 100%)');
-
         }
         this.updateURLOfPageAfterUserPersonalization();
     }

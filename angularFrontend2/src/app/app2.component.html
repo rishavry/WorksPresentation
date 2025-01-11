@@ -27,12 +27,6 @@
     [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
 />
 
-<GoldenStandards *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
-    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
-/>
-
 <PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
     (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />

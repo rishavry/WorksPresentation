@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
     standalone: true
     })
 export class ChangeColorOfText0AsUserScrolls {
-    private scrollThreshold = 6000;
-    private scrollUpperLimit = 6400;
+    private scrollThreshold = 4300;
+    private scrollUpperLimit = 4700;
     @Input() currentTheme!:string;
     private colorsBeforeAndInBetween:Record<string, string> = {
         Light: 'black',
@@ -63,8 +63,8 @@ export class ChangeColorOfText0AsUserScrolls {
     standalone: true
     })
 export class ChangeColorOfText1AsUserScrolls {
-    private scrollThreshold = 6400;
-    private scrollUpperLimit = 6800;
+    private scrollThreshold = 4700;
+    private scrollUpperLimit = 5100;
     @Input() currentTheme!:string;
     private colorsBeforeAndAfter:Record<string, string> = {
         Light: 'white',
@@ -117,8 +117,8 @@ export class ChangeColorOfText1AsUserScrolls {
     standalone: true
     })
 export class ChangeColorOfText2AsUserScrolls {
-    private scrollThreshold = 6800;
-    private scrollUpperLimit = 7100;
+    private scrollThreshold = 5100;
+    private scrollUpperLimit = 5500;
     @Input() currentTheme!:string;
     private colorsBeforeAndAfter:Record<string, string> = {
         Light: 'white',
@@ -171,8 +171,8 @@ export class ChangeColorOfText2AsUserScrolls {
     standalone: true
     })
 export class ChangeColorOfText3AsUserScrolls {
-    private scrollThreshold = 7100;
-    private scrollUpperLimit = 7400;
+    private scrollThreshold = 5500;
+    private scrollUpperLimit = 5700;
     @Input() currentTheme!:string;
     private colorsBeforeAndAfter:Record<string, string> = {
         Light: 'white',
@@ -225,8 +225,8 @@ export class ChangeColorOfText3AsUserScrolls {
     standalone: true
     })
 export class ChangeColorOfText4AsUserScrolls {
-    private scrollThreshold = 7400;
-    private scrollUpperLimit = 7600;
+    private scrollThreshold = 5700;
+    private scrollUpperLimit = 5850;
     @Input() currentTheme!:string;
     private colorsBeforeAndAfter:Record<string, string> = {
         Light: 'white',
@@ -279,8 +279,8 @@ export class ChangeColorOfText4AsUserScrolls {
     standalone: true
     })
 export class ChangeColorOfText5AsUserScrolls {
-    private scrollThreshold = 7600;
-    private scrollUpperLimit = 7800;
+    private scrollThreshold = 5850;
+    private scrollUpperLimit = 6200;
     @Input() currentTheme!:string;
     private colorsBeforeAndAfter:Record<string, string> = {
         Light: 'white',
