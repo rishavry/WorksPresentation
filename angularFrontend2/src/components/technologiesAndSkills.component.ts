@@ -282,8 +282,12 @@ export class TechnologiesAndSkills {
             backgroundColor: '#f0f4ff',
             color: 'black',
             usedFor: [
-                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
-                for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was created by 
+                `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+
+                `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>
+                for the following endpoints: /forgotPassword, /setNewPassword/{username}/{passwordResetToken}, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
                 <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`
             ]
         },
@@ -294,11 +298,19 @@ export class TechnologiesAndSkills {
             backgroundColor: 'white',
             color: 'black',
             usedFor: [
-                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
-                In this repository, which is named 'Login-Register', there is a very comprehensive README.md file. The branches related to the frontend are- 'frontend', 'gcp-frontend', & 'main(default)'.`,
+                'Each of the repositories mentioned below have a comprehensive README.md file with a consistent structure',
+
+                `Used for the version-control of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
+                In this repository, the branches related to the frontend are- 'frontend', 'gcp-frontend', & 'main(default)'.`,
                 
-                `Used for the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
-                In this repository, which is named 'Login-Register', there is a very comprehensive README.md file. The branches related to the backend are- 'backend', 'gcp-backend', & 'main(default)'.`
+                `Used for the version-control of the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
+                In this repository, the branches related to the backend are- 'backend', 'gcp-backend', & 'main(default)'.`,
+                
+                `Used for the version-control of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                In this repository, the branches related to the frontend are- 'frontend' & 'main(default)'.`,
+                
+                `Used for the version-control of the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                In this repository, the branch related to the backend is- 'main(default)'.`
             ]
         },
         {
@@ -308,16 +320,19 @@ export class TechnologiesAndSkills {
             backgroundColor: 'white',
             color: 'black',
             usedFor: [
-                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
                 for the following purposes: reCaptcha(proving that login-attempts are not done by robots) and OAuth(allowing users to register and login with their Google accounts).`,
 
-                `Used for the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
                 for the following purpose: encryption/decryption of sensitive columns of the 'users' table with the help of
                 Google-Cloud Key-Management-Service(and the keys are all rotated automatically every 70 days).`,
 
-                `Used for the deployment of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the deployment of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
                 for the following purposes: Google-Kubernetes-Engine(GKE) Clusters for Kubernetes pods that run the frontend and backend production servers, as well
                 as a Managed Instance Group that is used for routing requests made to https://megagram.com to the the GKE Load-Balancers for frontend and backend respectively.`,
+
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>
+                whenever the contact-info of a user needs to be decrypted via the Google-Cloud Key-Management-Service key that was used to encrypt it in the first place.`
             ]
         },
         {
@@ -335,19 +350,23 @@ export class TechnologiesAndSkills {
             backgroundColor: '#ffeac4',
             color: 'black',
             usedFor: [
-                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
                 for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>
+                for the following endpoints: /forgotPassword, /setNewPassword/{username}/{passwordResetToken}, & for the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
                 <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`
             ]
         },
         {
-            name: 'JavaScript',
+            name: 'JavaScript (Vanilla)',
             type: 'Frontend',
             image: 'jsLogo.png',
             backgroundColor: '#faf4cd',
             color: 'black',
             usedFor: [
-                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
                 for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page. JQuery is used extensively in the JS-files due
                 to its concise syntax and grand popularity in the world of web-frontends.`
             ]
@@ -358,7 +377,10 @@ export class TechnologiesAndSkills {
             image: 'springBootLogo.png',
             backgroundColor: '#dcfce8',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                This backend has 2 different endpoints, both of which are related to enabling users to reset their password.`
+            ]
         },
         {
             name: 'MongoDB (local & Atlas)',
@@ -405,7 +427,12 @@ export class TechnologiesAndSkills {
             image: 'psqlLogo.png',
             backgroundColor: '#09235e',
             color: 'white',
-            usedFor: []
+            usedFor: [
+                `Used for the data of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank'
+                rel='noopener noreferrer' style='color: white;'>Reset-Password</a>
+                for the following table: password_reset_tokens. This table has 4 columns, namely- id, userId, salt,
+                hashedToken, and expiration.`
+            ]
         },
         {
             name: 'Laravel (PHP)',
@@ -430,10 +457,10 @@ export class TechnologiesAndSkills {
             backgroundColor: '#3d3d3d',
             color: 'white',
             usedFor: [
-                `Used for the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
                 This frontend has 4 different endpoints: /login, /signup, /ageCheck, & /confirmCode, as well as a 404-Not-Found-Page.`,
 
-                `Used for the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
                 This backend has 14 different endpoints, most of which are related to the Megagram users table in MySQL.`
             ]
         },
@@ -443,7 +470,10 @@ export class TechnologiesAndSkills {
             image: 'reactJSLogo.svg',
             backgroundColor: '#b6e2fa',
             color: 'black',
-            usedFor: []
+            usedFor: [
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                This frontend has 2 different endpoints: /forgotPassword, /setNewPassword/{username}/{passwordResetToken}, as well as a 404-Not-Found-Page.`
+            ]
         },
         {
             name: 'SCSS',
@@ -478,8 +508,19 @@ export class TechnologiesAndSkills {
             backgroundColor: '#ff8f8f',
             color: 'black',
             usedFor: [
-                `Used for the backend-caching of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
-                for the following purposes: rate-limiting, efficient user-info-retrieval, and efficient and cost-saving language-translations.`,
+                `Used in the backend-caching of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                for the following purposes: rate-limiting, efficient user-info-retrieval, and efficient and cost-saving language-translations.`
+            ]
+        },
+        {
+            name: 'Heroku',
+            type: 'Data and the Cloud',
+            image: 'herokuLogo.webp',
+            backgroundColor: '#efedfc',
+            color: 'black',
+            usedFor: [
+                `Used in the deployment of both the frontend and backend of
+                <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.`
             ]
         },
     ];
