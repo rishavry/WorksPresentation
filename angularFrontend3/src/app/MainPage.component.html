@@ -14,3 +14,15 @@
     (updateDarkScreen)="updateDarkScreen($event)"
 />
 
+<BriefIntro
+    [initialAnimationsAreFinished]="initialAnimationsAreFinished"
+    [displayDarkScreen]="displayDarkScreen"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn"
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    (notifyParentThatInitialAnimationsAreFinished)="initialAnimationsAreFinished = true"
+/>

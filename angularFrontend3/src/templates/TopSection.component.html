@@ -159,14 +159,14 @@ position: relative;">
         <div *ngIf="readingModeOn" style="display: flex; margin-left: 1.5em; gap: 1em; align-items: center;
         margin-bottom: -1.5em;">
             <p>Choose Text-Size</p>
-            <p style="text-decoration: underline; text-decoration-color: blue;">{{ readingModeTextSize+"X" }}</p>
+            <p style="text-decoration: underline; text-decoration-color: blue;">{{ readingModeTextSize + 'X' }}</p>
             <p *ngIf="!displayTextSizeSlider" (click)="toggleDisplayTextSizeSlider()" style="color:#286eb8; cursor:
             pointer;">Change</p>
             <p *ngIf="displayTextSizeSlider" (click)="toggleDisplayTextSizeSlider()" style="color:#286eb8; cursor:
             pointer;">Hide</p>
             <input *ngIf="displayTextSizeSlider" [(ngModel)]="textSizeSliderValue" type="range" id="slider"
             min="0.5" max="2" step="0.01" [value]="readingModeTextSize">
-            <p *ngIf="displayTextSizeSlider">{{textSizeSliderValue+"X"}}</p>
+            <p *ngIf="displayTextSizeSlider">{{ textSizeSliderValue + 'X' }}</p>
             <p (click)="changeReadingModeTextSize()" *ngIf="displayTextSizeSlider && textSizeSliderValue!==readingModeTextSize"
             style="cursor: pointer; color: green">Set size</p>
         </div>
@@ -177,7 +177,7 @@ position: relative;">
             <div *ngIf="readingModeTextColor.length>0" style="height: 1em; width: 1em; border-radius: 2em;
             margin-top: 1em; border-style: solid;" [ngStyle]="{'background-color': readingModeTextColor}"></div>
             <p style="text-decoration: underline; text-decoration-color: blue;">
-                {{readingModeTextColor.length==0 ? 'Default' : readingModeTextColor}}
+                {{ readingModeTextColor.length == 0 ? 'Default' : readingModeTextColor }}
             </p>
             <p *ngIf="!displayTextColorPicker" (click)="toggleDisplayTextColorPicker()" style="color:#286eb8; cursor:
             pointer;">Change</p>
@@ -198,7 +198,7 @@ position: relative;">
             <div *ngIf="readingModeBackgroundColor.length>0" style="height: 1em; width: 1em; border-radius: 2em;
             border-style: solid;" [ngStyle]="{'background-color': readingModeBackgroundColor}"></div>
             <p style="text-decoration: underline; text-decoration-color: blue;">
-                {{readingModeBackgroundColor.length==0 ? 'Default' : readingModeBackgroundColor}}
+                {{ readingModeBackgroundColor.length == 0 ? 'Default' : readingModeBackgroundColor }}
             </p>
             <p *ngIf="!displayBackgroundColorPicker" (click)="toggleDisplayBackgroundColorPicker()" style="color:#286eb8;
             cursor: pointer;">Change</p>
@@ -218,7 +218,7 @@ position: relative;">
             <img src="images/systemSettings.png" style="pointer-events: none; height: 1.2em; width: 1.2em;">
             <p>System</p>
             <p *ngIf="currentTheme.startsWith('System:')" style="color: gray; margin-left: 2em;">Selected
-            ({{currentTheme.split(" ")[1]}})</p>
+            ({{ currentTheme.split(" ")[1] }})</p>
         </div>
         <div (click)="changeTheme('Light')" style="display: flex; gap: 1em; margin-left: 1.5em; align-items: center;
         margin-bottom:-2em; cursor: pointer;">

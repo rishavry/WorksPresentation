@@ -48,6 +48,7 @@ export class BriefIntro implements AfterViewInit {
 
 
     ngAfterViewInit() {
+        /*
         this.intervalIdForDots = setInterval(() => {
             this.animateTheTypingDots();
         }, 600);
@@ -55,6 +56,7 @@ export class BriefIntro implements AfterViewInit {
         this.intervalIdForHand = setInterval(() => {
             this.animateWavyHands();
         }, 100);
+        */
     }
 
 

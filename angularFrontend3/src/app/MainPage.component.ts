@@ -1,4 +1,5 @@
 import { TopSection } from '../components/TopSection.component';
+import { BriefIntro } from '../components/BriefIntro.component';
 
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection],
+    imports: [CommonModule, TopSection, BriefIntro],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
@@ -21,14 +22,16 @@ export class MainPage {
     readingModeTextColor:string = '';
     readingModeBackgroundColor:string = '';
 
-    initialAnimationsAreFinished:boolean = false;
+    initialAnimationsAreFinished:boolean = true; //change to false
 
     displayDarkScreen:boolean = false;
 
-    colorWave0PercentKeyFrameRule!:CSSKeyframeRule;
-    colorWave100PercentKeyFrameRule!:CSSKeyframeRule;
+    colorWaveAnimation0PercentKeyFrameRule!:CSSKeyframeRule;
+    colorWaveAnimation100PercentKeyFrameRule!:CSSKeyframeRule;
 
     darkModeQuery!:any;
+
+    displayTechnologyOrSkillsPopup:boolean = false;
 
 
     constructor(private route: ActivatedRoute) { }
@@ -39,6 +42,7 @@ export class MainPage {
 
         const sheets = Array.from(document.styleSheets);
         let rules1WereFound = false;
+
         for (let sheet of sheets) {
             let rules;
             try {
@@ -47,16 +51,19 @@ export class MainPage {
             catch (error) {
                 continue;
             }
+
             for (let rule of rules) {
-                if (rule instanceof CSSKeyframesRule && rule.name === 'colorWave') {
-                    this.colorWave0PercentKeyFrameRule = (rule.cssRules[0] as CSSKeyframeRule);
-                    this.colorWave100PercentKeyFrameRule = (rule.cssRules[2] as CSSKeyframeRule);
+                if (rule instanceof CSSKeyframesRule && rule.name === 'colorWaveAnimation') {
+                    this.colorWaveAnimation0PercentKeyFrameRule = (rule.cssRules[0] as CSSKeyframeRule);
+                    this.colorWaveAnimation100PercentKeyFrameRule = (rule.cssRules[2] as CSSKeyframeRule);
                     rules1WereFound = true;
                 }
+
                 if(rules1WereFound) {
                     break;
                 }
             }
+
             if(rules1WereFound) {
                 break;
             }
@@ -228,8 +235,8 @@ export class MainPage {
             iconRef.style.removeProperty('filter');
         });
 
-        this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'black');
-        this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'black');
+        this.colorWaveAnimation0PercentKeyFrameRule.style.setProperty('color', 'black');
+        this.colorWaveAnimation100PercentKeyFrameRule.style.setProperty('color', 'black');
 
         this.updateURLOfPageAfterUserPersonalization();
     }
@@ -243,8 +250,8 @@ export class MainPage {
             iconRef.style.setProperty('filter', 'brightness(5) contrast(0)', 'important');
         });
 
-        this.colorWave0PercentKeyFrameRule.style.setProperty('color', 'white');
-        this.colorWave100PercentKeyFrameRule.style.setProperty('color', 'white');
+        this.colorWaveAnimation0PercentKeyFrameRule.style.setProperty('color', 'white');
+        this.colorWaveAnimation100PercentKeyFrameRule.style.setProperty('color', 'white');
 
         this.updateURLOfPageAfterUserPersonalization();
     }
@@ -261,5 +268,11 @@ export class MainPage {
     
             this.enableLightMode();
         }
+    }
+
+
+    closeAllPopupsAfterClickingDarkScreen() {
+        this.displayTechnologyOrSkillsPopup = false;
+        this.displayDarkScreen = false;
     }
 }

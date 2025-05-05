@@ -25,12 +25,26 @@ body {
   text-decoration: underline;
 }
 
-
 a:hover {
   color: darkgreen !important;
 }
 
-@keyframes colorWave {
+.linkedinIcon {
+  pointer-events: none;
+  animation: linkedinIconRotatingAnimation 4.88s linear forwards infinite;
+}
+
+.readingModeFontOption:hover {
+  background-color: #f5f5f5;
+  color: black !important;
+}
+
+#neonName {
+  animation: neonNameAnimation 4.5s linear forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes colorWaveAnimation {
   0% {
     color: black;
   }
@@ -40,27 +54,6 @@ a:hover {
   100% {
     color: black;
   }
-}
-@keyframes smoothColorChangingForGoldenStandardsSection {
-  0% {
-    background: linear-gradient(to right, #33ccff 50%, #ff6666 50%);
-  }
-  25% {
-    background: linear-gradient(to right, #33ccff 37.5%, #ff6666 62.5%);
-  }
-  50% {
-    background: linear-gradient(to right, #33ccff 25%, #ff6666 75%);
-  }
-  75% {
-    background: linear-gradient(to right, #33ccff 12.5%, #ff6666 87.5%);
-  }
-  100% {
-    background: linear-gradient(to bottom right, #33ccff 0%, #ff6666 100%);
-  }
-}
-.linkedinIcon {
-  pointer-events: none;
-  animation: linkedinIconRotatingAnimation 4.88s linear forwards infinite;
 }
 
 @keyframes linkedinIconRotatingAnimation {
@@ -81,7 +74,66 @@ a:hover {
   }
 }
 
-.readingModeFontOption:hover {
-  background-color: #f5f5f5;
-  color: black !important;
+@keyframes neonNameAnimation {
+  0% {
+    color: white;
+    text-shadow:
+    0 0 7px white,
+    0 0 10px white,
+    0 0 21px darkslategray,
+    0 0 42px red,
+    0 0 82px red,
+    0 0 92px red,
+    0 0 102px red,
+    0 0 151px red;
+  }
+
+  25% {
+    color: white;
+    text-shadow:
+    0 0 7px white,
+    0 0 10px white,
+    0 0 21px darkslategray,
+    0 0 42px #1521cf,
+    0 0 82px #1521cf,
+    0 0 92px #1521cf,
+    0 0 102px #1521cf,
+    0 0 151px #1521cf;
+  }
+
+  50% {
+    color: white;
+    text-shadow:
+    0 0 7px white,
+    0 0 10px white,
+    0 0 21px darkslategray,
+    0 0 42px #1ba830,
+    0 0 82px #1ba830,
+    0 0 92px #1ba830,
+    0 0 102px #1ba830,
+    0 0 151px #1ba830;
+  }
+
+  75% {
+    color:#022b08;
+    text-shadow:
+    0 0 7px #022b08,
+    0 0 10px #022b08,
+    0 0 21px#022b08,
+    0 0 42px #022b08,
+    0 0 82px #022b08,
+    0 0 92px #022b08,
+    0 0 102px white,
+    0 0 151px white;
+  }
+
+  100% {
+    color: black;
+  }
+}
+
+@media (max-width: 38em) {
+  #briefIntroInspiringQuote {
+    display: none;
+  }
 }
