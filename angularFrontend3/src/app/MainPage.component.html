@@ -1,0 +1,16 @@
+<TopSection
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn"
+    [readingModeFont]="readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    (updateTheme)="updateTheme($event)"
+    (toggleReadingMode)="toggleReadingMode()"
+    (updateReadingModeFont)="updateReadingModeFont($event)"
+    (updateReadingModeTextSize)="updateReadingModeTextSize($event)"
+    (updateReadingModeTextColor)="updateReadingModeTextColor($event)"
+    (updateReadingModeBackgroundColor)="updateReadingModeBackgroundColor($event)"
+    (updateDarkScreen)="updateDarkScreen($event)"
+/>
+

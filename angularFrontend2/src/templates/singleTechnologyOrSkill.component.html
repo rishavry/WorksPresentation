@@ -3,7 +3,7 @@ padding: 0.5em 1.5em; border-radius: 0.85em; cursor: pointer; width: 20em; heigh
 [ngStyle]="{'background-color': backgroundColor, 'color': color, 'opacity': opacity}">
 
     <div style="display: flex; align-items: center; gap: 1em;">
-        <img [src]="image" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+        <img [src]="'images/' + image" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
         <h2>{{ name }}</h2>
     </div>
 
@@ -16,7 +16,7 @@ padding: 0.5em 1.5em; border-radius: 0.85em; cursor: pointer; width: 20em; heigh
         </li>
     </ul>
 
-    <img *ngIf="['SCSS', 'VueJS', 'WebSockets'].includes(name)" src="3dGoldenStar.png" style="position: absolute; top: -2.3em; left: -1.3em; height: 3.3em; width: 2.4em; object-fit: contain;
+    <img *ngIf="['SCSS', 'VueJS', 'WebSockets'].includes(name)" src="images/3dGoldenStar.png" style="position: absolute; top: -2.3em; left: -1.3em; height: 3.3em; width: 2.4em; object-fit: contain;
     pointer-events: none;">
 </div>
 

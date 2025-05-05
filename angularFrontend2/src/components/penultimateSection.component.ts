@@ -331,7 +331,7 @@ export class ChangeColorOfText5AsUserScrolls {
 
 @Component({
     selector: 'PenultimateSection',
-    templateUrl: '../templates/penultimateSection.component.html',
+    templateUrl: '../templates/PenultimateSection.component.html',
     styleUrl: '../styles.css',
     standalone: true,
     imports: [RouterModule, CommonModule, ChangeColorOfText0AsUserScrolls,

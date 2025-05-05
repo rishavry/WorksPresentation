@@ -4,35 +4,43 @@ colorAndSizeTransitionWithScroll [currentTheme]="currentTheme">
     <div id="relevantExperienceDescription" style="position: absolute; left: 9%; top: 26%;" moveRelevantExperienceDescriptionWithScroll>
         <h1>Relevant Experience</h1>
         <p style="max-width: 50%; line-height: 1.4; font-family: Roboto;">
-            Since I began my journey of applying for jobs on <b>February 15, 2025, at precisely 10:53 AM</b>, I have <b>received offers from 15 companies</b>, but have not yet accepted a single one. However, I have a comprehensive project to make up for that lack of employment experience- <b>Megagram</b>.
-            This <b>6 month project</b> of mine has tremendously aided in <b>deepening my understanding of the fundamental and complex areas</b> of full-stack web-development.
+            Since I began my journey of applying for jobs on <b>February 15, 2025, at precisely 10:53 AM</b>, I have
+            <b>received offers from 15 companies</b>, but have not yet accepted a single one. However, I have a
+            comprehensive project that more than makes up for the lack of formal employment experience — <b>Megagram</b>.
+            This <b>12-month-long commitment</b> has been pivotal in <b>deepening my understanding of both
+            foundational and advanced aspects</b> of full-stack web development, database management, and cloud
+            service integration. Initially, I contributed to <b>9 repositories within my Megagram GitHub organization</b>.
+            But to avoid needless repetitive work in an unpaid project and to <b>do more with less</b>, I chose to concentrate
+            on 3 key repositories that <b>more than suffice to demonstrate the depth of my abilities</b>:
+            <b>Login-Register</b>, <b>Reset-Password</b>, and finally and above all, the grand <b>Home-Page</b>.
+            <b>Unfortunately, none of the 3 repos are related to Amazon</b>(the enormous 'Online-Shopping' repository of
+            my Megagram Organization was not concentrated on).
         </p>
 
         <p style="max-width: 50%; line-height: 1.4; font-family: Roboto;">
-            For the <b>Instagram-inspired features</b> of Megagram, I employed a variety of tools to develop both the frontend and backend, enabling user authentication (login/registration/password-resets), user search, profile management, AI-powered chatbot messaging, peer-to-peer messaging, following/blocking users, & dynamic interactions on the home screen, including liking, commenting, and tagging in posts.
-        </p>
-
-        <p style="max-width: 50%; line-height: 1.4; font-family: Roboto;">
-            In addition, I drew inspiration from <b>Amazon</b> to create <b>another suite of features</b> within Megagram. This includes a personalized home page that displays tailored ads, product promotions, and enables users to update delivery addresses and search for items by category. I also implemented fully functional shopping cart and checkout pages, <b>integrating seamless frontend and backend systems</b> to enhance the user experience.
+            For the <b>Instagram-inspired features</b> of Megagram, I employed a variety of tools to develop both the
+            frontend and backend and interact with data-systems and the cloud; I enabled <b>user authentication
+            (login/registration/password-resets/api-protection)</b>, and the home-page, which allows users to <b>view and
+            interact with a personalized feed of stories/posts/suggested-accounts</b>.
         </p>
     </div>
 
     <div style="position: relative; left: 60%; top: 14%; height: 40em; width: 40em;"
     moveMacbookWithScroll (notifyParentToStartGoingThroughSlides)="startGoingThroughSlides()"
     (notifyParentToToggleDisplayMacbook)="toggleDisplayMacbook()">
-        <img *ngIf="displayMacbook" src="macbook.webp" style="position: absolute; top: 0%; left: 0%; height: 100%; width: 100%; object-fit: contain;">
+        <img *ngIf="displayMacbook" src="images/macbook.webp" style="position: absolute; top: 0%; left: 0%; height: 100%; width: 100%; object-fit: contain;">
         <video *ngIf="!displayMacbook && currentSlide > -1" autoplay [src]="currentTheme.endsWith('Light') ? slides[currentSlide]['videoSrcLight'] : slides[currentSlide]['videoSrcDark']"
             style="position: absolute; top: 0%; left: 11%; width: 78%; height: 38em;">
         </video>
         <div *ngIf="!displayMacbook && currentSlide > -1" style="position: absolute; top: 85%; left: 0%; width: 100%; display: flex; align-items: center; justify-content: space-between;">
-            <img (click)="decrementCurrentSlide()" src="backArrow.svg" style="cursor: pointer; height: 1.2em; width: 1.2em;">
+            <img (click)="decrementCurrentSlide()" src="images/backArrow.svg" style="cursor: pointer; height: 1.2em; width: 1.2em;">
             <p [innerHTML]="sanitize(slides[currentSlide]['descriptionHTML'])" style="color: rgb(122, 120, 120)"></p>
-            <img (click)="incrementCurrentSlide()" src="forwardArrow.svg" style="cursor: pointer; height: 1.2em; width: 1.2em;">
+            <img (click)="incrementCurrentSlide()" src="images/forwardArrow.svg" style="cursor: pointer; height: 1.2em; width: 1.2em;">
         </div>
     </div>
     
 
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
 </div>
 
 <div *ngIf="readingModeOn" id="relevantExperience" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray;
@@ -42,17 +50,26 @@ border-width: 0.06em; border-top: none; border-left: none; border-right: none; p
     <h1>Relevant Experience</h1>
     <br/>
     <p style="max-width: 90%; line-height: 1.4;">
-        Since I began my journey of applying for jobs on <b>February 15, 2025, at precisely 10:53 AM</b>, I have <b>received offers from 15 companies</b>, but have not yet accepted a single one. However, I have a comprehensive project to make up for that lack of employment experience- <b>Megagram</b>.
-        This <b>6 month project</b> of mine has tremendously aided in <b>deepening my understanding of the fundamental and complex areas</b> of full-stack web-development.
+        Since I began my journey of applying for jobs on <b>February 15, 2025, at precisely 10:53 AM</b>, I have
+        <b>received offers from 15 companies</b>, but have not yet accepted a single one. However, I have a
+        comprehensive project that more than makes up for the lack of formal employment experience — <b>Megagram</b>.
+        This <b>12-month-long commitment</b> has been pivotal in <b>deepening my understanding of both
+        foundational and advanced aspects</b> of full-stack web development, database management, and cloud
+        service integration. Initially, I contributed to <b>9 repositories within my Megagram GitHub organization</b>.
+        But to avoid needless repetitive work in an unpaid project and to <b>do more with less</b>, I chose to concentrate
+        on 3 key repositories that <b>more than suffice to demonstrate the depth of my abilities</b>:
+        <b>Login-Register</b>, <b>Reset-Password</b>, and finally and above all, the grand <b>Home-Page</b>.
+        <b>Unfortunately, none of the 3 repos are related to Amazon</b>(the enormous 'Online-Shopping' repository of
+        my Megagram Organization was not concentrated on).
     </p>
 
     <p style="max-width: 90%; line-height: 1.4;">
-        For the <b>Instagram-inspired features</b> of Megagram, I employed a variety of tools to develop both the frontend and backend, enabling user authentication (login/registration/password-resets), user search, profile management, AI-powered chatbot messaging, peer-to-peer messaging, following/blocking users, & dynamic interactions on the home screen, including liking, commenting, and tagging in posts.
+        For the <b>Instagram-inspired features</b> of Megagram, I employed a variety of tools to develop both the
+        frontend and backend and interact with data-systems and the cloud; I enabled <b>user authentication
+        (login/registration/password-resets/api-protection)</b>, and the home-page, which allows users to <b>view and
+        interact with a personalized feed of stories/posts/suggested-accounts</b>.
     </p>
 
-    <p style="max-width: 90%; line-height: 1.4;">
-        In addition, I drew inspiration from <b>Amazon</b> to create <b>another suite of features</b> within Megagram. This includes a personalized home page that displays tailored ads, product promotions, and enables users to update delivery addresses and search for items by category. I also implemented fully functional shopping cart and checkout pages, <b>integrating seamless frontend and backend systems</b> to enhance the user experience.
-    </p>
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>
 

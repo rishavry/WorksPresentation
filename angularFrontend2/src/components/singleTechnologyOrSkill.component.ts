@@ -7,7 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     selector: 'SingleTechnologyOrSkill',
     imports: [CommonModule],
     standalone: true,
-    templateUrl: '../templates/singleTechnologyOrSkill.component.html',
+    templateUrl: '../templates/SingleTechnologyOrSkill.component.html',
     styleUrl: '../styles.css',
 })
 export class SingleTechnologyOrSkill {

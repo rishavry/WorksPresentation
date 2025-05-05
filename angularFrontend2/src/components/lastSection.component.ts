@@ -4,7 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'LastSection',
-    templateUrl: '../templates/lastSection.component.html',
+    templateUrl: '../templates/LastSection.component.html',
     styleUrl: '../styles.css',
     standalone: true,
     imports: [CommonModule]

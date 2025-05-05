@@ -2,7 +2,7 @@
 position: relative; display: flex; flex-direction: column; align-items: center;"
 [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? '#68c6fc' : '#394da3',
 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
-    <p id="helloText" style="font-weight: bold; margin-top:9%; font-size: 6em; max-width: 55%; text-align: center;">
+    <p #helloText style="font-weight: bold; margin-top:6%; font-size: 6em; max-width: 55%; text-align: center;">
         Hello, my name is <span id="neonName">Rishav Ray</span>{{dots}}
     </p>
 
@@ -10,11 +10,11 @@ position: relative; display: flex; flex-direction: column; align-items: center;"
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; height: 52%; box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;"
     [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? '#fffce8' : '#a37f1c'}">
         <div style="display: flex; justify-content: center; align-items: center; gap: 7.4%; width: 100%;">
-            <img src="instagramLogo.webp" style="height: 2em; width: 2em; pointer-events: none;">
+            <img src="images/instagramLogo.webp" style="height: 2em; width: 2em; pointer-events: none;">
             <p>+</p>
-            <img src="amazonLogo.png" style="height: 2em; width: 2em; pointer-events: none;">
+            <img src="images/amazonLogo.png" style="height: 2em; width: 2em; pointer-events: none;">
             <p>=</p>
-            <img src="megagram.ico" style="height: 2em; width: 2em; pointer-events: none;">
+            <img src="images/megagram.ico" style="height: 2em; width: 2em; pointer-events: none;">
         </div>
 
         <div style="display: flex; gap: 1em; width: 100%; margin-top: 3em;">
@@ -33,14 +33,14 @@ position: relative; display: flex; flex-direction: column; align-items: center;"
         </div>
     </div>
 
-    <img *ngIf="!initialAnimationsAreFinished" id="wavingHand" src="wavingHand.gif" :style="position: absolute; top: 10%; left: 9%; height: 17em; width: 17em;
+    <img #wavingHand *ngIf="!initialAnimationsAreFinished" src="images/wavingHand.gif" :style="position: absolute; top: 10%; left: 9%; height: 17em; width: 17em;
     object-fit: contain; pointer-events: none;">
 
-    <img *ngIf="!initialAnimationsAreFinished" src="lightningBolt.gif" :style="position: absolute; top: 40%; left: 30%; height: 30em; width: 35em;
+    <img *ngIf="!initialAnimationsAreFinished" src="images/lightningBolt.gif" :style="position: absolute; top: 40%; left: 30%; height: 30em; width: 35em;
     object-fit: contain; pointer-events: none;">
 
     <p *ngIf="initialAnimationsAreFinished && !displayDarkScreen" style="position: absolute; left: 90%; top: 2%; font-size: 0.7em; font-family: Tahoma; max-width: 8%;">“For every reason it’s not possible, there are hundreds of people who have faced the same circumstances and succeeded.” – Jack Canfield</p>
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>
 
 <div *ngIf="readingModeOn" id="briefIntro" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray; border-width: 0.06em;
@@ -54,7 +54,7 @@ border-top: none; border-left: none; border-right: none; position: relative; mar
         <p><b>Skipping the traditional university route</b>, I’ve built my skills through curiosity and passion, diving into YouTube tutorials, ChatGPT prompts, online documentation, and hands-on practice. The website you’re staring at currently--which I developed myself!-- is a testament to how far I’ve come– <b>and that's just the beginning.</b></p>
         <p>For the past six months, I’ve developed <b>Megagram</b>, a project blending some of the key features of <b>Instagram</b> and <b>Amazon</b>. As any experienced person from this industry would say, <b>the learning never really stops</b> and every day a new concept is grasped. Nevertheless, I believe my experience is sufficient to <b>excel in the best jobs of this ultra-competitive market</b>, & am also convinced that I can prove that to you <b>right now</b>!</p>
     </div>
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>
 
 <style>

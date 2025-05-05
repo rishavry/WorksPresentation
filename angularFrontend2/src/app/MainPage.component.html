@@ -112,21 +112,21 @@ background-color: rgba(0, 0, 0, 0.6); color: white; border-radius: 0.8em;">
 <div *ngIf="!miniReadingModeSettingsAreVisible && readingModeOn && !displayDarkScreen" (click)="toggleMiniReadingModeSettingsVisibility()" style="cursor: pointer; position: fixed;
 top: 75%; left: 93%; display: flex; gap: 0.4em; align-items: center; font-size: 0.6em; padding: 0.5em 1em; background-color: black;
 color: white; border-radius: 0.8em;">
-    <img src="upV.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
-    <img src="bookIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
-    <img src="settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
+    <img src="images/upV.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
+    <img src="images/bookIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
+    <img src="images/settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
 </div>
 
 <div *ngIf="(initialAnimationsAreFinished || readingModeOn) && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Swim to</p>
-    <img src="waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
+    <img src="images/waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Bottom</p>
 </div>
 
 <div *ngIf="(initialAnimationsAreFinished || readingModeOn) && !userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
 align-items: center; font-size: 0.85em;">
     <p>Climb to</p>
-    <img src="mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">
+    <img src="images/mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Top</p>
 </div>

@@ -1,31 +1,30 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, EventEmitter, Inject, Input, Output, PLATFORM_ID } from '@angular/core';
+import {
+    AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, Output, PLATFORM_ID, ViewChild
+} from '@angular/core';
+
 
 @Component({
     selector: 'BriefIntro',
     imports: [CommonModule],
-    templateUrl: '../templates/briefIntro.component.html',
+    templateUrl: '../templates/BriefIntro.component.html',
     styleUrl: '../styles.css',
     standalone: true,
 })
-export class BriefIntro {
+export class BriefIntro implements AfterViewInit {
     dots:string = "";
-    helloTextMarginTopPercentage:number = 53;
     handOpacity = 1;
-    helloText!:HTMLElement;
-    wavingHand!:HTMLElement;
     intervalIdForDots:any= null;
     intervalIdForHand:any = null;
-    intervalIdForHelloText:any = null;
     intervalIdForUpdatingPortrait:any = null;
     intervalIdForPortraitTransition:any = null;
     intervalIdForSmoothlyDisplayingFirstPortrait:any = null;
     @Input() initialAnimationsAreFinished:boolean = false;
     currentPortraitIndex:number = 0;
     portraits:Record<number, string> = {
-        0: "theRock.jpg",
-        1: "theRock2.jpg",
-        2: "theRock3.jpg"
+        0: 'images/theRock.jpg',
+        1: 'images/theRock2.jpg',
+        2: 'images/theRock3.jpg'
     };
     opacityOfCurrentPortrait:number = 1;
     opacityOfNextPortrait:number = 0;
@@ -38,21 +37,19 @@ export class BriefIntro {
     @Input() readingModeTextSize!:number;
     @Input() readingModeTextColor!:string;
     @Input() readingModeBackgroundColor!:string;
+
+    @ViewChild('helloText') helloTextRef!:ElementRef;
+    @ViewChild('wavingHand') wavingHandRef!:ElementRef;
     
+
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-    ngOnInit() {
-        if (isPlatformBrowser(this.platformId) && !this.readingModeOn) {
-            this.helloText = document.getElementById('helloText')!;
-            this.intervalIdForHelloText = setInterval(() => {
-                this.animateTheHelloText();
-            }, 10);
 
+    ngAfterViewInit() {
+        if (isPlatformBrowser(this.platformId) && !this.readingModeOn) {
             this.intervalIdForDots = setInterval(() => {
                 this.animateTheTypingDots();
             }, 600);
-
-            this.wavingHand = document.getElementById('wavingHand')!;
             
             this.intervalIdForHand = setInterval(() => {
                 this.animateWavyHands();
@@ -60,18 +57,6 @@ export class BriefIntro {
         }
     }
 
-    animateTheHelloText() {
-        if(this.helloTextMarginTopPercentage>6) {
-            this.helloTextMarginTopPercentage-=1;
-            if(this.helloTextMarginTopPercentage<6) {
-                this.helloTextMarginTopPercentage = 6;
-            }
-            this.helloText.style.marginTop = `${this.helloTextMarginTopPercentage}%`;
-        }
-        else {
-            clearInterval(this.intervalIdForHelloText);
-        }
-    }
 
     animateTheTypingDots() {
         if(this.dots.length===3) {
@@ -82,10 +67,11 @@ export class BriefIntro {
         }
     }
 
+
     animateWavyHands() {
         this.handOpacity -= 0.02;
 
-        this.wavingHand.style.opacity = this.handOpacity.toString();
+        this.wavingHandRef.nativeElement.style.opacity = this.handOpacity.toString();
 
         if (this.handOpacity <= 0) {
             clearInterval(this.intervalIdForHand);
@@ -97,6 +83,7 @@ export class BriefIntro {
             }, 105);
         }
     }
+
 
     updatePortrait(typeOfUpdate: string) {
         if(typeOfUpdate==='manual') {
@@ -125,6 +112,7 @@ export class BriefIntro {
         }
     }
 
+
     smoothlyDisplayFirstPortrait() {
         this.opacityOfCurrentPortrait+=0.05;
         if(this.opacityOfCurrentPortrait>=1) {
@@ -136,6 +124,7 @@ export class BriefIntro {
             return;
         }
     }
+
 
     initiateSmoothPortraitTransition() {
         if(this.opacityOfNextPortrait>=1) {
@@ -155,6 +144,7 @@ export class BriefIntro {
         }
     }
 
+    
     onClickingDarkScreen() {
         this.notifyParentToCloseAllPopups.emit();
     }

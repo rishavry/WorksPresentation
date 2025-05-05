@@ -190,7 +190,7 @@ export class MoveMacbookWithScroll {
     selector: 'RelevantExperience',
     imports: [ColorAndSizeTransitionWithScroll, MoveRelevantExperienceDescriptionWithScroll, MoveMacbookWithScroll, CommonModule],
     standalone: true,
-    templateUrl: '../templates/relevantExperience.component.html',
+    templateUrl: '../templates/RelevantExperience.component.html',
     styleUrl: '../styles.css',
 })
 export class RelevantExperience {
@@ -200,8 +200,8 @@ export class RelevantExperience {
     currentSlide:number = -1;
     slides:Record<string, any>[] = [
         {
-            videoSrcLight: 'slide0Light.mov',
-            videoSrcDark: 'slide0Dark.mov',
+            videoSrcLight: 'misc/slide0Light.mov',
+            videoSrcDark: 'misc/slide0Dark.mov',
             descriptionHTML: "(1 of 3) First <a href='https://www.google.com' target=\"_blank\" rel=\"noopener noreferrer\">slide</a>!",
             duration: 11
         },

@@ -6,7 +6,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     selector: 'TechnologyOrSkillPopup',
     standalone: true,
     imports: [CommonModule],
-    templateUrl: '../templates/technologyOrSkillPopup.component.html',
+    templateUrl: '../templates/TechnologyOrSkillPopup.component.html',
     styleUrl: '../styles.css',
 })
 export class TechnologyOrSkillPopup {

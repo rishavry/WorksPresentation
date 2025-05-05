@@ -1,27 +1,29 @@
+import { BriefIntro } from '../components/BriefIntro.component';
+import { LastSection } from '../components/LastSection.component';
+import { PenultimateSection } from '../components/PenultimateSection.component';
+import { RelevantExperience } from '../components/RelevantExperience.component';
+import { TechnologiesAndSkills } from '../components/TechnologiesAndSkills.component';
+import { TechnologyOrSkillPopup } from '../components/TechnologyOrSkillPopup.component';
+import { TopSection } from '../components/TopSection.component';
+
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BriefIntro } from '../components/briefIntro.component';
-import { LastSection } from '../components/lastSection.component';
-import { PenultimateSection } from '../components/penultimateSection.component';
-import { RelevantExperience } from '../components/relevantExperience.component';
-import { TechnologiesAndSkills } from '../components/technologiesAndSkills.component';
-import { TechnologyOrSkillPopup } from '../components/technologyOrSkillPopup.component';
-import { TopSection } from '../components/topSection.component';
+
 import { ColorPickerModule } from 'ngx-color-picker';
 
+
 @Component({
-    selector: 'app2',
+    selector: 'MainPage',
     standalone: true,
     imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
     TechnologiesAndSkills, TechnologyOrSkillPopup, PenultimateSection,
     LastSection, FormsModule, ColorPickerModule],
-    templateUrl: './app2.component.html',
+    templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
-
-export class App2 {
+export class MainPage {
     userIsAtTheTop:boolean = true;
     displayDarkScreen:boolean = false;
     currentTheme:string = "System: Light";
@@ -42,8 +44,10 @@ export class App2 {
     displayMiniBackgroundColorSettings:boolean = false;
     initialAnimationsAreFinished:boolean = false;
 
+
     constructor(private route: ActivatedRoute) { }
 
+    
     ngOnInit(): void {
         if (typeof window !== 'undefined') {
             window.addEventListener('scroll', this.onScroll);
@@ -269,6 +273,7 @@ export class App2 {
 
     updateURLOfPageAfterUserPersonalization() {
         let newURL = "http://localhost:8037";
+        
         if(this.readingModeOn==true || !this.currentTheme.startsWith('System:')) {
             newURL+="?";
             if(this.readingModeOn) {
@@ -340,5 +345,4 @@ export class App2 {
     setInitialAnimationsAreFinishedToTrue() {
         this.initialAnimationsAreFinished = true;
     }
-
 }

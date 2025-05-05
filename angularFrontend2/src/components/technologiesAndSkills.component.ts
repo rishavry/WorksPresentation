@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Directive, ElementRef, HostListener, Input, Renderer2, Output, EventEmitter } from '@angular/core';
-import { SingleTechnologyOrSkill } from './singleTechnologyOrSkill.component';
+import { SingleTechnologyOrSkill } from './SingleTechnologyOrSkill.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
@@ -251,7 +251,7 @@ export class MoveDataAndCloudSectionUpCloser {
     StartFullStackColorfulWaveAndShowElementsWhenUserReachesThisPoint, StartFrontendColorfulWaveAndShowElementsWhenUserReachesThisPoint,
     StartBackendColorfulWaveAndShowElementsWhenUserReachesThisPoint, StartDataAndCloudColorfulWaveAndShowElementsWhenUserReachesThisPoint],
     standalone: true,
-    templateUrl: '../templates/technologiesAndSkills.component.html',
+    templateUrl: '../templates/TechnologiesAndSkills.component.html',
     styleUrl: '../styles.css',
 })
 export class TechnologiesAndSkills {
@@ -266,11 +266,11 @@ export class TechnologiesAndSkills {
             backgroundColor: '#faedee',
             color: 'black',
             usedFor: [
-                `Used in the frontend of the website you're staring at right now! (<a href='https://github.com/MegaGramProject/PortfolioPresentation' target='_blank' rel='noopener noreferrer' style='color: black;'>PortfolioPresentation</a>).`,
+                `Used in the frontend of the website you're staring at right now! (<a href='https://github.com/MegaGramProject/PortfolioPresentation' target='_blank' rel='noopener noreferrer'>PortfolioPresentation</a>).`,
 
-                `Used in one of the frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in one of the frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the following endpoints: /, /stories/{authorUsernameOrIdOfStory}, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
             ]
         },
         {
@@ -280,7 +280,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#280247',
             color: 'white',
             usedFor: [
-                `Used in 'aspNetCoreBackend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: white;'>Home-Page</a>.
+                `Used in 'aspNetCoreBackend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This backend pertains to comments & captions(GraphQL), and likes of posts/comments(Rest-API).`
             ]
         },
@@ -291,17 +291,17 @@ export class TechnologiesAndSkills {
             backgroundColor: '#f0f4ff',
             color: 'black',
             usedFor: [
-                `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
 
-                `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>
+                `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>
                 for the following endpoints: /forgotPassword, /setNewPassword/{username}/{passwordResetToken}, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
 
-                `Used for the styling of all 3 frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used for the styling of all 3 frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the following endpoints: /, /stories/{authorUsernameOrIdOfStory}, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`
             ]
         },
         {
@@ -313,22 +313,22 @@ export class TechnologiesAndSkills {
             usedFor: [
                 'Each of the repositories mentioned below have a comprehensive README.md file with a consistent structure',
 
-                `Used for the version-control of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
+                `Used for the version-control of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>.
                 In this repository, the branches related to the frontend are- 'frontend', 'gcp-frontend', & 'main(default)'.`,
                 
-                `Used for the version-control of the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>.
+                `Used for the version-control of the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>.
                 In this repository, the branches related to the backend are- 'backend', 'gcp-backend', & 'main(default)'.`,
                 
-                `Used for the version-control of the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                `Used for the version-control of the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>.
                 In this repository, the branches related to the frontend are- 'frontend' & 'main(default)'.`,
                 
-                `Used for the version-control of the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                `Used for the version-control of the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>.
                 In this repository, the branch related to the backend is- 'main(default)'.`,
 
-                `Used for the version-control of all 3 frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used for the version-control of all 3 frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 In this repository, the branches related to the frontend are- 'frontend' & 'main(default)'.`,
                 
-                `Used for the version-control of the 5 backends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used for the version-control of the 5 backends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 In this repository, the branch related to the backend is- 'main(default)'.`
             ]
         },
@@ -339,21 +339,21 @@ export class TechnologiesAndSkills {
             backgroundColor: 'white',
             color: 'black',
             usedFor: [
-                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following purposes: reCaptcha(proving that login-attempts are not done by robots) and OAuth(allowing users to register and login with their Google accounts).`,
 
-                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following purpose: encryption/decryption of sensitive columns of the 'users' table with the help of
                 Google-Cloud Key-Management-Service(and the keys are all rotated automatically every 70 days).`,
 
-                `Used in the deployment of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the deployment of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following purposes: Google-Kubernetes-Engine(GKE) Clusters for Kubernetes pods that run the frontend and backend production servers, as well
                 as a Managed Instance Group that is used for routing requests made to https://megagram.com to the the GKE Load-Balancers for frontend and backend respectively.`,
 
-                `Used in the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>
                 whenever the contact-info of a user needs to be decrypted via the Google-Cloud Key-Management-Service key that was used to encrypt it in the first place.`,
 
-                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the storing UserMessages and UserConvos in MySQL-Spanner, backgroundMusicOfPosts in GCS Buckets, as well as the encryption/decryption of
                 data-encryption-keys that are used to encrypt vid-subtitle and background-music files of posts.`
             ]
@@ -365,7 +365,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#fff0fe',
             color: 'black',
             usedFor: [
-                `Used in 4 of the 5 backends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>,
+                `Used in 4 of the 5 backends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>,
                 along-side Rest-API.`
             ]
         },
@@ -376,17 +376,17 @@ export class TechnologiesAndSkills {
             backgroundColor: '#ffeac4',
             color: 'black',
             usedFor: [
-                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
 
-                `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>
                 for the following endpoints: /forgotPassword, /setNewPassword/{username}/{passwordResetToken}, & for the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`,
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
 
-                `Used in all 3 frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in all 3 frontends of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the following endpoints: /, /stories/{authorUsernameOrIdOfStory}, & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by 
-                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer' style='color: black;'>Rafaela Lucas</a>).`
+                <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`
             ]
         },
         {
@@ -396,7 +396,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#faf4cd',
             color: 'black',
             usedFor: [
-                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following endpoints: /login, /signup, /ageCheck, /confirmCode, & for the 404-Not-Found-Page. JQuery is used extensively in the JS-files due
                 to its concise syntax and grand popularity in the world of web-frontends.`
             ]
@@ -408,10 +408,10 @@ export class TechnologiesAndSkills {
             backgroundColor: '#dcfce8',
             color: 'black',
             usedFor: [
-                `Used in the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>.
                 This backend has 2 different endpoints, both of which are related to enabling users to reset their password.`,
 
-                `Used in 'springBootBackend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'springBootBackend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This backend has Rest-API and GraphQL and deals with the following: Stories, UserMessages, UserConvos, PostViews, & AdLinkClicks.`,
             ]
         },
@@ -422,7 +422,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#e1fae5',
             color: 'black',
             usedFor: [
-                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the storage of imageAndVideoSlidesOfPosts(local GridFS) & profilePhotos(MongoDB-Atlas non-GridFS)`
             ]
         },
@@ -434,14 +434,14 @@ export class TechnologiesAndSkills {
             color: 'black',
             usedFor: [
                 `Used for the data of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
-                rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                rel='noopener noreferrer'>Login-Register</a>
                 for the following tables: users(This table is hosted locally and accessbile via Ngrok. Each row represents a user of Megagram and contains these fields- id,
                 username, fullName, dateOfBirth, contactInfo, accountBasedIn, hashedPassword, salt, created, isPrivate, & isVerified), & 
                 userAuthTokens(This table is hosted on Google Cloud Spanner. Each row represents info about a specific user's authentication and refresh-token and contains the following fields-
                 userId, hashedAuthToken, authTokenSalt, hashedRefreshToken, refreshTokenSalt, authTokenExpiry, & refreshTokenExpiry).`,
 
                 `Used for the data of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank'
-                rel='noopener noreferrer' style='color: black;'>Home-Page</a> for the following tables in Google-Cloud MySQL-Spanner:
+                rel='noopener noreferrer'>Home-Page</a> for the following tables in Google-Cloud MySQL-Spanner:
                 userMessages & userConvos, and in Amazon Web Services Relational Database Service(AWS RDS)- postSaves and followRequests`
             ]
         },
@@ -452,7 +452,7 @@ export class TechnologiesAndSkills {
             backgroundColor: 'white',
             color: 'black',
             usedFor: [
-                `Used in 'expressJSBackend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'expressJSBackend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This backend pertains to posts and user-auth-tokens.`
             ]
         },
@@ -464,12 +464,12 @@ export class TechnologiesAndSkills {
             color: 'white',
             usedFor: [
                 `Used for the data of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank'
-                rel='noopener noreferrer' style='color: white;'>Reset-Password</a>
+                rel='noopener noreferrer'>Reset-Password</a>
                 for the following table: password_reset_tokens. This table has 4 columns, namely- id, userId, salt,
                 hashedToken, and expiration.`,
 
                 `Used for the data of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank'
-                rel='noopener noreferrer' style='color: white;'>Home-Page</a>
+                rel='noopener noreferrer'>Home-Page</a>
                 for the following tables: unencrypted_post_or_comment_likes, encrypted_post_or_comment_likes,
                 captions_comments_and_likes_encryption_info, userBlockings, & userFollowings`,
             ]
@@ -481,7 +481,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#40070b',
             color: 'white',
             usedFor: [
-                `Used in 'laravelBackend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: white;'>Home-Page</a>.
+                `Used in 'laravelBackend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This backend supports both Rest-API and GraphQL and pertains to post-background-music-files, vid-subtitle-files, users, &
                 profilePhotos.`
             ]
@@ -493,13 +493,13 @@ export class TechnologiesAndSkills {
             backgroundColor: '#3d3d3d',
             color: 'white',
             usedFor: [
-                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>.
                 This frontend has 4 different endpoints: /login, /signup, /ageCheck, & /confirmCode, as well as a 404-Not-Found-Page.`,
 
-                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: white;'>Login-Register</a>.
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>.
                 This backend has 14 different endpoints, most of which are related to the Megagram users table in MySQL.`,
 
-                `Used in 'djangoBackend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: white;'>Home-Page</a>.
+                `Used in 'djangoBackend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This backend supports both Rest-API and GraphQL and pertains to postSaves, userFollowings, followRequests, and userBlockings.`
             ]
         },
@@ -510,10 +510,10 @@ export class TechnologiesAndSkills {
             backgroundColor: '#b6e2fa',
             color: 'black',
             usedFor: [
-                `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.
+                `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>.
                 This frontend has 2 different endpoints: /forgotPassword, /setNewPassword/{username}/{passwordResetToken}, as well as a 404-Not-Found-Page.`,
 
-                `Used in 'reactjs-frontend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'reactjs-frontend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This frontend has 2 different endpoints: / & /stories/{authorUsernameOrIdOfStory}, as well as a 404-Not-Found-Page.`
             ]
         },
@@ -525,7 +525,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#b2f7e0',
             color: 'black',
             usedFor: [
-                `Used in 'vuejs-frontend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'vuejs-frontend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This frontend has 2 different endpoints: / & /stories/{authorUsernameOrIdOfStory}, as well as a 404-Not-Found-Page.`,
             ]
         },
@@ -537,16 +537,16 @@ export class TechnologiesAndSkills {
             backgroundColor: '#f2f2f2',
             color: 'black',
             usedFor: [
-                `Used in 'cSharpSignalRWebSocket' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'cSharpSignalRWebSocket' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This WebSocket is used for providing updates on likes and replies to comments of users.`,
 
-                `Used in 'nodeJSWebSocketDotIO' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'nodeJSWebSocketDotIO' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This WebSocket is used for providing updates on likes and comments of posts of users.`,
 
-                `Used in 'phpRatchetWebSocket' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'phpRatchetWebSocket' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This WebSocket is used for providing updates on followings and follow-requests received by users.`,
 
-                `Used in 'pythonWebSocket' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>.
+                `Used in 'pythonWebSocket' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>.
                 This WebSocket is used for providing updates on messages in convos of users.`,
             ]
         },
@@ -557,10 +557,10 @@ export class TechnologiesAndSkills {
             backgroundColor: '#ff8f8f',
             color: 'black',
             usedFor: [
-                `Used in the backend-caching of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer' style='color: black;'>Login-Register</a>
+                `Used in the backend-caching of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank' rel='noopener noreferrer'>Login-Register</a>
                 for the following purposes: rate-limiting, efficient user-info-retrieval, and efficient and cost-saving language-translations.`,
 
-                `Used in the backend of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for caching each of the following: posts and their captions, posts and their encrypted data-encryption-keys for captions/comments/likes,
                 usernames and their ids, user-convos and their details, and more.`
             ]
@@ -572,7 +572,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#efedfc',
             color: 'black',
             usedFor: [
-                `Used in the deployment of both the frontend and backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer' style='color: black;'>Reset-Password</a>.`
+                `Used in the deployment of both the frontend and backend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank' rel='noopener noreferrer'>Reset-Password</a>.`
             ]
         },
         {
@@ -582,7 +582,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#fcfae6',
             color: 'black',
             usedFor: [
-                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the following use-cases: storing data in Aurora-PostgresSQL(unencrypted_post_or_comment_likes, encrypted_post_or_comment_likes,
                 & captions_comments_and_likes_encryption_info), storing data in Keyspace Apache Cassandra(encryptedPostVidSubtitlesInfo), storing data in My-SQL
                 RDS(postSaves and followRequests), key-management-service(for encrypting/decrypting data-encryption-keys for sensitive data of posts
@@ -596,7 +596,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#edf4ff',
             color: 'black',
             usedFor: [
-                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: black;'>Home-Page</a>
+                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the following use-cases: storing data in Microsoft SQL-Server(unencryptedCaptionsOfPosts, encryptedCaptionsOfPosts,
                 unencryptedCommentsOfPosts, encryptedCommentsOfPosts, & adLinkClicks), storing data in Flexible-Server PostgresSQL(userBlockings &
                 userFollowings), storing image and video files of stories in Blob-Storage, and encrypting/decrypting data-encryption-keys for 
@@ -610,7 +610,7 @@ export class TechnologiesAndSkills {
             backgroundColor: '#29080e',
             color: 'white',
             usedFor: [
-                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer' style='color: white;'>Home-Page</a>
+                `Used in <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' rel='noopener noreferrer'>Home-Page</a>
                 for the following tables: unencryptedPostBgMusicInfo, encryptedPostBgMusicInfo, postBgMusicAndVidSubtitlesEncryptionInfo,
                 postViews, and storyViews`
             ]

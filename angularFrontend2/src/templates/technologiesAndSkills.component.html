@@ -81,7 +81,7 @@
             </div>
         </div>
     </div>
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: -1%; opacity: 0.7; height: 100%; width: 102%;">
 </div>
 
 <div *ngIf="readingModeOn" id="technologiesAndSkills" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray;
@@ -96,7 +96,7 @@ border-width: 0.06em; border-top: none; border-left: none; border-right: none; p
     style="display: flex; flex-direction: column; gap: 0em;"
     [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Arial' : readingModeFont}">
         <div style="display: flex; align-items: center; gap: 1em;">
-            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <img [src]="'images/' + technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
             <h3>{{ technologyOrSkill['name'] }}</h3>
         </div>
         <p style="margin-left: 3em;">Places Used:</p>
@@ -116,7 +116,7 @@ border-width: 0.06em; border-top: none; border-left: none; border-right: none; p
     style="display: flex; flex-direction: column; gap: 0em;"
     [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Red Hat Display' : readingModeFont}">
         <div style="display: flex; align-items: center; gap: 1em;">
-            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <img [src]="'images/' + technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
             <h3>{{ technologyOrSkill['name'] }}</h3>
         </div>
         <p style="margin-left: 3em;">Places Used:</p>
@@ -136,7 +136,7 @@ border-width: 0.06em; border-top: none; border-left: none; border-right: none; p
     style="display: flex; flex-direction: column; gap: 0em;"
     [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont}">
         <div style="display: flex; align-items: center; gap: 1em;">
-            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <img [src]="'images/' + technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
             <h3>{{ technologyOrSkill['name'] }}</h3>
         </div>
         <p style="margin-left: 3em;">Places Used:</p>
@@ -156,7 +156,7 @@ border-width: 0.06em; border-top: none; border-left: none; border-right: none; p
     style="display: flex; flex-direction: column; gap: 0em;"
     [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Plus Jakarta Sans' : readingModeFont}">
         <div style="display: flex; align-items: center; gap: 1em;">
-            <img [src]="technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
+            <img [src]="'images/' + technologyOrSkill['image']" style="height: 2em; width: 2em; pointer-events: none; object-fit: contain;">
             <h3>{{ technologyOrSkill['name'] }}</h3>
         </div>
         <p style="margin-left: 3em;">Places Used:</p>
@@ -169,7 +169,7 @@ border-width: 0.06em; border-top: none; border-left: none; border-right: none; p
         </ul>
     </div>
     
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>
 
 
