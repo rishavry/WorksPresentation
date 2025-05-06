@@ -1,29 +1,38 @@
-<div *ngIf="!readingModeOn" id="lastSection" (mouseenter)="startConfettiOnMouseEnter()" style="padding-top: 5em; padding-bottom: 3em; padding-left: 2.5em; width: 101%; display: flex;
-align-items: center; justify-content: center; gap: 5%; height: 40em; position: relative; margin-left: -1em; width: 101%;
-background-color: #0620b8; color: white;">
-
+<div *ngIf="!readingModeOn" (mouseenter)="startConfettiOnMouseEnter()" style="padding-top: 15em; padding-bottom: 15em;
+padding-left: 2.5em;  display: flex; align-items: center; justify-content: center; gap: 5%; position: relative; width: 105%;
+margin-left: -0.5em; background-color: #0620b8; color: white; box-sizing: border-box; overflow-x: scroll;">
     <div style="display: flex; gap: 3em; margin-left: -12em">
         <img id="curvyArrow" src="images/curvyArrow.png" style="height: 14em; width: 11em; margin-top: 5em;">
+
         <div>
-            <p style="font-family: IBM Plex Sans; font-size: 3.8em; font-weight: bold; max-width: 12em; color:#d9ffe1;">Inspired by my work?</p>
-            <p style="font-size: 1.3em; font-family: Roboto; margin-bottom: -0.5em;">It’s not too good to be true! Let's bring your vision to life.</p>
-            <p style="font-size: 1.3em; font-family: Roboto; margin-bottom: -0.5em;">Shoot me an email/text/Linkedin-message whenever you prefer.</p>
-            <p style="font-size: 1.3em; font-family: Roboto;">My info will be in the box to your right.</p>
+            <p style="font-family: IBM Plex Sans; font-size: 3.8em; font-weight: bold; max-width: 12em; color:#d9ffe1;">
+                Inspired by my work?
+            </p>
+            <p style="font-size: 1.3em; font-family: Roboto; margin-bottom: -0.5em;">
+                It’s not too good to be true! Let's bring your vision to life.
+            </p>
+            <p style="font-size: 1.3em; font-family: Roboto; margin-bottom: -0.5em;">
+                Shoot me an email/text/Linkedin-message whenever you prefer.
+            </p>
+            <p style="font-size: 1.3em; font-family: Roboto;">
+                My info will be in the box to your right.
+            </p>
         </div>
     </div>
 
-    <div style="position: relative; height: 20em; width: 15em;">
-        <img (click)="startConfettiAfterClickingTrophy()" src="images/trophyWithMoney.png" style="position: absolute; top: -60%; left: 50%; z-index: 1;
-        height: 26em; width: 24em; cursor: pointer;">
+    <div style="position: relative; height: 20em; width: 15em; z-index: 1;">
+        <img (click)="startConfettiAfterClickingTrophy()" src="images/trophyWithMoney.png" style="position: absolute; top: -60%;
+        left: 50%; z-index: 1; height: 26em; width: 24em; cursor: pointer;">
 
         <div style="border-radius: 1.5em; margin-top: 5em; margin-left: 5em;
         padding: 3em 1em; display: flex; flex-direction: column; gap: 1em;  background-color: rgba(31, 30, 30, 0.9);
         z-index: 2; position: absolute; top: -20%; left: 0%; height: 100%; width: 120%; font-family: Plus Jakarta Sans;
-        box-shadow: 0 0 7px white, 0 0 10px white, 0 0 21px red, 0 0 42px red">
+        box-shadow: 0 0 7px white, 0 0 10px white, 0 0 21px red, 0 0 42px red; overflow-x: scroll;">
             <p><b>Email:</b> rishavray422&#64;gmail.com</p>
             <p><b>Phone Number:</b> 608-443-7805</p>
             <div style="display: flex; align-items: center; gap: 1em;">
-                <img class="linkedinIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit: contain;">
+                <img class="linkedinIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit:
+                contain;">
                 <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
                 style="color: white;">
                     My Linkedin Profile
@@ -33,18 +42,25 @@ background-color: #0620b8; color: white;">
     </div>
 
     <small style="position: absolute; top: 95%; left: 42%; color: gray;">Hope you enjoyed this experience as much as I</small>
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top:
+    0%; left: 0%; opacity: 0.7; height: 100%; width: 100%; z-index: 2;">
 </div>
 
-<div *ngIf="readingModeOn" id="lastSection" style="padding: 1.7em 2.7em; position: relative; margin-left:-0.5em; width: 98%;"
-[ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont,
-'font-size': (readingModeTextSize*1.13)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
+<div *ngIf="readingModeOn" style="padding: 1.7em 2.7em; position: relative; margin-left: -0.5em; width: 105%; box-sizing:
+border-box; overflow-x: scroll;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' :
+readingModeFont, 'font-size': (readingModeTextSize*1.13)+'em', 'color': readingModeTextColor, 'background-color':
+readingModeBackgroundColor}">
     <h1>The Finale</h1>
-    <p style="margin-top: 3.5em;">
-        Inspired by my work? It’s not too good to be true! Let's bring your vision to life. Shoot me an email/text/Linkedin-message whenever you prefer.
-        My email-address is rishavray422&#64;gmail.com. My phone-number is 608-443-7805. Last, but not least, my Linkedin profile is over <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
-        [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">here</a>.
+
+    <p style="margin-top: 3.5em; width: 88%;">
+        Inspired by my work? It’s not too good to be true! Let's bring your vision to life. Shoot me an email/text/Linkedin-message
+        whenever you prefer. My email-address is rishavray422&#64;gmail.com. My phone-number is 608-443-7805. Last, but not
+        least, my Linkedin profile is over <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank"
+        rel="noopener noreferrer" [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">here</a>.
         Thanks for staying till the end, you're a real one!
     </p>
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top:
+    0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>

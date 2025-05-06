@@ -1,6 +1,7 @@
 import { BriefIntro } from '../components/BriefIntro.component';
 import { LastSection } from '../components/LastSection.component';
 import { PenultimateSection } from '../components/PenultimateSection.component';
+import { TechOrSkillPopup } from '../components/TechOrSkillPopup.component';
 import { TopSection } from '../components/TopSection.component';
 
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro, PenultimateSection, LastSection],
+    imports: [CommonModule, TopSection, BriefIntro, TechOrSkillPopup, PenultimateSection, LastSection],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
@@ -33,7 +34,8 @@ export class MainPage {
 
     darkModeQuery!:any;
 
-    displayTechnologyOrSkillsPopup:boolean = false;
+    displayTechOrSkillsPopup:boolean = false;
+    techOrSkillForPopup:any = {};
 
     @ViewChild(PenultimateSection) penultimateSectionRef!: PenultimateSection;
 
@@ -288,7 +290,7 @@ export class MainPage {
 
 
     closeAllPopupsAfterClickingDarkScreen() {
-        this.displayTechnologyOrSkillsPopup = false;
+        this.displayTechOrSkillsPopup = false;
         this.displayDarkScreen = false;
     }
 
@@ -335,5 +337,12 @@ export class MainPage {
                 }
             }
         }
+    }
+
+
+    showTechOrSkillPopup(techOrSkillForPopup:any) {
+        this.techOrSkillForPopup = techOrSkillForPopup;
+        this.displayDarkScreen = true;
+        this.displayTechOrSkillsPopup = true;
     }
 }

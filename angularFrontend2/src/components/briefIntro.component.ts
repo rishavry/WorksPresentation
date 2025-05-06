@@ -6,13 +6,10 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
     selector: 'BriefIntro',
     imports: [CommonModule],
     templateUrl: '../templates/BriefIntro.component.html',
-    styleUrl: '../styles.css',
     standalone: true,
 })
 export class BriefIntro implements AfterViewInit {
     @Input() initialAnimationsAreFinished:boolean = false;
-
-    @Input() displayDarkScreen!:boolean;
 
     @Input() currentTheme!:string;
 
@@ -21,6 +18,8 @@ export class BriefIntro implements AfterViewInit {
     @Input() readingModeTextSize!:number;
     @Input() readingModeTextColor!:string;
     @Input() readingModeBackgroundColor!:string;
+
+    @Input() displayDarkScreen!:boolean;
 
     @Output() closeAllPopups:EventEmitter<any> = new EventEmitter<any>();
 
@@ -48,6 +47,7 @@ export class BriefIntro implements AfterViewInit {
 
 
     ngAfterViewInit() {
+        /*
         this.intervalIdForDots = setInterval(() => {
             this.animateTheTypingDots();
         }, 600);
@@ -55,6 +55,7 @@ export class BriefIntro implements AfterViewInit {
         this.intervalIdForHand = setInterval(() => {
             this.animateWavyHands();
         }, 100);
+        */
     }
 
 

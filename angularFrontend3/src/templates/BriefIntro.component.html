@@ -44,9 +44,11 @@ currentTheme.endsWith('Light') ? '#68c6fc' : '#394da3', 'color': currentTheme.en
     <img *ngIf="!initialAnimationsAreFinished" src="images/lightningBolt.gif" :style="position: absolute; top: 40%; left: 30%; height:
     30em; width: 35em; object-fit: contain; pointer-events: none;">
 
-    <p id="briefIntroInspiringQuote" *ngIf="initialAnimationsAreFinished && !displayDarkScreen" style="position: absolute; right: 1%;
-    top: 2%; font-size: 0.7em; font-family: Tahoma; width: 8%;">“For every reason it’s not possible, there are hundreds of people who
-    have faced the same circumstances and succeeded.” – Jack Canfield</p>
+    <p id="briefIntroInspiringQuote" *ngIf="initialAnimationsAreFinished && !displayDarkScreen" style="position: absolute; right: 5%;
+    top: 1%; font-size: 0.7em; font-family: Tahoma; width: 8%;">
+        “For every reason it’s not possible, there are hundreds of people who have faced the same circumstances and succeeded.” –
+        Jack Canfield
+    </p>
 
     <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top: 0%;
     left: 0%; opacity: 0.7; height: 100%; width: 100%;">

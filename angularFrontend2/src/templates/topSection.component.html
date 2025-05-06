@@ -82,7 +82,7 @@ position: relative;">
 
     <div *ngIf="isPersonalizeBeingHovered || isPersonalizeBigSectionBeingHovered"
     (mouseenter)="onMouseEnterOfPersonalizeBigSection()" (mouseleave)="onMouseLeaveOfPersonalizeBigSection()"
-    style="width: 100%; padding: 1em 3em; border-style: solid; 
+    style="width: 105%; margin-left: -0.5em; padding: 1em 3em; border-style: solid; 
     border-color: lightgray; border-left: none; border-right: none; border-bottom: none; border-width: 0.09em;
     display: flex; flex-direction: column; gap: 1em; overflow-x: scroll;"
     [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color':
@@ -236,7 +236,7 @@ position: relative;">
     </div>
 
     <div *ngIf="isLinksBeingHovered || isLinksBigSectionBeingHovered" (mouseenter)="onMouseEnterOfLinksBigSection()"
-    (mouseleave)="onMouseLeaveOfLinksBigSection()" style="width: 100%; border-style: solid; border-color:
+    (mouseleave)="onMouseLeaveOfLinksBigSection()" style="width: 105%; margin-left: -0.5em; border-style: solid; border-color:
     lightgray; border-left: none; border-right: none; border-bottom: none; border-width: 0.09em; display: flex;
     flex-direction: column; gap: 1em; padding-top: 3em; padding-left: 1.5em; padding-bottom: 3em; position:
     relative; box-sizing: border-box; overflow-x: scroll;" [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' :
@@ -257,7 +257,7 @@ position: relative;">
 
     <div *ngIf="isContactMeBeingHovered || isContactMeBigSectionBeingHovered"
     (mouseenter)="onMouseEnterOfContactMeBigSection()" (mouseleave)="onMouseLeaveOfContactMeBigSection()"
-    style="width: 100%; border-style: solid; border-color: lightgray; border-left: none; border-right:
+    style="width: 105%; margin-left: -0.5em; border-style: solid; border-color: lightgray; border-left: none; border-right:
     none; border-bottom: none; border-width: 0.09em; padding-top: 3em; padding-left: 1.5em; padding-bottom: 3em;
     box-sizing: border-box; overflow-x: scroll;" [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929',
     'color': currentTheme.endsWith('Light') ? '' : 'white'}">
