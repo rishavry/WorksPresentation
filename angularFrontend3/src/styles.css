@@ -44,6 +44,12 @@ a:hover {
   animation-iteration-count: 1;
 }
 
+#curvyArrow {
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  animation: curvyArrowAnimation 3.8s linear infinite;
+  animation-delay: 2.7s;
+}
+
 @keyframes colorWaveAnimation {
   0% {
     color: black;
@@ -129,6 +135,24 @@ a:hover {
 
   100% {
     color: black;
+  }
+}
+
+@keyframes curvyArrowAnimation {
+  0% {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
+  }
+  25% {
+    clip-path: polygon(0% 0%, 50% 0%, 50% 0%, 0% 0%);
+  }
+  50% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+  }
+  75% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }
 

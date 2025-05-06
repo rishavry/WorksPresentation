@@ -11,8 +11,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
 export class BriefIntro implements AfterViewInit {
     @Input() initialAnimationsAreFinished:boolean = false;
 
-    @Input() displayDarkScreen!:boolean;
-
     @Input() currentTheme!:string;
 
     @Input() readingModeOn!:boolean;
@@ -20,6 +18,8 @@ export class BriefIntro implements AfterViewInit {
     @Input() readingModeTextSize!:number;
     @Input() readingModeTextColor!:string;
     @Input() readingModeBackgroundColor!:string;
+
+    @Input() displayDarkScreen!:boolean;
 
     @Output() closeAllPopups:EventEmitter<any> = new EventEmitter<any>();
 

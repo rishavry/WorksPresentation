@@ -1,4 +1,5 @@
 import { BriefIntro } from '../components/BriefIntro.component';
+import { LastSection } from '../components/LastSection.component';
 import { PenultimateSection } from '../components/PenultimateSection.component';
 import { TopSection } from '../components/TopSection.component';
 
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro, PenultimateSection],
+    imports: [CommonModule, TopSection, BriefIntro, PenultimateSection, LastSection],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
