@@ -6,7 +6,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
     selector: 'BriefIntro',
     imports: [CommonModule],
     templateUrl: '../templates/BriefIntro.component.html',
-    styleUrl: '../styles.css',
     standalone: true,
 })
 export class BriefIntro implements AfterViewInit {

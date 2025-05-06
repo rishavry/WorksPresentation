@@ -3,13 +3,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
-    selector: 'TechnologyOrSkillPopup',
+    selector: 'TechOrSkillPopup',
     standalone: true,
     imports: [CommonModule],
-    templateUrl: '../templates/TechnologyOrSkillPopup.component.html',
+    templateUrl: '../templates/TechOrSkillPopup.component.html',
     styleUrl: '../styles.css',
 })
-export class TechnologyOrSkillPopup {
+export class TechOrSkillPopup {
     @Input() currentTheme!:string;
     @Input() technologyOrSkill!:Record<string, any>;
     @Output() notifyParentToCloseThisPopup:EventEmitter<any> = new EventEmitter<any>();

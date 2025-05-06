@@ -4,13 +4,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Component({
-    selector: 'SingleTechnologyOrSkill',
+    selector: 'SingleTechOrSkill',
     imports: [CommonModule],
     standalone: true,
-    templateUrl: '../templates/SingleTechnologyOrSkill.component.html',
+    templateUrl: '../templates/SingleTechOrSkill.component.html',
     styleUrl: '../styles.css',
 })
-export class SingleTechnologyOrSkill {
+export class SingleTechOrSkill {
     @Input() name!:string;
     @Input() type!:string;
     @Input() image!:string;

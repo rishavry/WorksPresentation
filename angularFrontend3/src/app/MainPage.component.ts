@@ -1,15 +1,16 @@
-import { TopSection } from '../components/TopSection.component';
 import { BriefIntro } from '../components/BriefIntro.component';
+import { PenultimateSection } from '../components/PenultimateSection.component';
+import { TopSection } from '../components/TopSection.component';
 
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro],
+    imports: [CommonModule, TopSection, BriefIntro, PenultimateSection],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
@@ -22,7 +23,7 @@ export class MainPage {
     readingModeTextColor:string = '';
     readingModeBackgroundColor:string = '';
 
-    initialAnimationsAreFinished:boolean = true; //change to false
+    initialAnimationsAreFinished:boolean = true; // change to false
 
     displayDarkScreen:boolean = false;
 
@@ -32,6 +33,8 @@ export class MainPage {
     darkModeQuery!:any;
 
     displayTechnologyOrSkillsPopup:boolean = false;
+
+    @ViewChild(PenultimateSection) penultimateSectionRef!: PenultimateSection;
 
 
     constructor(private route: ActivatedRoute) { }
@@ -119,6 +122,10 @@ export class MainPage {
                    this.enableDarkMode();            
                 }
             }
+
+            if (!this.readingModeOn) {
+                window.addEventListener('scroll', () => this.handleOnScroll());
+            }
         }
     }
 
@@ -151,6 +158,14 @@ export class MainPage {
 
     toggleReadingMode() {
         this.readingModeOn = !this.readingModeOn;
+
+        if (!this.readingModeOn) {
+            window.addEventListener('scroll', () => this.handleOnScroll());
+        }
+        else {
+            window.removeEventListener('scroll', () => this.handleOnScroll());
+        }
+
         this.initialAnimationsAreFinished = true;
 
         this.updateURLOfPageAfterUserPersonalization();
@@ -274,5 +289,50 @@ export class MainPage {
     closeAllPopupsAfterClickingDarkScreen() {
         this.displayTechnologyOrSkillsPopup = false;
         this.displayDarkScreen = false;
+    }
+
+
+    handleOnScroll() {
+        if (this.penultimateSectionRef) {
+            let indexOfFocusedPenultimateSectionTextRef = -1;
+
+            const allPenultimateSectionTextRefsInOrder = this.penultimateSectionRef.getAllTextRefsInOrder();
+
+            for (let i=0; i<allPenultimateSectionTextRefsInOrder.length; i++) {
+                const textRef = allPenultimateSectionTextRefsInOrder[i];
+                
+                if (textRef) {
+                    const rect = textRef.nativeElement.getBoundingClientRect();
+                    const isAboveBottomEdgeOfViewport = rect.bottom < window.innerHeight;
+    
+                    if (isAboveBottomEdgeOfViewport) {
+                        indexOfFocusedPenultimateSectionTextRef = i;
+                    }
+                }
+            }
+
+            for (let i=0; i<allPenultimateSectionTextRefsInOrder.length; i++) {
+                const textRef = allPenultimateSectionTextRefsInOrder[i];
+
+                if (textRef) {
+                    if (this.currentTheme.endsWith('Light')) {
+                        if (i == indexOfFocusedPenultimateSectionTextRef) {
+                            textRef.nativeElement.style.setProperty('color', 'black');
+                        }
+                        else {
+                            textRef.nativeElement.style.setProperty('color', 'white');
+                        }
+                    }
+                    else {
+                        if (i == indexOfFocusedPenultimateSectionTextRef) {
+                            textRef.nativeElement.style.setProperty('color', 'white');
+                        }
+                        else {
+                            textRef.nativeElement.style.setProperty('color', 'black');
+                        }
+                    }
+                }
+            }
+        }
     }
 }

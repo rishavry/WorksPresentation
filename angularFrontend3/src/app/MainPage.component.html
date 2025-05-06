@@ -26,3 +26,10 @@
     (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
     (notifyParentThatInitialAnimationsAreFinished)="initialAnimationsAreFinished = true"
 />
+
+
+<PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn"
+    [currentTheme]="currentTheme"
+    [displayDarkScreen]="displayDarkScreen"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>

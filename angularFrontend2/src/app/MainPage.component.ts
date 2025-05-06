@@ -3,7 +3,7 @@ import { LastSection } from '../components/LastSection.component';
 import { PenultimateSection } from '../components/PenultimateSection.component';
 import { RelevantExperience } from '../components/RelevantExperience.component';
 import { TechnologiesAndSkills } from '../components/TechnologiesAndSkills.component';
-import { TechnologyOrSkillPopup } from '../components/TechnologyOrSkillPopup.component';
+import { TechnologyOrSkillPopup } from '../components/TechOrSkillPopup.component';
 import { TopSection } from '../components/TopSection.component';
 
 import { CommonModule } from '@angular/common';
@@ -17,9 +17,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro, RelevantExperience,
-    TechnologiesAndSkills, TechnologyOrSkillPopup, PenultimateSection,
-    LastSection, FormsModule, ColorPickerModule],
+    imports: [CommonModule, FormsModule, ColorPickerModule, TopSection, BriefIntro, RelevantExperience, TechnologiesAndSkills, 
+    TechnologyOrSkillPopup, PenultimateSection, LastSection],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
