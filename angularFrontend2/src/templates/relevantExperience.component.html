@@ -1,6 +1,6 @@
-<div #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; position: relative; display: flex;
-align-items: center; justify-content: center; box-sizing: border-box; gap: 16%; padding-top: 45em; padding-bottom: 5em;
-padding-left: 5em; padding-right: 5em;">
+<div #relevantExperience #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; position: relative;
+display: flex; align-items: center; justify-content: center; box-sizing: border-box; gap: 16%; padding-top: 45em; padding-bottom:
+5em; padding-left: 5em; padding-right: 5em;">
     <div style="width: 40em;">
         <h1>Relevant Experience</h1>
         <p style="max-width: 80%; line-height: 1.4; font-family: Roboto;">
@@ -52,10 +52,10 @@ padding-left: 5em; padding-right: 5em;">
     0%; left: -1%; opacity: 0.7; height: 100%; width: 101%;">
 </div>
 
-<div *ngIf="readingModeOn" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray;
-border-width: 0.06em; border-top: none; border-left: none; border-right: none; position: relative; margin-left:-0.5em;
-width: 105%;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Roboto' : readingModeFont,
-'font-size': (readingModeTextSize*1)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
+<div #relevantExperience *ngIf="readingModeOn" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray;
+border-width: 0.06em; border-top: none; border-left: none; border-right: none; position: relative; width: 100%; box-sizing:
+border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Roboto' : readingModeFont, 'font-size':
+(readingModeTextSize*1)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
     <h1>Relevant Experience</h1>
 
     <br/>

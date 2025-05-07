@@ -39,6 +39,21 @@ a:hover {
   color: black !important;
 }
 
+.threeDimensionalDiv {
+  --bottom-color: #999;
+  --right-color: #ddd;
+
+  box-shadow:
+    1px 0 0 var(--right-color),
+    1px 1px 0 var(--bottom-color),
+    2px 1px 0 var(--right-color),
+    2px 2px 0 var(--bottom-color),
+    3px 2px 0 var(--right-color),
+    3px 3px 0 var(--bottom-color),
+    4px 3px 0 var(--right-color),
+    5px 6px 0 var(--bottom-color);
+}
+
 #neonName {
   animation: neonNameAnimation 4.5s linear forwards;
   animation-iteration-count: 1;
@@ -48,6 +63,42 @@ a:hover {
   clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
   animation: curvyArrowAnimation 3.8s linear infinite;
   animation-delay: 2.7s;
+}
+
+.colorfulWave span {
+  animation: colorWaveAnimation 1s linear forwards;
+  animation-iteration-count: 1;
+}
+
+.colorfulWave span:nth-child(1) {
+  animation-delay: 0s;
+}
+.colorfulWave span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.colorfulWave span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.colorfulWave span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.colorfulWave span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.colorfulWave span:nth-child(6) {
+  animation-delay: 1s;
+}
+.colorfulWave span:nth-child(7) {
+  animation-delay: 1.2s;
+}
+.colorfulWave span:nth-child(8) {
+  animation-delay: 1.4s;
+}
+.colorfulWave span:nth-child(9) {
+  animation-delay: 1.6s;
+}
+.colorfulWave span:nth-child(10) {
+  animation-delay: 1.8s;
 }
 
 @keyframes colorWaveAnimation {

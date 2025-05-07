@@ -1,5 +1,5 @@
-<div #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; padding: 5em 1em; position: relative;
-display: flex; flex-direction: column; align-items: center; overflow-x: scroll; box-sizing: border-box;" 
+<div #briefIntro #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; padding: 5em 1em; position:
+relative; display: flex; flex-direction: column; align-items: center; overflow-x: scroll; box-sizing: border-box;" 
 [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? '#68c6fc' : '#394da3', 'color': currentTheme.endsWith('Light') ?
 '' : 'white'}">
     <p #helloText style="font-weight: bold; margin-top:6%; font-size: 6em; width: 55%; text-align: center;">
@@ -55,10 +55,10 @@ display: flex; flex-direction: column; align-items: center; overflow-x: scroll; 
     left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>
 
-<div *ngIf="readingModeOn" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray; border-width: 0.06em;
-border-top: none; border-left: none; border-right: none; position: relative; margin-left:-0.5em; width: 105%; overflow-x: scroll;
-box-sizing: border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Arial' : readingModeFont,
-'font-size': (readingModeTextSize*0.97)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
+<div #briefIntro *ngIf="readingModeOn" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray; border-width:
+0.06em; border-top: none; border-left: none; border-right: none; position: relative; width: 100%; box-sizing: border-box;"
+[ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Arial' : readingModeFont, 'font-size':
+(readingModeTextSize*0.97)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
     <h1>Brief Intro</h1>
 
     <br/>

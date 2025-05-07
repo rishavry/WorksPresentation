@@ -4,6 +4,7 @@ import { PenultimateSection } from '../components/PenultimateSection.component';
 import { RelevantExperience } from '../components/RelevantExperience.component';
 import { TechOrSkillPopup } from '../components/TechOrSkillPopup.component';
 import { TopSection } from '../components/TopSection.component';
+import { TechsAndSkillsUsed } from '../components/TechsAndSkillsUsed.component';
 
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
@@ -13,7 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro, RelevantExperience, TechOrSkillPopup, PenultimateSection, LastSection],
+    imports: [CommonModule, TopSection, BriefIntro, RelevantExperience, TechsAndSkillsUsed, TechOrSkillPopup, PenultimateSection,
+    LastSection],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
@@ -40,8 +42,14 @@ export class MainPage {
     displayTechOrSkillsPopup:boolean = false;
     techOrSkillForPopup:any = {};
 
+    fullStackTechsAndSkillsUsedHaveBeenShown:boolean = false;
+    frontendTechsAndSkillsUsedHaveBeenShown:boolean = false;
+    backendTechsAndSkillsUsedHaveBeenShown:boolean = false;
+    dataAndTheCloudTechsAndSkillsUsedHaveBeenShown:boolean = false;
+
     @ViewChild(BriefIntro) briefIntroRef!:BriefIntro;
     @ViewChild(RelevantExperience) relevantExperienceRef!:RelevantExperience;
+    @ViewChild(TechsAndSkillsUsed) techsAndSkillsUsedRef!:TechsAndSkillsUsed;
     @ViewChild(PenultimateSection) penultimateSectionRef!:PenultimateSection;
 
 
@@ -132,7 +140,7 @@ export class MainPage {
             }
 
             if (!this.readingModeOn) {
-                window.addEventListener('scroll', () => this.handleOnScroll());
+                window.addEventListener('scroll', () => this.onScroll());
             }
         }
     }
@@ -168,10 +176,10 @@ export class MainPage {
         this.readingModeOn = !this.readingModeOn;
 
         if (!this.readingModeOn) {
-            window.addEventListener('scroll', () => this.handleOnScroll());
+            window.addEventListener('scroll', () => this.onScroll());
         }
         else {
-            window.removeEventListener('scroll', () => this.handleOnScroll());
+            window.removeEventListener('scroll', () => this.onScroll());
         }
 
         this.initialAnimationsAreFinished = true;
@@ -261,9 +269,10 @@ export class MainPage {
         this.colorWaveAnimation0PercentKeyFrameRule.style.setProperty('color', 'black');
         this.colorWaveAnimation100PercentKeyFrameRule.style.setProperty('color', 'black');
 
-        this.updateBgColorOfRelevantExperienceSection();
-
-        this.updateTextColorsOfPenultimateSection();
+        if (!this.readingModeOn) {
+            this.updateBgColorOfRelevantExperienceSection();
+            this.updateTextColorsOfPenultimateSection();
+        }
 
         this.updateURLOfPageAfterUserPersonalization();
     }
@@ -280,9 +289,10 @@ export class MainPage {
         this.colorWaveAnimation0PercentKeyFrameRule.style.setProperty('color', 'white');
         this.colorWaveAnimation100PercentKeyFrameRule.style.setProperty('color', 'white');
 
-        this.updateBgColorOfRelevantExperienceSection();
-
-        this.updateTextColorsOfPenultimateSection();
+        if (!this.readingModeOn) {
+            this.updateBgColorOfRelevantExperienceSection();
+            this.updateTextColorsOfPenultimateSection();
+        }
 
         this.updateURLOfPageAfterUserPersonalization();
     }
@@ -308,9 +318,30 @@ export class MainPage {
     }
 
 
-    handleOnScroll() {
+    onScroll() {
         this.updateBgColorOfRelevantExperienceSection();
         this.updateDisplayMacbookAndPaddingTopOfRelevantExperienceSection();
+
+        if (!this.fullStackTechsAndSkillsUsedHaveBeenShown) {
+            this.showTheFullStackTechsAndSkillsUsed();
+        }
+
+        if (!this.frontendTechsAndSkillsUsedHaveBeenShown) {
+            this.showTheFrontendTechsAndSkillsUsed();
+        }
+
+        if (!this.backendTechsAndSkillsUsedHaveBeenShown) {
+            this.showTheBackendTechsAndSkillsUsed();
+        }
+
+        if (!this.dataAndTheCloudTechsAndSkillsUsedHaveBeenShown) {
+            this.showTheDataAndTheCloudTechsAndSkillsUsed();
+        }
+
+        this.updateMarginBottomOfTechsAndSkillsUsedDescriptionText();
+        this.updateMarginBottomOfTechsAndSkillsUsedFullStackElementsDiv();
+        this.updateMarginBottomOfTechsAndSkillsUsedFrontendElementsDiv();
+        this.updateMarginBottomOfTechsAndSkillsUsedBackendElementsDiv();
 
         this.updateTextColorsOfPenultimateSection();
     }
@@ -320,6 +351,39 @@ export class MainPage {
         this.techOrSkillForPopup = techOrSkillForPopup;
         this.displayDarkScreen = true;
         this.displayTechOrSkillsPopup = true;
+    }
+
+
+    scrollToSection(section:string) {
+        if (section === 'briefIntro' && this.briefIntroRef) {
+            const refToScrollTo = this.briefIntroRef.getBriefIntroRef();
+
+            if (refToScrollTo) {
+                refToScrollTo.nativeElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        else if (section === 'relevantExperience') {
+            const refToScrollTo = this.relevantExperienceRef.getRelevantExperienceRef();
+
+            if (refToScrollTo) {
+                refToScrollTo.nativeElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        else {
+            const refToScrollTo = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedRef();
+
+            if (refToScrollTo) {
+                refToScrollTo.nativeElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
     }
 
 
@@ -394,7 +458,7 @@ export class MainPage {
                 const distanceBetweenTwoRectBottoms = relevantExperienceRect.bottom - briefIntroRect.bottom;
                 const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms
 
-                if (proportionOfDistanceScrolled < 0.8 || proportionOfDistanceScrolled > 1.7) {
+                if (proportionOfDistanceScrolled < 0.8) {
                     this.displayRelevantExperienceSectionMacbookIcon = true;
                 }
                 else {
@@ -407,6 +471,206 @@ export class MainPage {
                     relevantExperienceReadingModeOffRef.nativeElement.style.setProperty(
                         'padding-top',
                         `${newPaddingTop}em`
+                    );
+                }
+            }
+        }
+    }
+
+
+    showTheFullStackTechsAndSkillsUsed() {
+        if (this.relevantExperienceRef && this.techsAndSkillsUsedRef) {
+            const relevantExperienceReadingModeOffRef = this.relevantExperienceRef.getReadingModeOffRef();
+            const techsAndSkillsUsedFullStackTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFullStackTextRef();
+
+            if (relevantExperienceReadingModeOffRef && techsAndSkillsUsedFullStackTextRef) {
+                const relevantExperienceRect = relevantExperienceReadingModeOffRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedFullStackTextRect = techsAndSkillsUsedFullStackTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - relevantExperienceRect.bottom;
+                const distanceBetweenTwoRectBottoms = techsAndSkillsUsedFullStackTextRect.bottom - relevantExperienceRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled >= 1.5) {
+                    this.fullStackTechsAndSkillsUsedHaveBeenShown = true;
+                }
+            }
+        }
+    }
+
+
+    showTheFrontendTechsAndSkillsUsed() {
+        if (this.techsAndSkillsUsedRef) {
+            const techsAndSkillsUsedFullStackTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFullStackTextRef();
+            const techsAndSkillsUsedFrontendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFrontendTextRef();
+
+            if (techsAndSkillsUsedFullStackTextRef && techsAndSkillsUsedFrontendTextRef) {
+                const techsAndSkillsUsedFullStackTextRect = techsAndSkillsUsedFullStackTextRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedFrontendTextRect = techsAndSkillsUsedFrontendTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - techsAndSkillsUsedFullStackTextRect.bottom;
+                const distanceBetweenTwoRectBottoms = techsAndSkillsUsedFrontendTextRect.bottom -
+                techsAndSkillsUsedFullStackTextRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled >= 1.25) {
+                    this.frontendTechsAndSkillsUsedHaveBeenShown = true;
+                }
+            }
+        }
+    }
+
+
+    showTheBackendTechsAndSkillsUsed() {
+        if (this.techsAndSkillsUsedRef) {
+            const techsAndSkillsUsedFrontendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFrontendTextRef();
+            const techsAndSkillsUsedBackendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedBackendTextRef();
+
+            if (techsAndSkillsUsedFrontendTextRef && techsAndSkillsUsedBackendTextRef) {
+                const techsAndSkillsUsedFrontendTextRect = techsAndSkillsUsedFrontendTextRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedBackendTextRect = techsAndSkillsUsedBackendTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - techsAndSkillsUsedFrontendTextRect.bottom;
+                const distanceBetweenTwoRectBottoms = techsAndSkillsUsedBackendTextRect.bottom -
+                techsAndSkillsUsedFrontendTextRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled >= 1.25) {
+                    this.backendTechsAndSkillsUsedHaveBeenShown = true;
+                }
+            }
+        }
+    }
+
+
+    showTheDataAndTheCloudTechsAndSkillsUsed() {
+        if (this.techsAndSkillsUsedRef) {
+            const techsAndSkillsUsedBackendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedBackendTextRef();
+            const techsAndSkillsUsedDataAndTheCloudTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedDataAndTheCloudTextRef();
+
+            if (techsAndSkillsUsedBackendTextRef && techsAndSkillsUsedDataAndTheCloudTextRef) {
+                const techsAndSkillsUsedBackendTextRect = techsAndSkillsUsedBackendTextRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedDataAndTheCloudTextRect = techsAndSkillsUsedDataAndTheCloudTextRef.nativeElement
+                .getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - techsAndSkillsUsedBackendTextRect.bottom;
+                const distanceBetweenTwoRectBottoms = techsAndSkillsUsedDataAndTheCloudTextRect.bottom -
+                techsAndSkillsUsedBackendTextRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled >= 1.25) {
+                    this.dataAndTheCloudTechsAndSkillsUsedHaveBeenShown = true;
+                }
+            }
+        }
+    }
+
+
+    updateMarginBottomOfTechsAndSkillsUsedDescriptionText() {
+        if (this.relevantExperienceRef && this.techsAndSkillsUsedRef) {
+            const relevantExperienceReadingModeOffRef = this.relevantExperienceRef.getReadingModeOffRef();
+            const techsAndSkillsUsedFullStackTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFullStackTextRef();
+            const techsAndSkillsUsedDescriptionTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedDescriptionTextRef();
+
+            if (relevantExperienceReadingModeOffRef && techsAndSkillsUsedFullStackTextRef &&
+            techsAndSkillsUsedDescriptionTextRef) {
+                const relevantExperienceRect = relevantExperienceReadingModeOffRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedFullStackTextRect = techsAndSkillsUsedFullStackTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - relevantExperienceRect.bottom;
+                const distanceBetweenTwoRectBottoms = techsAndSkillsUsedFullStackTextRect.bottom - relevantExperienceRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled > 0 && proportionOfDistanceScrolled <= 3) {
+                    techsAndSkillsUsedDescriptionTextRef.nativeElement.style.setProperty(
+                        'margin-bottom',
+                        `${30 - 32*(proportionOfDistanceScrolled/3)}em`
+                    );
+                }
+            }
+        }
+    }
+
+
+    updateMarginBottomOfTechsAndSkillsUsedFullStackElementsDiv() {
+        if (this.techsAndSkillsUsedRef) {
+            const techsAndSkillsUsedFrontendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFrontendTextRef();
+            const techsAndSkillsUsedFullStackTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFullStackTextRef();
+            const techsAndSkillsUsedFullStackElementsDivRef =
+            this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFullStackElementsDivRef();
+
+            if (techsAndSkillsUsedFrontendTextRef && techsAndSkillsUsedFullStackTextRef &&
+            techsAndSkillsUsedFullStackElementsDivRef) {
+                const techsAndSkillsUsedFrontendTextRect = techsAndSkillsUsedFrontendTextRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedFullStackTextRect = techsAndSkillsUsedFullStackTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - techsAndSkillsUsedFullStackTextRect.bottom;
+                const distanceBetweenTwoRectBottoms =
+                techsAndSkillsUsedFrontendTextRect.bottom - techsAndSkillsUsedFullStackTextRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled > 0 && proportionOfDistanceScrolled <= 1.7) {
+                    techsAndSkillsUsedFullStackElementsDivRef.nativeElement.style.setProperty(
+                        'margin-bottom',
+                        `${50 - 50*(proportionOfDistanceScrolled/1.7)}em`
+                    );
+                }
+            }
+        }
+    }
+
+
+    updateMarginBottomOfTechsAndSkillsUsedFrontendElementsDiv() {
+        if (this.techsAndSkillsUsedRef) {
+            const techsAndSkillsUsedBackendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedBackendTextRef();
+            const techsAndSkillsUsedFrontendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFrontendTextRef();
+            const techsAndSkillsUsedFrontendElementsDivRef =
+            this.techsAndSkillsUsedRef.getTechsAndSkillsUsedFrontendElementsDivRef();
+
+            if (techsAndSkillsUsedFrontendTextRef && techsAndSkillsUsedBackendTextRef &&
+            techsAndSkillsUsedFrontendElementsDivRef) {
+                const techsAndSkillsUsedBackendTextRect = techsAndSkillsUsedBackendTextRef.nativeElement.getBoundingClientRect();
+                const techsAndSkillsUsedFrontendTextRect = techsAndSkillsUsedFrontendTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - techsAndSkillsUsedFrontendTextRect.bottom;
+                const distanceBetweenTwoRectBottoms =
+                techsAndSkillsUsedBackendTextRect.bottom - techsAndSkillsUsedFrontendTextRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled > 0 && proportionOfDistanceScrolled <= 1.7) {
+                    techsAndSkillsUsedFrontendElementsDivRef.nativeElement.style.setProperty(
+                        'margin-bottom',
+                        `${50 - 50*(proportionOfDistanceScrolled/1.7)}em`
+                    );
+                }
+            }
+        }
+    }
+
+
+    updateMarginBottomOfTechsAndSkillsUsedBackendElementsDiv() {
+        if (this.techsAndSkillsUsedRef) {
+            const techsAndSkillsUsedDataAndTheCloudTextRef = this.techsAndSkillsUsedRef
+            .getTechsAndSkillsUsedDataAndTheCloudTextRef();
+            const techsAndSkillsUsedBackendTextRef = this.techsAndSkillsUsedRef.getTechsAndSkillsUsedBackendTextRef();
+            const techsAndSkillsUsedBackendElementsDivRef =
+            this.techsAndSkillsUsedRef.getTechsAndSkillsUsedBackendElementsDivRef();
+
+            if (techsAndSkillsUsedDataAndTheCloudTextRef && techsAndSkillsUsedBackendTextRef &&
+            techsAndSkillsUsedBackendElementsDivRef) {
+                const techsAndSkillsUsedDataAndTheCloudTextRect = techsAndSkillsUsedDataAndTheCloudTextRef.nativeElement
+                .getBoundingClientRect();
+                const techsAndSkillsUsedBackendTextRect = techsAndSkillsUsedBackendTextRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - techsAndSkillsUsedBackendTextRect.bottom;
+                const distanceBetweenTwoRectBottoms =
+                techsAndSkillsUsedDataAndTheCloudTextRect.bottom - techsAndSkillsUsedBackendTextRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms;
+
+                if (proportionOfDistanceScrolled > 0 && proportionOfDistanceScrolled <= 1.7) {
+                techsAndSkillsUsedBackendElementsDivRef.nativeElement.style.setProperty(
+                        'margin-bottom',
+                        `${50 - 50*(proportionOfDistanceScrolled/1.7)}em`
                     );
                 }
             }

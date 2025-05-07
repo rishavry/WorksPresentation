@@ -3,7 +3,7 @@ position: relative;">
     <div style="display: flex; align-items: center; justify-content: space-between; padding: 1em 0em; font-size:
     0.9em; width: 100%; overflow-x: scroll;" [ngStyle]="{'color': currentTheme.endsWith('Light') ? '' : 'white'}">
         <div style="display: flex; align-items: center;">
-            <p (click)="scrollToBriefIntro()" (mouseenter)="onMouseEnterOfBriefIntro()"
+            <p (click)="scrollToSection.emit('briefIntro')" (mouseenter)="onMouseEnterOfBriefIntro()"
             (mouseleave)="onMouseLeaveOfBriefIntro()"
             [ngStyle]="{'cursor': 'pointer', 'font-weight': isBriefIntroBeingHovered ? 'bold' : '300',
             'border-style': isBriefIntroBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
@@ -12,7 +12,7 @@ position: relative;">
                 Brief Intro
             </p>
         
-            <p (click)="scrollToRelevantExperience()" (mouseenter)="onMouseEnterOfRelevantExperience()"
+            <p (click)="scrollToSection.emit('relevantExperience')" (mouseenter)="onMouseEnterOfRelevantExperience()"
             (mouseleave)="onMouseLeaveOfRelevantExperience()" style="cursor: pointer; font-weight: 300;"
             [ngStyle]="{'margin-left': '1em', 'cursor': 'pointer', 'font-weight': isRelevantExperienceBeingHovered ? 
             'bold' : '300', 'border-style': isRelevantExperienceBeingHovered ? 'solid' : '', 'padding': '0.3em 2em',
@@ -21,12 +21,12 @@ position: relative;">
                 Relevant Experience
             </p>
         
-            <p (click)="scrollToTechnologiesAndSkills()" (mouseenter)="onMouseEnterOfTechnologiesAndSkills()"
-            (mouseleave)="onMouseLeaveOfTechnologiesAndSkills()" [ngStyle]="{'margin-left': '1em', 'cursor': 'pointer',
-            'font-weight': isTechnologiesAndSkillsBeingHovered ? 'bold' : '300', 'border-style':
-            isTechnologiesAndSkillsBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
+            <p (click)="scrollToSection.emit('techsAndSkillsUsed')" (mouseenter)="onMouseEnterOfTechsAndSkills()"
+            (mouseleave)="onMouseLeaveOfTechsAndSkills()" [ngStyle]="{'margin-left': '1em', 'cursor': 'pointer',
+            'font-weight': isTechsAndSkillsBeingHovered ? 'bold' : '300', 'border-style':
+            isTechsAndSkillsBeingHovered ? 'solid' : '', 'padding': '0.3em 2em', 'border-color': 'lightgray',
             'border-radius': '2em', 'border-width': '0.1em', 'margin-right': '-2em',
-            'color': isTechnologiesAndSkillsBeingHovered && currentTheme.endsWith('Light') ? 'navy' : ''}">
+            'color': isTechsAndSkillsBeingHovered && currentTheme.endsWith('Light') ? 'navy' : ''}">
                 Technologies & Skills Used
             </p>
         

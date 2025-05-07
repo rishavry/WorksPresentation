@@ -8,7 +8,6 @@ import { DomSanitizer } from '@angular/platform-browser';
     imports: [CommonModule],
     standalone: true,
     templateUrl: '../templates/RelevantExperience.component.html',
-    styleUrl: '../styles.css',
 })
 export class RelevantExperience {
     @Input() currentTheme!:string;
@@ -25,6 +24,7 @@ export class RelevantExperience {
 
     @Output() closeAllPopups:EventEmitter<any> = new EventEmitter<any>();
 
+    @ViewChild('relevantExperience') relevantExperienceRef!:ElementRef;
     @ViewChild('readingModeOff') readingModeOffRef!:ElementRef;
 
     currentSlide:number = 0;
@@ -142,5 +142,10 @@ export class RelevantExperience {
 
     getReadingModeOffRef() {
         return this.readingModeOffRef;
+    }
+
+
+    getRelevantExperienceRef() {
+        return this.relevantExperienceRef;
     }
 }

@@ -43,6 +43,7 @@ export class BriefIntro implements AfterViewInit {
     intervalIdForUpdatingPortrait:any = null;
     intervalIdForPortraitTransition:any = null;
 
+    @ViewChild('briefIntro') briefIntroRef!:ElementRef;
     @ViewChild('wavingHand') wavingHandRef!:ElementRef;
     @ViewChild('readingModeOff') readingModeOffRef!:ElementRef;
 
@@ -163,6 +164,11 @@ export class BriefIntro implements AfterViewInit {
 
     getReadingModeOffRef() {
         return this.readingModeOffRef;
+    }
+
+
+    getBriefIntroRef() {
+        return this.briefIntroRef;
     }
 }
 

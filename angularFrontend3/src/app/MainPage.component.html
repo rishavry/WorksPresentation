@@ -11,6 +11,7 @@
     (updateReadingModeTextSize)="updateReadingModeTextSize($event)"
     (updateReadingModeTextColor)="updateReadingModeTextColor($event)"
     (updateReadingModeBackgroundColor)="updateReadingModeBackgroundColor($event)"
+    (scrollToSection)="scrollToSection($event)"
     (updateDarkScreen)="updateDarkScreen($event)"
 />
 
@@ -27,7 +28,7 @@
     (notifyParentThatInitialAnimationsAreFinished)="initialAnimationsAreFinished = true"
 />
 
-<RelevantExperience *ngIf="initialAnimationsAreFinished"
+<RelevantExperience *ngIf="initialAnimationsAreFinished || readingModeOn"
     [currentTheme]="currentTheme"
     [readingModeOn]="readingModeOn" 
     [readingModeFont]= "readingModeFont"
@@ -39,13 +40,29 @@
     (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
+<TechsAndSkillsUsed *ngIf="initialAnimationsAreFinished || readingModeOn"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn" 
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [showFullStackElements]="fullStackTechsAndSkillsUsedHaveBeenShown"
+    [showFrontendElements]="frontendTechsAndSkillsUsedHaveBeenShown"
+    [showBackendElements]="backendTechsAndSkillsUsedHaveBeenShown"
+    [showDataAndTheCloudElements]="dataAndTheCloudTechsAndSkillsUsedHaveBeenShown"
+    [displayDarkScreen]="displayDarkScreen"
+    (notifyParentToShowPopupForTechOrSkill)="showTechOrSkillPopup($event)"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
 <PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn"
     [currentTheme]="currentTheme"
     [displayDarkScreen]="displayDarkScreen"
     (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<LastSection *ngIf="initialAnimationsAreFinished"
+<LastSection *ngIf="initialAnimationsAreFinished || readingModeOn"
     [currentTheme]="currentTheme"
     [readingModeOn]="readingModeOn" 
     [readingModeFont]= "readingModeFont"

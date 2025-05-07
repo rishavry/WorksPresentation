@@ -39,6 +39,21 @@ a:hover {
   color: black !important;
 }
 
+.threeDimensionalDiv {
+  --bottom-color: #999;
+  --right-color: #ddd;
+
+  box-shadow:
+    1px 0 0 var(--right-color),
+    1px 1px 0 var(--bottom-color),
+    2px 1px 0 var(--right-color),
+    2px 2px 0 var(--bottom-color),
+    3px 2px 0 var(--right-color),
+    3px 3px 0 var(--bottom-color),
+    4px 3px 0 var(--right-color),
+    5px 6px 0 var(--bottom-color);
+}
+
 #neonName {
   animation: neonNameAnimation 4.5s linear forwards;
   animation-iteration-count: 1;
@@ -161,3 +176,10 @@ a:hover {
     display: none;
   }
 }
+
+@media (max-width: 65em) {
+  #relevantExperienceImgOrVidSection {
+    display: none !important;
+  }
+}
+

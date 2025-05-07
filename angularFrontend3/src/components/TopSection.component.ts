@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -20,6 +20,10 @@ export class TopSection {
 	@Input() readingModeTextColor!:string;
 	@Input() readingModeBackgroundColor!:string;
 
+    @Input() briefIntroRef!:ElementRef;
+	@Input() relevantExperienceRef!:ElementRef;
+	@Input() technologiesAndSkillsRef!:ElementRef;
+
 	@Output() updateTheme:EventEmitter<string> = new EventEmitter<string>();
 
 	@Output() toggleReadingMode:EventEmitter<any> = new EventEmitter<any>();
@@ -28,11 +32,13 @@ export class TopSection {
 	@Output() updateReadingModeTextColor:EventEmitter<string> = new EventEmitter<string>();
 	@Output() updateReadingModeBackgroundColor:EventEmitter<string> = new EventEmitter<string>();
 
+    @Output() scrollToSection:EventEmitter<string> = new EventEmitter<string>();
+
 	@Output() updateDarkScreen:EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	isBriefIntroBeingHovered:boolean = false;
 	isRelevantExperienceBeingHovered:boolean = false;
-	isTechnologiesAndSkillsBeingHovered:boolean = false;
+	isTechsAndSkillsBeingHovered:boolean = false;
 	isPersonalizeBeingHovered:boolean = false;
 	isLinksBeingHovered:boolean = false;
 	isContactMeBeingHovered:boolean = false;
@@ -55,10 +61,6 @@ export class TopSection {
 	displayBackgroundColorPicker:boolean = false;
 	backgroundColorPickerValue:string = '';
 
-	@ViewChild('briefIntro') briefIntroRef!:ElementRef;
-	@ViewChild('relevantExperience') relevantExperienceRef!:ElementRef;
-	@ViewChild('technologiesAndSkills') technologiesAndSkillsRef!:ElementRef;
-
 
 	onMouseEnterOfBriefIntro() {
         this.isBriefIntroBeingHovered = true;
@@ -80,13 +82,13 @@ export class TopSection {
     }
 
 
-    onMouseEnterOfTechnologiesAndSkills() {
-        this.isTechnologiesAndSkillsBeingHovered = true;
+    onMouseEnterOfTechsAndSkills() {
+        this.isTechsAndSkillsBeingHovered = true;
     }
 
 
-    onMouseLeaveOfTechnologiesAndSkills() {
-        this.isTechnologiesAndSkillsBeingHovered = false;
+    onMouseLeaveOfTechsAndSkills() {
+        this.isTechsAndSkillsBeingHovered = false;
     }
 
 
@@ -201,27 +203,6 @@ export class TopSection {
                 this.updateDarkScreen.emit(false);
             }
         }, 100);
-    }
-
-
-	scrollToBriefIntro() {
-        this.briefIntroRef.nativeElement?.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-
-
-    scrollToRelevantExperience() {
-		this.relevantExperienceRef.nativeElement?.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-	
-
-    scrollToTechnologiesAndSkills() {
-        this.technologiesAndSkillsRef.nativeElement?.scrollIntoView({
-            behavior: 'smooth'
-        });
     }
 
 
