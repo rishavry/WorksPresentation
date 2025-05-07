@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class TechOrSkillPopup {
     constructor(private sanitizer: DomSanitizer) {}
 
 
-    sanitize(htmlCodeAsString: string): SafeHtml {
+    sanitize(htmlCodeAsString: string) {
         return this.sanitizer.bypassSecurityTrustHtml(htmlCodeAsString);
     }
 }

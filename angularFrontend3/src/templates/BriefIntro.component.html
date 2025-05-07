@@ -1,6 +1,7 @@
-<div *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; padding: 5em 1em; position: relative; display:
-flex; flex-direction: column; align-items: center; overflow-x: scroll; box-sizing: border-box;"  [ngStyle]="{'background-color':
-currentTheme.endsWith('Light') ? '#68c6fc' : '#394da3', 'color': currentTheme.endsWith('Light') ? '' : 'white'}">
+<div #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; padding: 5em 1em; position: relative;
+display: flex; flex-direction: column; align-items: center; overflow-x: scroll; box-sizing: border-box;" 
+[ngStyle]="{'background-color': currentTheme.endsWith('Light') ? '#68c6fc' : '#394da3', 'color': currentTheme.endsWith('Light') ?
+'' : 'white'}">
     <p #helloText style="font-weight: bold; margin-top:6%; font-size: 6em; width: 55%; text-align: center;">
         Hello, my name is <span id="">Rishav Ray</span>{{ dots }}
     </p>
@@ -62,7 +63,7 @@ box-sizing: border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('
 
     <br/>
 
-    <div style="margin-top:-1em; line-height: 1.6em; width: 88%;">
+    <div style="margin-top:-1em; line-height: 2; width: 88%;">
         <p>I’m a <b>20-year-old self-taught</b> aspiring <b>full-stack web-developer</b> from Verona, Wisconsin. My current focus is on
         full-stack/frontend/backend web development, with plans to get into app-dev, advanced software engineering/management, ML, AI, &
         Data-Science later on.</p>

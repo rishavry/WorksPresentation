@@ -161,3 +161,10 @@ a:hover {
     display: none;
   }
 }
+
+@media (max-width: 65em) {
+  #relevantExperienceImgOrVidSection {
+    display: none !important;
+  }
+}
+

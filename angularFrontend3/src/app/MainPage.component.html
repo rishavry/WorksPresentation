@@ -27,6 +27,18 @@
     (notifyParentThatInitialAnimationsAreFinished)="initialAnimationsAreFinished = true"
 />
 
+<RelevantExperience *ngIf="initialAnimationsAreFinished"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn" 
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [displayMacbook]="displayRelevantExperienceSectionMacbookIcon"
+    [displayDarkScreen]="displayDarkScreen"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+/>
+
 <PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn"
     [currentTheme]="currentTheme"
     [displayDarkScreen]="displayDarkScreen"

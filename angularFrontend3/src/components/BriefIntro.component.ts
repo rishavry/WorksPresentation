@@ -44,6 +44,7 @@ export class BriefIntro implements AfterViewInit {
     intervalIdForPortraitTransition:any = null;
 
     @ViewChild('wavingHand') wavingHandRef!:ElementRef;
+    @ViewChild('readingModeOff') readingModeOffRef!:ElementRef;
 
 
     ngAfterViewInit() {
@@ -157,6 +158,11 @@ export class BriefIntro implements AfterViewInit {
     
     onClickingDarkScreen() {
         this.closeAllPopups.emit();
+    }
+
+
+    getReadingModeOffRef() {
+        return this.readingModeOffRef;
     }
 }
 

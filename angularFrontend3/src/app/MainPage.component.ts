@@ -1,6 +1,7 @@
 import { BriefIntro } from '../components/BriefIntro.component';
 import { LastSection } from '../components/LastSection.component';
 import { PenultimateSection } from '../components/PenultimateSection.component';
+import { RelevantExperience } from '../components/RelevantExperience.component';
 import { TechOrSkillPopup } from '../components/TechOrSkillPopup.component';
 import { TopSection } from '../components/TopSection.component';
 
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'MainPage',
     standalone: true,
-    imports: [CommonModule, TopSection, BriefIntro, TechOrSkillPopup, PenultimateSection, LastSection],
+    imports: [CommonModule, TopSection, BriefIntro, RelevantExperience, TechOrSkillPopup, PenultimateSection, LastSection],
     templateUrl: './MainPage.component.html',
     styleUrl: '../styles.css'
 })
@@ -29,6 +30,8 @@ export class MainPage {
 
     displayDarkScreen:boolean = false;
 
+    displayRelevantExperienceSectionMacbookIcon:boolean = true;
+
     colorWaveAnimation0PercentKeyFrameRule!:CSSKeyframeRule;
     colorWaveAnimation100PercentKeyFrameRule!:CSSKeyframeRule;
 
@@ -37,7 +40,9 @@ export class MainPage {
     displayTechOrSkillsPopup:boolean = false;
     techOrSkillForPopup:any = {};
 
-    @ViewChild(PenultimateSection) penultimateSectionRef!: PenultimateSection;
+    @ViewChild(BriefIntro) briefIntroRef!:BriefIntro;
+    @ViewChild(RelevantExperience) relevantExperienceRef!:RelevantExperience;
+    @ViewChild(PenultimateSection) penultimateSectionRef!:PenultimateSection;
 
 
     constructor(private route: ActivatedRoute) { }
@@ -256,6 +261,10 @@ export class MainPage {
         this.colorWaveAnimation0PercentKeyFrameRule.style.setProperty('color', 'black');
         this.colorWaveAnimation100PercentKeyFrameRule.style.setProperty('color', 'black');
 
+        this.updateBgColorOfRelevantExperienceSection();
+
+        this.updateTextColorsOfPenultimateSection();
+
         this.updateURLOfPageAfterUserPersonalization();
     }
 
@@ -270,6 +279,10 @@ export class MainPage {
 
         this.colorWaveAnimation0PercentKeyFrameRule.style.setProperty('color', 'white');
         this.colorWaveAnimation100PercentKeyFrameRule.style.setProperty('color', 'white');
+
+        this.updateBgColorOfRelevantExperienceSection();
+
+        this.updateTextColorsOfPenultimateSection();
 
         this.updateURLOfPageAfterUserPersonalization();
     }
@@ -296,6 +309,112 @@ export class MainPage {
 
 
     handleOnScroll() {
+        this.updateBgColorOfRelevantExperienceSection();
+        this.updateDisplayMacbookAndPaddingTopOfRelevantExperienceSection();
+
+        this.updateTextColorsOfPenultimateSection();
+    }
+
+
+    showTechOrSkillPopup(techOrSkillForPopup:any) {
+        this.techOrSkillForPopup = techOrSkillForPopup;
+        this.displayDarkScreen = true;
+        this.displayTechOrSkillsPopup = true;
+    }
+
+
+    updateBgColorOfRelevantExperienceSection() {
+        if (this.briefIntroRef && this.relevantExperienceRef) {
+            const briefIntroReadingModeOffRef = this.briefIntroRef.getReadingModeOffRef();
+            const relevantExperienceReadingModeOffRef = this.relevantExperienceRef.getReadingModeOffRef();
+
+            if (briefIntroReadingModeOffRef && relevantExperienceReadingModeOffRef) {
+                const briefIntroRect = briefIntroReadingModeOffRef.nativeElement.getBoundingClientRect();
+                const relevantExperienceRect = relevantExperienceReadingModeOffRef.nativeElement.getBoundingClientRect();
+
+                const userIsInSweetSpot = window.innerHeight > briefIntroRect.bottom && window.innerHeight <
+                relevantExperienceRect.bottom;
+                
+                if (userIsInSweetSpot) {
+                    const currDistanceScrolled = window.innerHeight - briefIntroRect.bottom;
+                    const distanceBetweenTwoRectBottoms = relevantExperienceRect.bottom - briefIntroRect.bottom;
+
+                    let newColor1RGB!:number[];
+                    let newColor2RGB!:number[];
+
+                    if (this.currentTheme.endsWith('Light')) {
+                        newColor1RGB = [
+                            255 + (0 - 255) * currDistanceScrolled/distanceBetweenTwoRectBottoms,
+                            255 + (102 - 255) * currDistanceScrolled/distanceBetweenTwoRectBottoms,
+                            255
+                        ];
+
+                        newColor2RGB = [
+                            255 + (204 - 255) * currDistanceScrolled/distanceBetweenTwoRectBottoms,
+                            255,
+                            255
+                        ];
+                    }
+                    else {
+                        newColor1RGB = [
+                            0,
+                            0,
+                            0 + 102 * currDistanceScrolled/distanceBetweenTwoRectBottoms,
+                        ];
+
+                        newColor2RGB = [
+                            0 + 128 * currDistanceScrolled/distanceBetweenTwoRectBottoms,
+                            0,
+                            0
+                        ];
+                    }
+
+                    relevantExperienceReadingModeOffRef.nativeElement.style.setProperty(
+                        'background',
+                        `linear-gradient(to bottom right,
+                        rgb(${newColor1RGB[0]}, ${newColor1RGB[1]}, ${newColor1RGB[2]}) 0%,
+                        rgb(${newColor2RGB[0]}, ${newColor2RGB[1]}, ${newColor2RGB[2]}) 100%)`
+                    );
+                }
+            }
+        }
+    }
+
+
+    updateDisplayMacbookAndPaddingTopOfRelevantExperienceSection() {
+        if (this.briefIntroRef && this.relevantExperienceRef) {
+            const briefIntroReadingModeOffRef = this.briefIntroRef.getReadingModeOffRef();
+            const relevantExperienceReadingModeOffRef = this.relevantExperienceRef.getReadingModeOffRef();
+
+            if (briefIntroReadingModeOffRef && relevantExperienceReadingModeOffRef) {
+                const briefIntroRect = briefIntroReadingModeOffRef.nativeElement.getBoundingClientRect();
+                const relevantExperienceRect = relevantExperienceReadingModeOffRef.nativeElement.getBoundingClientRect();
+
+                const currDistanceScrolled = window.innerHeight - briefIntroRect.bottom;
+                const distanceBetweenTwoRectBottoms = relevantExperienceRect.bottom - briefIntroRect.bottom;
+                const proportionOfDistanceScrolled = currDistanceScrolled/distanceBetweenTwoRectBottoms
+
+                if (proportionOfDistanceScrolled < 0.8 || proportionOfDistanceScrolled > 1.7) {
+                    this.displayRelevantExperienceSectionMacbookIcon = true;
+                }
+                else {
+                    this.displayRelevantExperienceSectionMacbookIcon = false;
+                }
+
+                if (proportionOfDistanceScrolled > 0 && proportionOfDistanceScrolled < 1) {
+                    const newPaddingTop = 45 - 40 * proportionOfDistanceScrolled;
+
+                    relevantExperienceReadingModeOffRef.nativeElement.style.setProperty(
+                        'padding-top',
+                        `${newPaddingTop}em`
+                    );
+                }
+            }
+        }
+    }
+
+
+    updateTextColorsOfPenultimateSection() {
         if (this.penultimateSectionRef) {
             let indexOfFocusedPenultimateSectionTextRef = -1;
 
@@ -337,12 +456,5 @@ export class MainPage {
                 }
             }
         }
-    }
-
-
-    showTechOrSkillPopup(techOrSkillForPopup:any) {
-        this.techOrSkillForPopup = techOrSkillForPopup;
-        this.displayDarkScreen = true;
-        this.displayTechOrSkillsPopup = true;
     }
 }
