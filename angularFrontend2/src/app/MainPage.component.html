@@ -1,132 +1,194 @@
-<TopSection (updateDarkScreen)="updateDarkScreen($event)" [currentTheme]="currentTheme"
-    [readingModeOn]="readingModeOn" (updateTheme)="updateTheme($event)" (toggleReadingMode)="toggleReadingMode()"
-    [readingModeFont]="readingModeFont" (updateReadingModeFont)="updateReadingModeFont($event)"
-    [readingModeTextSize]="readingModeTextSize" (updateReadingModeTextSize)="updateReadingModeTextSize($event)"
-    [readingModeTextColor]="readingModeTextColor" (updateReadingModeTextColor)="updateReadingModeTextColor($event)"
-    [readingModeBackgroundColor]="readingModeBackgroundColor" (updateReadingModeBackgroundColor)="updateReadingModeBackgroundColor($event)"
+<TopSection
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn"
+    [readingModeFont]="readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    (updateTheme)="updateTheme($event)"
+    (toggleReadingMode)="toggleReadingMode()"
+    (updateReadingModeFont)="updateReadingModeFont($event)"
+    (updateReadingModeTextSize)="updateReadingModeTextSize($event)"
+    (updateReadingModeTextColor)="updateReadingModeTextColor($event)"
+    (updateReadingModeBackgroundColor)="updateReadingModeBackgroundColor($event)"
+    (scrollToSection)="scrollToSection($event)"
+    (updateDarkScreen)="updateDarkScreen($event)"
 />
 
-<BriefIntro [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
+<BriefIntro
     [initialAnimationsAreFinished]="initialAnimationsAreFinished"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-    (notifyParentThatInitialAnimationsAreIndeedFinished)="setInitialAnimationsAreFinishedToTrue()"
-    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
-    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn"
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [displayDarkScreen]="displayDarkScreen"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+    (notifyParentThatInitialAnimationsAreFinished)="initialAnimationsAreFinished = true"
 />
 
-<RelevantExperience *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
-    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
+<RelevantExperience *ngIf="initialAnimationsAreFinished || readingModeOn"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn" 
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [displayMacbook]="displayRelevantExperienceSectionMacbookIcon"
+    [displayDarkScreen]="displayDarkScreen"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<TechnologiesAndSkills *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToShowPopupForTechnologyOrSkill)="showPopupForTechnologyOrSkill($event)"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
-    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
+<TechsAndSkillsUsed *ngIf="initialAnimationsAreFinished || readingModeOn"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn" 
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [showFullStackElements]="fullStackTechsAndSkillsUsedHaveBeenShown"
+    [showFrontendElements]="frontendTechsAndSkillsUsedHaveBeenShown"
+    [showBackendElements]="backendTechsAndSkillsUsedHaveBeenShown"
+    [showDataAndTheCloudElements]="dataAndTheCloudTechsAndSkillsUsedHaveBeenShown"
+    [displayDarkScreen]="displayDarkScreen"
+    (notifyParentToShowPopupForTechOrSkill)="showTechOrSkillPopup($event)"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
+<PenultimateSection *ngIf="initialAnimationsAreFinished && !readingModeOn"
+    [currentTheme]="currentTheme"
+    [displayDarkScreen]="displayDarkScreen"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<LastSection *ngIf="initialAnimationsAreFinished || readingModeOn" [displayDarkScreen]="displayDarkScreen" [currentTheme]="currentTheme"
-    (notifyParentToCloseAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
-    [readingModeOn]="readingModeOn"  [readingModeFont]= "readingModeFont" [readingModeTextSize]="readingModeTextSize"
-    [readingModeTextColor]="readingModeTextColor" [readingModeBackgroundColor]="readingModeBackgroundColor"
+<LastSection *ngIf="initialAnimationsAreFinished || readingModeOn"
+    [currentTheme]="currentTheme"
+    [readingModeOn]="readingModeOn" 
+    [readingModeFont]= "readingModeFont"
+    [readingModeTextSize]="readingModeTextSize"
+    [readingModeTextColor]="readingModeTextColor"
+    [readingModeBackgroundColor]="readingModeBackgroundColor"
+    [displayDarkScreen]="displayDarkScreen"
+    (closeAllPopups)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
-<TechnologyOrSkillPopup *ngIf="displayTechnologyOrSkillsPopup" [currentTheme]="currentTheme"
-    [technologyOrSkill]="technologyOrSkillForPopup" (notifyParentToCloseThisPopup)="closePopupForTechnologyOrSkill()"
+<TechOrSkillPopup *ngIf="displayTechOrSkillsPopup"
+    [currentTheme]="currentTheme"
+    [techOrSkill]="techOrSkillForPopup"
+    (closePopup)="displayTechOrSkillsPopup = false"
 />
 
-<div *ngIf="miniReadingModeSettingsAreVisible && readingModeOn && !displayDarkScreen" style="cursor: pointer; position: fixed; top: 57%; left: 90.6%;
-display: flex; flex-direction: column; align-items: center; font-size: 0.69em; padding: 0.5em 1em;
-background-color: rgba(0, 0, 0, 0.6); color: white; border-radius: 0.8em;">
-    <div style="position: relative;">
-        <div *ngIf="displayMiniFontSettings" style="display: flex; flex-direction: column; border-radius: 0.7em; border-style: solid; border-width: 0.06em;
-        border-color: lightgray; position: absolute; left: -265%; top: -10%; background-color: white; z-index: 10;
-        font-size: 1.1em;"
-        [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? 'black' : 'white'}">
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('Arial')" style="cursor: pointer; font-family: Arial; padding: 0.5em 1em; margin-bottom: -1em;">
-                Arial
-            </p>
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('Default (mix of all the options)')" style="cursor: pointer; font-family: Arial; padding: 0.5em 1em; margin-bottom: -1em;">
-                Default (mix)
-            </p>
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('IBM Plex Sans')" style="cursor: pointer; font-family: IBM Plex Sans; padding: 0.5em 1em; margin-bottom: -1em;">
-                IBM Plex Sans
-            </p>
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('Pacifico')" style="cursor: pointer; font-family: Pacifico; padding: 0.5em 1em; margin-bottom: -1em;">
-                Pacifico
-            </p>
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('Plus Jakarta Sans')" style="cursor: pointer; font-family: Plus Jakarta Sans; padding: 0.5em 1em; margin-bottom: -1em;">
-                Plus Jakarta Sans
-            </p>
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('Red Hat Display')" style="cursor: pointer; font-family: Red Hat Display; padding: 0.5em 1em; margin-bottom: -1em;">
-                Red Hat Display
-            </p>
-            <p class="readingModeFontOption" (click)="updateReadingModeFont('Roboto')" style="cursor: pointer; font-family: Roboto; padding: 0.5em 1em;">
-                Roboto
-            </p>
-        </div>
-        <p (click)="toggleMiniFontSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">Change Font</p>
-    </div>
-
-    <div style="position: relative;">
-        <div *ngIf="displayMiniTextSizeSettings" style="display: flex; align-items: center; gap :1em; position: absolute; left: -260%; top: -10%;
-        padding-left: 1.5em; padding-right: 1.5em;"
-        [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? 'black' : 'white'}">
-            <input (change)="updateURLOfPageAfterUserPersonalization()" [(ngModel)]="readingModeTextSize" type="range" id="slider" min="0.5" max="2" step="0.01" [value]="readingModeTextSize">
-            <p>{{readingModeTextSize+"X"}}</p>
-        </div>
-        <p (click)="toggleMiniTextSizeSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">Change Text-Size</p>
-    </div>
-
-    <div style="position: relative;">
-        <div *ngIf="displayMiniTextColorSettings" style="display: flex; align-items: center; gap :1em; position: absolute; left: -266%; top: -10%;
-        padding-left: 1.5em; padding-right: 1.5em; padding-bottom: 0.8em; border-style: solid; border-color: lightgray;"
-        [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? 'black' : 'white'}">
-            <div *ngIf="readingModeTextColor.length>0" style="height: 1em; width: 1em; border-radius: 2em; margin-top: 1em;
-            border-style: solid;" [ngStyle]="{'background-color': readingModeTextColor}"></div>
-            <input (colorPickerChange)="updateURLOfPageAfterUserPersonalization()" [(colorPicker)]="readingModeTextColor" [style.background]="readingModeTextColor" style="margin-top:1em;"/>
-        </div>
-        <p (click)="toggleMiniTextColorSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">Change Text-Color</p>
-    </div>
-
-    <div style="position: relative;">
-        <div *ngIf="displayMiniBackgroundColorSettings" style="display: flex; align-items: center; gap: 1em; position: absolute; left: -176%; top: -10%;
-        padding-left: 1.5em; padding-right: 1.5em; padding-bottom: 0.8em; border-style: solid; border-color: lightgray;"
-        [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color': currentTheme.endsWith('Light') ? 'black' : 'white'}">
-            <div *ngIf="readingModeBackgroundColor.length>0" style="height: 1em; width: 1em; border-radius: 2em; margin-top: 1em;
-            border-style: solid;" [ngStyle]="{'background-color': readingModeBackgroundColor}"></div>
-            <input (colorPickerChange)="updateURLOfPageAfterUserPersonalization()" [(colorPicker)]="readingModeBackgroundColor" [style.background]="readingModeBackgroundColor" style="margin-top:1em;"/>
-        </div>
-        <p (click)="toggleBackgroundTextColorSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">Change Background-Color</p>
-    </div>
-
-    <p (click)="toggleMiniReadingModeSettingsVisibility()" style="cursor: pointer; border-bottom: 2px solid gray;">Hide</p>
-</div>
-
-<div *ngIf="!miniReadingModeSettingsAreVisible && readingModeOn && !displayDarkScreen" (click)="toggleMiniReadingModeSettingsVisibility()" style="cursor: pointer; position: fixed;
-top: 75%; left: 93%; display: flex; gap: 0.4em; align-items: center; font-size: 0.6em; padding: 0.5em 1em; background-color: black;
-color: white; border-radius: 0.8em;">
-    <img src="images/upV.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
-    <img src="images/bookIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
-    <img src="images/settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
-</div>
-
-<div *ngIf="(initialAnimationsAreFinished || readingModeOn) && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
-align-items: center; font-size: 0.85em;">
+<div *ngIf="(initialAnimationsAreFinished || readingModeOn) && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()"
+style="cursor: pointer; position: fixed; bottom: 0%; right: 2%; display: flex; flex-direction: column; align-items: center;
+font-size: 0.85em;">
     <p>Swim to</p>
     <img src="images/waterBodyBottom.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Bottom</p>
 </div>
 
-<div *ngIf="(initialAnimationsAreFinished || readingModeOn) && !userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" style="cursor: pointer; position: fixed; top: 80%; left: 93%; display: flex; flex-direction: column;
-align-items: center; font-size: 0.85em;">
+<div *ngIf="(initialAnimationsAreFinished || readingModeOn) && !userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheTop()" 
+style="cursor: pointer; position: fixed; top: 0%; right: 2%; display: flex; flex-direction: column; align-items: center;
+font-size: 0.85em;">
     <p>Climb to</p>
     <img src="images/mountainPeak.webp" style="height: 6em; width: 6em; border-radius: 8em;">
     <p>the Top</p>
+</div>
+
+<div *ngIf="displayMiniReadingModeSettings && readingModeOn && !displayDarkScreen" style="cursor: pointer; position: fixed; bottom:
+25%; right: 1%; display: flex; flex-direction: column; align-items: center; font-size: 0.69em; padding: 0.5em 1em;
+background-color: rgba(0, 0, 0, 0.6); color: white; border-radius: 0.8em;">
+    <div style="position: relative;">
+        <div *ngIf="displayMiniFontSettings" style="display: flex; flex-direction: column; border-radius: 0.7em; border-style:
+        solid; border-width: 0.06em; border-color: lightgray; position: absolute; left: -265%; top: -10%; background-color:
+        white; z-index: 10; font-size: 1.1em;" [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' :
+        '#282929', 'color': currentTheme.endsWith('Light') ? 'black' : 'white'}">
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('Arial')" style="cursor: pointer; font-family: Arial;
+            padding: 0.5em 1em; margin-bottom: -1em;">
+                Arial
+            </p>
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('Default (mix of all the options)')" style="cursor:
+            pointer; font-family: Arial; padding: 0.5em 1em; margin-bottom: -1em;">
+                Default (mix)
+            </p>
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('IBM Plex Sans')" style="cursor: pointer; font-family:
+            IBM Plex Sans; padding: 0.5em 1em; margin-bottom: -1em;">
+                IBM Plex Sans
+            </p>
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('Pacifico')" style="cursor: pointer; font-family:
+            Pacifico; padding: 0.5em 1em; margin-bottom: -1em;">
+                Pacifico
+            </p>
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('Plus Jakarta Sans')" style="cursor: pointer;
+            font-family: Plus Jakarta Sans; padding: 0.5em 1em; margin-bottom: -1em;">
+                Plus Jakarta Sans
+            </p>
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('Red Hat Display')" style="cursor: pointer; 
+            font-family: Red Hat Display; padding: 0.5em 1em; margin-bottom: -1em;">
+                Red Hat Display
+            </p>
+            <p class="readingModeFontOption" (click)="updateReadingModeFont('Roboto')" style="cursor: pointer; font-family:
+            Roboto; padding: 0.5em 1em;">
+                Roboto
+            </p>
+        </div>
+        <p (click)="toggleDisplayMiniFontSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">Change Font</p>
+    </div>
+
+    <div style="position: relative;">
+        <div *ngIf="displayMiniTextSizeSettings" style="display: flex; align-items: center; gap :1em; position: absolute; left:
+        -260%; top: -10%; padding-left: 1.5em; padding-right: 1.5em;"
+        [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color':
+        currentTheme.endsWith('Light') ? 'black' : 'white'}">
+            <input (change)="updateURLOfPageAfterUserPersonalization()" [(ngModel)]="readingModeTextSize" type="range" id="slider"
+            min="0.5" max="2" step="0.01" [value]="readingModeTextSize">
+            <p>
+                {{ readingModeTextSize + 'X' }}
+            </p>
+        </div>
+        <p (click)="toggleDisplayMiniTextSizeSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">
+            Change Text-Size
+        </p>
+    </div>
+
+    <div style="position: relative;">
+        <div *ngIf="displayMiniTextColorSettings" style="display: flex; align-items: center; gap :1em; position: absolute; left:
+        -266%; top: -10%; padding-left: 1.5em; padding-right: 1.5em; padding-bottom: 0.8em; border-style: solid; border-color:
+        lightgray;" [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color':
+        currentTheme.endsWith('Light') ? 'black' : 'white'}">
+            <div *ngIf="readingModeTextColor.length>0" style="height: 1em; width: 1em; border-radius: 2em; margin-top: 1em;
+            border-style: solid;" [ngStyle]="{'background-color': readingModeTextColor}"></div>
+            <input (colorPickerChange)="updateURLOfPageAfterUserPersonalization()" [(colorPicker)]="readingModeTextColor"
+            [style.background]="readingModeTextColor" style="margin-top: 1em;"/>
+        </div>
+        <p (click)="toggleDisplayMiniTextColorSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">
+            Change Text-Color
+        </p>
+    </div>
+
+    <div style="position: relative;">
+        <div *ngIf="displayMiniBackgroundColorSettings" style="display: flex; align-items: center; gap: 1em; position: absolute;
+        left: -176%; top: -10%; padding-left: 1.5em; padding-right: 1.5em; padding-bottom: 0.8em; border-style: solid;
+        border-color: lightgray;" [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929', 'color':
+        currentTheme.endsWith('Light') ? 'black' : 'white'}">
+            <div *ngIf="readingModeBackgroundColor.length>0" style="height: 1em; width: 1em; border-radius: 2em; margin-top: 1em;
+            border-style: solid;" [ngStyle]="{'background-color': readingModeBackgroundColor}"></div>
+            <input (colorPickerChange)="updateURLOfPageAfterUserPersonalization()" [(colorPicker)]="readingModeBackgroundColor"
+            [style.background]="readingModeBackgroundColor" style="margin-top:1em;"/>
+        </div>
+        <p (click)="toggleDisplayMiniBackgroundTextColorSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">
+            Change Background-Color
+        </p>
+    </div>
+
+    <p (click)="toggleDisplayMiniReadingModeSettings()" style="cursor: pointer; border-bottom: 2px solid gray;">Hide</p>
+</div>
+
+<div *ngIf="!displayMiniReadingModeSettings && readingModeOn && !displayDarkScreen"
+(click)="toggleDisplayMiniReadingModeSettings()" style="cursor: pointer; position: fixed; bottom: 25%; right: 1%; display: flex;
+gap: 0.4em; align-items: center; font-size: 0.6em; padding: 0.5em 1em; background-color: black; color: white; border-radius:
+0.8em;">
+    <img src="images/upV.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
+    <img src="images/bookIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
+    <img src="images/settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
 </div>

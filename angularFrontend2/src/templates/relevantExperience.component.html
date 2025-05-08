@@ -53,9 +53,9 @@ display: flex; align-items: center; justify-content: center; box-sizing: border-
 </div>
 
 <div #relevantExperience *ngIf="readingModeOn" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray;
-border-width: 0.06em; border-top: none; border-left: none; border-right: none; position: relative; width: 100%; box-sizing:
-border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Roboto' : readingModeFont, 'font-size':
-(readingModeTextSize*1)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
+border-width: 0.06em; border-top: none; border-left: none; border-right: none; position: relative; width: 105%; margin-left:
+-0.5em; box-sizing: border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Roboto' : readingModeFont,
+'font-size': (readingModeTextSize*1)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
     <h1>Relevant Experience</h1>
 
     <br/>

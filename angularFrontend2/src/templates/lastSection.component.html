@@ -47,8 +47,8 @@ margin-left: -0.5em; background-color: #0620b8; color: white; box-sizing: border
     0%; left: 0%; opacity: 0.7; height: 100%; width: 100%; z-index: 2;">
 </div>
 
-<div *ngIf="readingModeOn" style="padding: 1.7em 2.7em; position: relative; width: 100%; box-sizing: border-box;" [ngStyle]=
-"{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont, 'font-size':
+<div *ngIf="readingModeOn" style="padding: 1.7em 2.7em; position: relative; width: 105%; margin-left: -0.5em; box-sizing:
+border-box;" [ngStyle]= "{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont, 'font-size':
 (readingModeTextSize*1.13)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
     <h1>The Finale</h1>
 

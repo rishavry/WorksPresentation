@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -49,15 +49,48 @@ export class BriefIntro implements AfterViewInit {
 
 
     ngAfterViewInit() {
-        /*
-        this.intervalIdForDots = setInterval(() => {
-            this.animateTheTypingDots();
-        }, 600);
-        
-        this.intervalIdForHand = setInterval(() => {
-            this.animateWavyHands();
-        }, 100);
-        */
+        if (!this.readingModeOn) {
+            this.intervalIdForDots = setInterval(() => {
+                this.animateTheTypingDots();
+            }, 600);
+            
+            this.intervalIdForHand = setInterval(() => {
+                this.animateWavyHands();
+            }, 100);
+        }
+    }
+
+
+    ngOnChanges(changes:SimpleChanges) {
+        if (changes['readingModeOn']) {
+            if (this.readingModeOn) {
+                if (!this.initialAnimationsAreFinished) {
+                    clearInterval(this.intervalIdForDots);
+                    clearInterval(this.intervalIdForHand);
+                }
+                else {
+                    clearInterval(this.intervalIdForSmoothlyDisplayingFirstPortrait);
+                    clearInterval(this.intervalIdForUpdatingPortrait);
+                    clearInterval(this.intervalIdForPortraitTransition);
+                }
+            }
+            else {
+                if (!this.initialAnimationsAreFinished) {
+                    this.intervalIdForDots = setInterval(() => {
+                        this.animateTheTypingDots();
+                    }, 600);
+                    
+                    this.intervalIdForHand = setInterval(() => {
+                        this.animateWavyHands();
+                    }, 100);
+                }
+                else {
+                    this.intervalIdForSmoothlyDisplayingFirstPortrait = setInterval(() => {
+                        this.smoothlyDisplayFirstPortrait();
+                    }, 105);
+                }
+            }
+        }
     }
 
 
@@ -72,7 +105,7 @@ export class BriefIntro implements AfterViewInit {
 
 
     animateWavyHands() {
-        this.handOpacity -= 0.02;
+        this.handOpacity-= 0.02;
 
         this.wavingHandRef.nativeElement.style.opacity = this.handOpacity.toString();
 
@@ -92,14 +125,6 @@ export class BriefIntro implements AfterViewInit {
 
 
     updatePortrait(typeOfUpdate: string) {
-        if(typeOfUpdate === 'manual') {
-            clearInterval(this.intervalIdForPortraitTransition);
-            clearInterval(this.intervalIdForUpdatingPortrait);
-            this.intervalIdForUpdatingPortrait = setInterval(() => {
-                this.updatePortrait('automatic');
-            }, 3900);
-        }
-
         if(typeOfUpdate === 'automatic') {
             this.intervalIdForPortraitTransition = setInterval(() => {
                 this.initiateSmoothPortraitTransition();
@@ -107,12 +132,21 @@ export class BriefIntro implements AfterViewInit {
         }
 
         else {
+            clearInterval(this.intervalIdForSmoothlyDisplayingFirstPortrait);
+            clearInterval(this.intervalIdForPortraitTransition);
+            clearInterval(this.intervalIdForUpdatingPortrait);
+
+            this.intervalIdForUpdatingPortrait = setInterval(() => {
+                this.updatePortrait('automatic');
+            }, 3900);
+
             if(this.currentPortraitIndex < 2) {
                 this.currentPortraitIndex++;
             }
             else {
                 this.currentPortraitIndex = 0;
             }
+
             this.opacityOfCurrentPortrait = 1;
             this.opacityOfNextPortrait = 0;
         }
@@ -120,9 +154,9 @@ export class BriefIntro implements AfterViewInit {
 
 
     smoothlyDisplayFirstPortrait() {
-        this.opacityOfCurrentPortrait+=0.05;
+        this.opacityOfCurrentPortrait+= 0.05;
 
-        if(this.opacityOfCurrentPortrait>=1) {
+        if(this.opacityOfCurrentPortrait >= 1) {
             this.opacityOfCurrentPortrait = 1;
 
             clearInterval(this.intervalIdForSmoothlyDisplayingFirstPortrait);
@@ -151,8 +185,8 @@ export class BriefIntro implements AfterViewInit {
             clearInterval(this.intervalIdForPortraitTransition);
         }
         else {
-            this.opacityOfCurrentPortrait-=0.05;
-            this.opacityOfNextPortrait+=0.05;
+            this.opacityOfCurrentPortrait-= 0.05;
+            this.opacityOfNextPortrait+= 0.05;
         }
     }
 

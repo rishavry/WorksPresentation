@@ -1,9 +1,10 @@
-<div #briefIntro #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; padding: 5em 1em; position:
-relative; display: flex; flex-direction: column; align-items: center; overflow-x: scroll; box-sizing: border-box;" 
+<div #briefIntro #readingModeOff *ngIf="!readingModeOn" style="width: 105%; margin-left: -0.5em; padding-top: 5em; position:
+relative; display: flex; flex-direction: column; align-items: center; box-sizing: border-box; padding-left: 1em; padding-right:
+1em;" 
 [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? '#68c6fc' : '#394da3', 'color': currentTheme.endsWith('Light') ?
-'' : 'white'}">
+'' : 'white', 'padding-bottom': !initialAnimationsAreFinished ? '25em' : '5em' }">
     <p #helloText style="font-weight: bold; margin-top:6%; font-size: 6em; width: 55%; text-align: center;">
-        Hello, my name is <span id="">Rishav Ray</span>{{ dots }}
+        Hello, my name is <span id="neonName">Rishav Ray</span>{{ dots }}
     </p>
 
     <div *ngIf="initialAnimationsAreFinished" style="border-radius: 1.8em; width: 55%; padding: 1em 1.3em; margin-top:-2em;
@@ -56,8 +57,8 @@ relative; display: flex; flex-direction: column; align-items: center; overflow-x
 </div>
 
 <div #briefIntro *ngIf="readingModeOn" style="padding: 1.7em 2.7em; border-style: solid; border-color: lightgray; border-width:
-0.06em; border-top: none; border-left: none; border-right: none; position: relative; width: 100%; box-sizing: border-box;"
-[ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Arial' : readingModeFont, 'font-size':
+0.06em; border-top: none; border-left: none; border-right: none; position: relative; width: 105%; margin-left: -0.5em; box-sizing:
+border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'Arial' : readingModeFont, 'font-size':
 (readingModeTextSize*0.97)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
     <h1>Brief Intro</h1>
 
