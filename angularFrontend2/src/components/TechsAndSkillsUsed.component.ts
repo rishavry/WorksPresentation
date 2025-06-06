@@ -40,12 +40,12 @@ export class TechsAndSkillsUsed {
             color: 'white',
             usedFor: [
                 `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
-                rel='noopener noreferrer'>Login-Register</a>. This frontend has 4 different endpoints: /login, /signup, /ageCheck,
-                & /confirmCode, as well as a 404-Not-Found-Page.`,
+                rel='noopener noreferrer'>Login-Register</a>. This frontend has 4 different endpoints: /login,
+                /register, /age-check, /confirm-code, and a 404-Not-Found-Page.`,
 
-                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
-                rel='noopener noreferrer'>Login-Register</a>. This backend has 14 different endpoints, most of which are related to
-                the Megagram users table in MySQL.`,
+                `Used in the backend of <a href='https://github.com/MegaGramProject/Login-Register'
+                target='_blank' rel='noopener noreferrer'>Login-Register</a>. This backend has 14 different
+                endpoints, most of which are related to the Megagram users table in MySQL.`,
 
                 `Used in 'djangoBackend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank' 
                 rel='noopener noreferrer'>Home-Page</a>. This backend supports both Rest-API and GraphQL and pertains to postSaves,
@@ -160,8 +160,8 @@ export class TechsAndSkillsUsed {
             color: 'black',
             usedFor: [
                 `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
-                rel='noopener noreferrer'>Login-Register</a> for the following endpoints: /login, /signup, /ageCheck, /confirmCode,
-                & for the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by <a
+                rel='noopener noreferrer'>Login-Register</a> for the following endpoints: /login, /register, /age-check,
+                /confirm-code, & the 404-Not-Found-Page(although 99% of the CSS for the 404-Not-Found-Page was done by <a
                 href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
 
                 `Used for the styling of the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank'
@@ -184,8 +184,8 @@ export class TechsAndSkillsUsed {
             color: 'black',
             usedFor: [
                 `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
-                rel='noopener noreferrer'>Login-Register</a> for the following endpoints: /login, /signup, /ageCheck, /confirmCode,
-                & for the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
+                rel='noopener noreferrer'>Login-Register</a> for the following endpoints: /login, /register, /age-check,
+                /confirm-code, & the 404-Not-Found-Page(although most of the HTML for the 404-Not-Found-Page was created by
                 <a href='https://rafaelalucas.com/' target='_blank' rel='noopener noreferrer'>Rafaela Lucas</a>).`,
 
                 `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank'
@@ -208,8 +208,8 @@ export class TechsAndSkillsUsed {
             color: 'black',
             usedFor: [
                 `Used in the frontend of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
-                rel='noopener noreferrer'>Login-Register</a> for the following endpoints: /login, /signup, /ageCheck, /confirmCode,
-                & for the 404-Not-Found-Page. JQuery is used extensively in the JS-files due to its concise syntax and grand
+                rel='noopener noreferrer'>Login-Register</a> for the following endpoints: /login, /register, /age-check,
+                /confirm-code, & the 404-Not-Found-Page. JQuery is used extensively in the JS-files due to its concise syntax and grand
                 popularity in the world of web-frontends.`
             ]
         },
@@ -222,11 +222,11 @@ export class TechsAndSkillsUsed {
             usedFor: [
                 `Used in the frontend of <a href='https://github.com/MegaGramProject/Reset-Password' target='_blank'
                 rel='noopener noreferrer'>Reset-Password</a>. This frontend has 2 different endpoints: /forgotPassword,
-                /setNewPassword/{username}/{passwordResetToken}, as well as a 404-Not-Found-Page.`,
+                /setNewPassword/{username}/{passwordResetToken}, and a 404-Not-Found-Page.`,
 
                 `Used in 'reactjs-frontend2' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank'
                 rel='noopener noreferrer'>Home-Page</a>. This frontend has 2 different endpoints: / &
-                /stories/{authorUsernameOrIdOfStory}, as well as a 404-Not-Found-Page.`
+                /stories/{authorUsernameOrIdOfStory}, and a 404-Not-Found-Page.`
             ]
         },
         {
@@ -239,7 +239,7 @@ export class TechsAndSkillsUsed {
             usedFor: [
                 `Used in 'vuejs-frontend1' of <a href='https://github.com/MegaGramProject/Home-Page' target='_blank'
                 rel='noopener noreferrer'>Home-Page</a>. This frontend has 2 different endpoints: / &
-                /stories/{authorUsernameOrIdOfStory}, as well as a 404-Not-Found-Page.`
+                /stories/{authorUsernameOrIdOfStory}, and a 404-Not-Found-Page.`
             ]
         }
     ];
@@ -325,7 +325,7 @@ export class TechsAndSkillsUsed {
 
                 `Used in the deployment of <a href='https://github.com/MegaGramProject/Login-Register' target='_blank'
                 rel='noopener noreferrer'>Login-Register</a> for the following purposes: Google-Kubernetes-Engine(GKE) Clusters for
-                Kubernetes pods that run the frontend and backend production servers, as well as a Managed Instance Group that is
+                Kubernetes pods that run the frontend and backend production servers, and a Managed Instance Group that is
                 used for routing requests made to https://megagram.com to the the GKE Load-Balancers for frontend and backend
                 respectively.`,
 

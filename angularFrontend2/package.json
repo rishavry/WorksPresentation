@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "rimraf": "./node_modules/rimraf/bin.js",
+    "deploy": "gh-pages -d dist --baseHref=/WorksPresentation/"
   },
   "private": true,
   "dependencies": {
