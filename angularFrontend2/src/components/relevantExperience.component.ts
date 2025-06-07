@@ -30,31 +30,28 @@ export class RelevantExperience {
     currentSlide:number = 0;
     slides:any[] = [
         {
-            videoSrcLight: 'misc/slide0Light.mov',
-            videoSrcDark: 'misc/slide0Dark.mov',
+            vidSrc: 'videos/LoginRegisterFrontendDemonstration.mp4',
             descriptionHTML: `(1 of 3) First <a href='https://github.com/MegagramProject/Login-Register' target=\"_blank\"
             rel=\"noopener noreferrer\">
                 Login-Register
             </a>!`,
-            duration: 11
+            duration: 50
         },
         {
-            videoSrcLight: '',
-            videoSrcDark: '',
+            vidSrc: 'videos/ResetPasswordFrontendDemonstration.mp4',
             descriptionHTML: `(2 of 3) First <a href='https://github.com/MegagramProject/Reset-Password' target=\"_blank\"
             rel=\"noopener noreferrer\">
                 Reset-Password
             </a>!`,
-            duration: 5
+            duration: 40
         },
         {
-            videoSrcLight: '',
-            videoSrcDark: '',
+            vidSrc: 'videos/HomePageFrontendDemonstration.mp4',
             descriptionHTML: `(3 of 3) First <a href='https://github.com/MegagramProject/Home-Page' target=\"_blank\"
             rel=\"noopener noreferrer\">
                 Home-Page
             </a>!`,
-            duration: 3
+            duration: 50
         }
     ];
     timeoutIdForSlidesProgression:any = null;

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Simp
     templateUrl: '../templates/BriefIntro.component.html',
     standalone: true,
 })
-export class BriefIntro implements AfterViewInit {
+export class BriefIntro {
     @Input() initialAnimationsAreFinished:boolean = false;
 
     @Input() currentTheme!:string;
@@ -46,19 +46,6 @@ export class BriefIntro implements AfterViewInit {
     @ViewChild('briefIntro') briefIntroRef!:ElementRef;
     @ViewChild('wavingHand') wavingHandRef!:ElementRef;
     @ViewChild('readingModeOff') readingModeOffRef!:ElementRef;
-
-
-    ngAfterViewInit() {
-        if (!this.readingModeOn) {
-            this.intervalIdForDots = setInterval(() => {
-                this.animateTheTypingDots();
-            }, 600);
-            
-            this.intervalIdForHand = setInterval(() => {
-                this.animateWavyHands();
-            }, 100);
-        }
-    }
 
 
     ngOnChanges(changes:SimpleChanges) {

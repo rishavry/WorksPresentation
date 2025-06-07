@@ -10,6 +10,6 @@ export class NotFoundPage {
 
 
 	ngOnInit() {
-		document.title = "Page Not Found · 404";
+		document.title = 'Page Not Found · 404';
 	}
 }

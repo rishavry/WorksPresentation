@@ -29,9 +29,13 @@ a:hover {
   color: darkgreen !important;
 }
 
-.linkedinIcon {
+.rotatingIcon {
   pointer-events: none;
-  animation: linkedinIconRotatingAnimation 4.88s linear forwards infinite;
+  animation: iconRotatingAnimation 4.88s linear forwards infinite;
+}
+
+.grayResumeIcon {
+  filter: brightness(5) contrast(0);
 }
 
 .readingModeFontOption:hover {
@@ -113,7 +117,7 @@ a:hover {
   }
 }
 
-@keyframes linkedinIconRotatingAnimation {
+@keyframes iconRotatingAnimation {
   0% {
     rotate: 0deg;
   }

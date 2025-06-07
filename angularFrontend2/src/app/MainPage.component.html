@@ -95,9 +95,10 @@ font-size: 0.85em;">
     <p>the Top</p>
 </div>
 
-<div *ngIf="displayMiniReadingModeSettings && readingModeOn && !displayDarkScreen" style="cursor: pointer; position: fixed; bottom:
-25%; right: 1%; display: flex; flex-direction: column; align-items: center; font-size: 0.69em; padding: 0.5em 1em;
-background-color: rgba(0, 0, 0, 0.6); color: white; border-radius: 0.8em;">
+<div *ngIf="displayMiniReadingModeSettings && readingModeOn && !displayDarkScreen" style="cursor: pointer; position: fixed;
+right: 0.1%; display: flex; flex-direction: column; align-items: center; font-size: 0.69em; padding: 0.5em 1em;
+background-color: rgba(0, 0, 0, 0.6); color: white; border-radius: 0.8em;" [ngStyle]="{'bottom': userIsAtTheTop ? '25%' :
+'1%'}">
     <div style="position: relative;">
         <div *ngIf="displayMiniFontSettings" style="display: flex; flex-direction: column; border-radius: 0.7em; border-style:
         solid; border-width: 0.06em; border-color: lightgray; position: absolute; left: -265%; top: -10%; background-color:
@@ -185,9 +186,9 @@ background-color: rgba(0, 0, 0, 0.6); color: white; border-radius: 0.8em;">
 </div>
 
 <div *ngIf="!displayMiniReadingModeSettings && readingModeOn && !displayDarkScreen"
-(click)="toggleDisplayMiniReadingModeSettings()" style="cursor: pointer; position: fixed; bottom: 25%; right: 1%; display: flex;
+(click)="toggleDisplayMiniReadingModeSettings()" style="cursor: pointer; position: fixed; right: 0.1%; display: flex;
 gap: 0.4em; align-items: center; font-size: 0.6em; padding: 0.5em 1em; background-color: black; color: white; border-radius:
-0.8em;">
+0.8em;" [ngStyle]="{'bottom': userIsAtTheTop ? '25%' : '1%'}">
     <img src="images/upV.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
     <img src="images/bookIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">
     <img src="images/settingsIcon.png" style="height: 2em; width: 2em; object-fit: contain; filter: brightness(10) contrast(0);">

@@ -278,12 +278,22 @@ position: relative;">
         </div>
 
         <div style="display: flex; align-items: center; gap: 1em;">
-            <img class="linkedinIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit:
+            <img class="rotatingIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit:
             contain;">
 
             <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
             [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">
                 My Linkedin Profile
+            </a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1em; margin-top: 2em;">
+            <img class="grayResumeIcon rotatingIcon" src="images/resumeIcon.png" style="height: 1.75em; width: 1.75em; object-fit:
+            contain;">
+            
+            <a href="http://localhost:8017/my-resume.pdf" target="_blank" rel="noopener noreferrer"
+            [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">
+                My Resume
             </a>
         </div>
     </div>

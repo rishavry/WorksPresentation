@@ -31,11 +31,22 @@ margin-left: -0.5em; background-color: #0620b8; color: white; box-sizing: border
             <p><b>Email:</b> rishavray422&#64;gmail.com</p>
             <p><b>Phone Number:</b> 608-443-7805</p>
             <div style="display: flex; align-items: center; gap: 1em;">
-                <img class="linkedinIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit:
+                <img class="rotatingIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit:
                 contain;">
+
                 <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
                 style="color: white;">
                     My Linkedin Profile
+                </a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1em; margin-top: 2em;">
+                <img class="grayResumeIcon rotatingIcon" src="images/resumeIcon.png" style="height: 1.75em; width: 1.75em;
+                object-fit: contain;">
+
+                <a href="http://localhost:8017/my-resume.pdf" target="_blank" rel="noopener noreferrer"
+                style="color: white;">
+                    My Resume
                 </a>
             </div>
         </div>
@@ -48,18 +59,20 @@ margin-left: -0.5em; background-color: #0620b8; color: white; box-sizing: border
 </div>
 
 <div *ngIf="readingModeOn" style="padding: 1.7em 2.7em; position: relative; width: 105%; margin-left: -0.5em; box-sizing:
-border-box;" [ngStyle]= "{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont, 'font-size':
-(readingModeTextSize*1.13)+'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
+border-box;" [ngStyle]="{'font-family': readingModeFont.startsWith('Default') ? 'IBM Plex Sans' : readingModeFont, 'font-size':
+(readingModeTextSize * 1.13) + 'em', 'color': readingModeTextColor, 'background-color': readingModeBackgroundColor}">
     <h1>The Finale</h1>
 
     <p style="margin-top: 3.5em; width: 88%; line-height: 2;">
         Inspired by my work? It’s not too good to be true! Let's bring your vision to life. Shoot me an email/text/Linkedin-message
         whenever you prefer. My email-address is rishavray422&#64;gmail.com. My phone-number is 608-443-7805. Last, but not
-        least, my Linkedin profile is over <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank"
-        rel="noopener noreferrer" [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">here</a>.
-        Thanks for staying till the end, you're a real one!
+        least, my Linkedin profile is over
+        <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer" [ngStyle]="{'color':
+        currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">here</a>, and my Resume is over <a
+        href="http://localhost:8017/my-resume.pdf" target="_blank" rel="noopener noreferrer" [ngStyle]="{'color':
+        currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">here</a>. Thanks for staying till the end, you're a real one!
     </p>
 
-    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png" style="position: absolute; top:
-    0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
+    <img *ngIf="displayDarkScreen" (click)="onClickingDarkScreen()" src="images/blackScreen.png"
+    style="position: absolute; top: 0%; left: 0%; opacity: 0.7; height: 100%; width: 100%;">
 </div>
