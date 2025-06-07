@@ -1,0 +1,55 @@
+{
+  "hash": "221459f7",
+  "configHash": "16d784a2",
+  "lockfileHash": "55723d25",
+  "browserHash": "42b717ee",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "49f513e8",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "3953f421",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "549c1e6f",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "dcee8a32",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "dfaf7b77",
+      "needsInterop": false
+    },
+    "ngx-color-picker": {
+      "src": "../../../../../../node_modules/ngx-color-picker/fesm2020/ngx-color-picker.mjs",
+      "file": "ngx-color-picker.js",
+      "fileHash": "26f9a300",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-MZZXBFNQ": {
+      "file": "chunk-MZZXBFNQ.js"
+    },
+    "chunk-LJGW4UUE": {
+      "file": "chunk-LJGW4UUE.js"
+    },
+    "chunk-VKUFYADX": {
+      "file": "chunk-VKUFYADX.js"
+    }
+  }
+}
