@@ -91,9 +91,11 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
+          "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "baseHref": "/WorksPresentation/"
+            "outputPath": "dist/angular-frontend1",
+            "netlifyToken": "nfp_xq9R33FP56YEReV9wyYQYw6bYGKFP1eh4b75",
+            "siteId": ""
           }
         }
       }
