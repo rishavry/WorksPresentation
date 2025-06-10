@@ -60,24 +60,24 @@ position: relative;">
                 contain;" [ngStyle]="{'transform': isLinksBeingHovered ? 'scaleY(-1)' : ''}">
             </div>
         
-            <div (mouseenter)="onMouseEnterOfContactMe()" (mouseleave)="onMouseLeaveOfContactMe()"
+            <div (mouseenter)="onMouseEnterOfMyInfo()" (mouseleave)="onMouseLeaveOfMyInfo()"
             style="display: flex; align-items: center; gap: 0.5em; margin-left: 2em;"
-            [ngStyle]="{'cursor': 'pointer', 'font-weight': isContactMeBeingHovered ? 'bold' : '300',
-            'border-style': isContactMeBeingHovered ? 'solid' : '', 'border-color': 'lightgray',
+            [ngStyle]="{'cursor': 'pointer', 'font-weight': isMyInfoBeingHovered ? 'bold' : '300',
+            'border-style': isMyInfoBeingHovered ? 'solid' : '', 'border-color': 'lightgray',
             'border-radius': '2em', 'border-width': '0.1em', 'padding-left': '1.2em', 'padding-right': '0.9em',
             'padding-top': '0em', 'padding-bottom': '0em',
-            'background-color': isContactMeBeingHovered && currentTheme.endsWith('Light') ? '#dcf3fc' : ''}">
+            'background-color': isMyInfoBeingHovered && currentTheme.endsWith('Light') ? '#dcf3fc' : ''}">
                 <p>
-                    Contact Me
+                    My Info
                 </p>
         
                 <img class="iconToBeAdjustedForDarkMode" src="images/downV.png" style="height: 1em; width: 1em; object-fit:
-                contain;" [ngStyle]="{'transform': isContactMeBeingHovered ? 'scaleY(-1)' : ''}">
+                contain;" [ngStyle]="{'transform': isMyInfoBeingHovered ? 'scaleY(-1)' : ''}">
             </div>
         </div>
 
-        <img id="topSectionSelfPortrait" src="images/carSelfie.jpg" style="height: 4em; width: 4em;
-        border-radius: 2em; pointer-events: none; margin-left: 1.5em;">
+        <img src="images/seniorYearbookPhoto.png" style="height: 4em; width: 4em; pointer-events: none;
+        margin-left: 1.5em; object-fit: contain;">
     </div>
 
     <div *ngIf="isPersonalizeBeingHovered || isPersonalizeBigSectionBeingHovered"
@@ -255,13 +255,13 @@ position: relative;">
         [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0' }">Home-Page</a>
     </div>
 
-    <div *ngIf="isContactMeBeingHovered || isContactMeBigSectionBeingHovered"
-    (mouseenter)="onMouseEnterOfContactMeBigSection()" (mouseleave)="onMouseLeaveOfContactMeBigSection()"
+    <div *ngIf="isMyInfoBeingHovered || isMyInfoBigSectionBeingHovered"
+    (mouseenter)="onMouseEnterOfMyInfoBigSection()" (mouseleave)="onMouseLeaveOfMyInfoBigSection()"
     style="width: 105%; margin-left: -0.5em; border-style: solid; border-color: lightgray; border-left: none; border-right:
     none; border-bottom: none; border-width: 0.09em; padding-top: 3em; padding-left: 1.5em; padding-bottom: 3em;
     box-sizing: border-box; overflow-x: scroll;" [ngStyle]="{'background-color': currentTheme.endsWith('Light') ? 'white' : '#282929',
     'color': currentTheme.endsWith('Light') ? '' : 'white'}">
-        <h1>Contact Me</h1>
+        <h1>My Info</h1>
 
         <div style="display: flex; gap: 1em; align-items: center;">
             <p>Email-Address: <span (click)="copyEmailAddressToClipboard()" style="text-decoration: underline; cursor: pointer;"
@@ -281,7 +281,7 @@ position: relative;">
             <img class="rotatingIcon" src="images/linkedinIcon.webp" style="height: 1.75em; width: 1.75em; object-fit:
             contain;">
 
-            <a href="https://linkedin.com/in/rishav-ray-9a9968341" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/rishav-ray-91a85836a/" target="_blank" rel="noopener noreferrer"
             [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">
                 My Linkedin Profile
             </a>
@@ -291,7 +291,7 @@ position: relative;">
             <img class="grayResumeIcon rotatingIcon" src="images/resumeIcon.png" style="height: 1.75em; width: 1.75em; object-fit:
             contain;">
             
-            <a href="https://the-works-of-rishav-ray.com/my-resume.pdf" target="_blank" rel="noopener noreferrer"
+            <a href="https://the-works-of-rishav-ray.com/resume.pdf" target="_blank" rel="noopener noreferrer"
             [ngStyle]="{'color': currentTheme.endsWith('Dark') ? '#4eaeed' : '#307db0'}">
                 My Resume
             </a>

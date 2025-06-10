@@ -41,9 +41,9 @@ export class TopSection {
 	isTechsAndSkillsBeingHovered:boolean = false;
 	isPersonalizeBeingHovered:boolean = false;
 	isLinksBeingHovered:boolean = false;
-	isContactMeBeingHovered:boolean = false;
+	isMyInfoBeingHovered:boolean = false;
 
-	isContactMeBigSectionBeingHovered:boolean = false;
+	isMyInfoBigSectionBeingHovered:boolean = false;
 	isLinksBigSectionBeingHovered:boolean = false;
 	isPersonalizeBigSectionBeingHovered:boolean = false;
 
@@ -103,7 +103,7 @@ export class TopSection {
         setTimeout(()=>{
             this.isPersonalizeBeingHovered = false;
 
-            if(!this.isContactMeBeingHovered && !this.isContactMeBigSectionBeingHovered &&
+            if(!this.isMyInfoBeingHovered && !this.isMyInfoBigSectionBeingHovered &&
 			!this.isLinksBeingHovered && !this.isLinksBigSectionBeingHovered &&
 			!this.isPersonalizeBigSectionBeingHovered) {
                 this.updateDarkScreen.emit(false);
@@ -123,7 +123,7 @@ export class TopSection {
         setTimeout(()=>{
             this.isLinksBeingHovered = false;
 
-            if(!this.isContactMeBeingHovered && !this.isContactMeBigSectionBeingHovered &&
+            if(!this.isMyInfoBeingHovered && !this.isMyInfoBigSectionBeingHovered &&
 			!this.isPersonalizeBeingHovered && !this.isPersonalizeBigSectionBeingHovered &&
 			!this.isLinksBigSectionBeingHovered) {
                 this.updateDarkScreen.emit(false);
@@ -132,38 +132,38 @@ export class TopSection {
     }
 
 
-	onMouseEnterOfContactMe() {
-        this.isContactMeBeingHovered = true;
+	onMouseEnterOfMyInfo() {
+        this.isMyInfoBeingHovered = true;
 
         this.updateDarkScreen.emit(true);
     }
 
 
-    onMouseLeaveOfContactMe() {
+    onMouseLeaveOfMyInfo() {
         setTimeout(()=>{
-            this.isContactMeBeingHovered = false;
+            this.isMyInfoBeingHovered = false;
 
             if(!this.isLinksBeingHovered && !this.isLinksBigSectionBeingHovered &&
 			!this.isPersonalizeBeingHovered && !this.isPersonalizeBigSectionBeingHovered &&
-			!this.isContactMeBigSectionBeingHovered) {
+			!this.isMyInfoBigSectionBeingHovered) {
                 this.updateDarkScreen.emit(false);
             }
         }, 100);
     }
 
 
-	onMouseEnterOfContactMeBigSection() {
-        this.isContactMeBigSectionBeingHovered = true;
+	onMouseEnterOfMyInfoBigSection() {
+        this.isMyInfoBigSectionBeingHovered = true;
     }
 
 
-    onMouseLeaveOfContactMeBigSection() {
+    onMouseLeaveOfMyInfoBigSection() {
         setTimeout(()=>{
-            this.isContactMeBigSectionBeingHovered = false;
+            this.isMyInfoBigSectionBeingHovered = false;
 
             if(!this.isLinksBeingHovered && !this.isLinksBigSectionBeingHovered &&
 			!this.isPersonalizeBeingHovered && !this.isPersonalizeBigSectionBeingHovered &&
-            !this.isContactMeBeingHovered) {
+            !this.isMyInfoBeingHovered) {
                 this.updateDarkScreen.emit(false);
             }
         }, 100);
@@ -179,7 +179,7 @@ export class TopSection {
         setTimeout(()=>{
             this.isLinksBigSectionBeingHovered = false;
 
-            if(!this.isContactMeBeingHovered && !this.isContactMeBigSectionBeingHovered &&
+            if(!this.isMyInfoBeingHovered && !this.isMyInfoBigSectionBeingHovered &&
         	!this.isPersonalizeBeingHovered && !this.isPersonalizeBigSectionBeingHovered
 			&& !this.isLinksBeingHovered) {
                 this.updateDarkScreen.emit(false);
@@ -198,7 +198,7 @@ export class TopSection {
             this.isPersonalizeBigSectionBeingHovered = false;
 
             if(!this.isLinksBeingHovered && !this.isLinksBigSectionBeingHovered &&
-			!this.isContactMeBeingHovered &&  !this.isContactMeBigSectionBeingHovered &&
+			!this.isMyInfoBeingHovered &&  !this.isMyInfoBigSectionBeingHovered &&
 			!this.isPersonalizeBeingHovered) {
                 this.updateDarkScreen.emit(false);
             }
