@@ -87,6 +87,20 @@ export class TechsAndSkillsUsed {
             ]
         },
         {
+            name: 'LeetCode (Problem-Solving, Coding, Data-Structures and Algorithms)',
+            type: 'Full-Stack',
+            image: 'leetcodeLogo.png',
+            backgroundColor: '#fff8f7',
+            color: 'black',
+            usedFor: [
+                `I started LeetCode on May 18, 2025, I'm in at-least the top 10% rank-wise (500,000/5,000,000+) in under 2 weeks, I
+                solved 235 questions(as well as several more complex ones if the Time-Limit Exceeding error didn't happen for them
+                lol). My profile is linked <a href="https://leetcode.com/u/ocoDFiROav/" target="_blank" rel="noopener noreferrer">
+                here</a>. In addition, a lot of my DSA knowledge is showcased in my <a href="https://github.com/rishavry/DSAHelper"
+                target="_blank" rel="noopener noreferrer">DSAHelper Github repository</a>`,
+            ]
+        },
+        {
             name: 'Spring Boot (Java)',
             type: 'Full-Stack',
             image: 'springBootLogo.png',

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
@@ -28,67 +28,40 @@ export class RelevantExperience {
     @ViewChild('readingModeOff') readingModeOffRef!:ElementRef;
 
     currentSlide:number = 0;
-    slides:any[] = [
-        {
-            vidSrc: 'videos/LoginRegisterFrontendDemonstration.mp4',
-            descriptionHTML: `(1 of 3) First <a href='https://github.com/MegagramProject/Login-Register' target=\"_blank\"
-            rel=\"noopener noreferrer\">
-                Login-Register
-            </a>!`,
-            duration: 50
-        },
-        {
-            vidSrc: 'videos/ResetPasswordFrontendDemonstration.mp4',
-            descriptionHTML: `(2 of 3) First <a href='https://github.com/MegagramProject/Reset-Password' target=\"_blank\"
-            rel=\"noopener noreferrer\">
-                Reset-Password
-            </a>!`,
-            duration: 40
-        },
-        {
-            vidSrc: 'videos/HomePageFrontendDemonstration.mp4',
-            descriptionHTML: `(3 of 3) First <a href='https://github.com/MegagramProject/Home-Page' target=\"_blank\"
-            rel=\"noopener noreferrer\">
-                Home-Page
-            </a>!`,
-            duration: 50
-        }
-    ];
-    timeoutIdForSlidesProgression:any = null;
+    slides:any[] = [];
 
 
     constructor(private sanitizer: DomSanitizer) {}
 
 
-    ngOnChanges(changes:SimpleChanges) {
-        if (changes['displayMacbook']) {
-            if (this.displayMacbook) {
-                this.startGoingThroughSlides();
-            }
-            else {
-                clearTimeout(this.timeoutIdForSlidesProgression);
-                this.timeoutIdForSlidesProgression = null;
-            }
-        }
+    ngOnInit() {
+        this.slides = [
+            {
+                iframeSrc: this.sanitizer.bypassSecurityTrustResourceUrl(
+                    'https://drive.google.com/file/d/13DM2G2PnyWYbO8ZobZOPuReoUJM3ON11/preview'
+                ),
+                descriptionHTML: this.sanitize(
+                    `(1 of 2) <a href='https://github.com/MegagramProject/Login-Register' target=\"_blank\" rel=\"noopener noreferrer\">
+                        Login-Register
+                    </a>!`
+                )
+            },
+            {
+                iframeSrc: this.sanitizer.bypassSecurityTrustResourceUrl(
+                    'https://drive.google.com/file/d/1zvit2zWtb7UG5AT9goIoP3-zdz6STBER/preview'
+                ),
+                descriptionHTML: this.sanitize(
+                    `(2 of 2) <a href='https://github.com/MegagramProject/Reset-Password' target=\"_blank\" rel=\"noopener noreferrer\">
+                        Reset-Password
+                    </a>!`
+                )
+            },
+        ];
     }
 
 
     onClickingDarkScreen() {
         this.closeAllPopups.emit();
-    }
-
-
-    startGoingThroughSlides() {
-        this.timeoutIdForSlidesProgression = setTimeout(() => {
-            if(this.currentSlide == 2) {
-                this.currentSlide = 0;
-            }
-            else {
-                this.currentSlide++;
-            }
-
-            this.handleSlideProgressionAfterSlideChanges();
-        }, this.slides[this.currentSlide]['duration'] * 1000);
     }
 
 
@@ -99,36 +72,16 @@ export class RelevantExperience {
         else {
             this.currentSlide = 2;
         }
-
-        this.handleSlideProgressionAfterSlideChanges();
     }
 
 
     incrementCurrentSlide() {
-        if(this.currentSlide < 2) {
+        if(this.currentSlide < 1) {
             this.currentSlide++;
         }
         else {
             this.currentSlide = 0;
         }
-
-        this.handleSlideProgressionAfterSlideChanges();
-    }
-
-
-    handleSlideProgressionAfterSlideChanges() {
-        clearTimeout(this.timeoutIdForSlidesProgression);
-
-        this.timeoutIdForSlidesProgression = setTimeout(() => {
-            if(this.currentSlide == 2) {
-                this.currentSlide = 0;
-            }
-            else {
-                this.currentSlide++;
-            }
-
-            this.handleSlideProgressionAfterSlideChanges();
-        }, this.slides[this.currentSlide]['duration'] * 1000);
     }
 
 

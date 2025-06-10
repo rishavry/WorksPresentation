@@ -217,7 +217,7 @@ export class MainPage {
 
 
     updateURLOfPageAfterUserPersonalization() {
-        let newURL = 'http://localhost:8017';
+        let newURL = 'https://the-works-of-rishav-ray.com';
             
         if(this.readingModeOn || !this.currentTheme.startsWith('System:')) {
             newURL+='?';

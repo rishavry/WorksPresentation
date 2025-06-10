@@ -27,16 +27,14 @@ display: flex; align-items: center; justify-content: center; box-sizing: border-
 
     <div id="relevantExperienceImgOrVidSection" *ngIf="!displayMacbook" style="display: flex; flex-direction: column; align-items:
     center; justify-content: start; margin-right: 5%; margin-bottom: 5%;">
-        <video autoplay [src]="slides[currentSlide].vidSrc"
-            style="height: 40em; width: 30em; margin-bottom: -10em;">
-        </video>
+        <iframe [src]="slides[currentSlide].iframeSrc" width="640" height="480" allow="autoplay"></iframe>
         
         <div style="display: flex; align-items: center; justify-content: space-between; width: 30em;
         z-index: 2;">
             <img (click)="decrementCurrentSlide()" src="images/backArrow.svg" style="cursor: pointer; height: 1.2em; width:
             1.2em;">
             
-            <p [innerHTML]="sanitize(slides[currentSlide]['descriptionHTML'])" style="color: rgb(122, 120, 120)"></p>
+            <p [innerHTML]="slides[currentSlide]['descriptionHTML']" style="color: rgb(122, 120, 120)"></p>
             
             <img (click)="incrementCurrentSlide()" src="images/forwardArrow.svg" style="cursor: pointer; height: 1.2em; width:
             1.2em;">

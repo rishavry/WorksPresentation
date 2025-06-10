@@ -76,7 +76,7 @@
 <TechOrSkillPopup *ngIf="displayTechOrSkillsPopup"
     [currentTheme]="currentTheme"
     [techOrSkill]="techOrSkillForPopup"
-    (closePopup)="displayTechOrSkillsPopup = false"
+    (closePopup)="closeAllPopupsAfterClickingDarkScreen()"
 />
 
 <div *ngIf="(initialAnimationsAreFinished || readingModeOn) && userIsAtTheTop && !displayDarkScreen" (click)="scrollToTheBottom()"

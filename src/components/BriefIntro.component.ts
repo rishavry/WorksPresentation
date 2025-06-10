@@ -33,9 +33,9 @@ export class BriefIntro {
 
     currentPortraitIndex:number = 0;
     portraits:any = {
-        0: 'images/theRock.jpg',
-        1: 'images/theRock2.jpg',
-        2: 'images/theRock3.jpg'
+        0: 'images/professionalPortrait1.png',
+        1: 'images/professionalPortrait2.png',
+        2: 'images/professionalPortrait3.png'
     };
     opacityOfCurrentPortrait:number = 1;
     opacityOfNextPortrait:number = 0;
@@ -123,10 +123,6 @@ export class BriefIntro {
             clearInterval(this.intervalIdForPortraitTransition);
             clearInterval(this.intervalIdForUpdatingPortrait);
 
-            this.intervalIdForUpdatingPortrait = setInterval(() => {
-                this.updatePortrait('automatic');
-            }, 3900);
-
             if(this.currentPortraitIndex < 2) {
                 this.currentPortraitIndex++;
             }
@@ -136,6 +132,10 @@ export class BriefIntro {
 
             this.opacityOfCurrentPortrait = 1;
             this.opacityOfNextPortrait = 0;
+
+            this.intervalIdForUpdatingPortrait = setInterval(() => {
+                this.updatePortrait('automatic');
+            }, 3900);
         }
     }
 
